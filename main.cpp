@@ -1,4 +1,4 @@
-
+﻿
 #include <iostream>
 #include <sstream>
 #include <cmath>
@@ -7,7 +7,7 @@
 
 int main()
 {
-
+	// بسم الله الرحمن الرحيم 
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;

@@ -38,7 +38,7 @@ public:
 	void DrawLEDON(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawSWITCHON(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawSWITCHOFF(GraphicsInfo r_GfxInfo, bool selected = false) const;
-	void DrawNOT(GraphicsInfo r_GfxInfo, bool selected) const;
+	void DrawNOT(GraphicsInfo r_GfxInfo, bool selected=false) const;
 	
 	// Draws Connection
 	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;

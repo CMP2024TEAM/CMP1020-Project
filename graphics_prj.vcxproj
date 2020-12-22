@@ -168,10 +168,13 @@
     <ClCompile Include="Components\Connection.cpp" />
     <ClCompile Include="Components\Gate.cpp" />
     <ClCompile Include="Components\InputPin.cpp" />
+    <ClCompile Include="Components\Lable.cpp" />
     <ClCompile Include="Components\NOR3.cpp" />
+    <ClCompile Include="Components\NOT.cpp" />
     <ClCompile Include="Components\OutputPin.cpp" />
     <ClCompile Include="Components\Pin.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="Components\Switch.cpp" />
     <ClCompile Include="Components\XOR3.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
@@ -206,10 +209,13 @@
     <ClInclude Include="Components\Connection.h" />
     <ClInclude Include="Components\Gate.h" />
     <ClInclude Include="Components\InputPin.h" />
+    <ClInclude Include="Components\Lable.h" />
     <ClInclude Include="Components\NOR3.h" />
+    <ClInclude Include="Components\NOT.h" />
     <ClInclude Include="Components\OutputPin.h" />
     <ClInclude Include="Components\Pin.h" />
     <ClInclude Include="ApplicationManager.h" />
+    <ClInclude Include="Components\Switch.h" />
     <ClInclude Include="Components\XOR3.h" />
     <ClInclude Include="Defs.H" />
     <ClInclude Include="GUI\Input.h" />

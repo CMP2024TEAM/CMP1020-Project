@@ -158,6 +158,15 @@
     <ClCompile Include="Components\Switch.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\NAND2.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\NOR2.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\OR2.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -276,6 +285,15 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\Switch.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\NAND2.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\NOR2.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\OR2.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

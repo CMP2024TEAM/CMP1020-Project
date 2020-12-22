@@ -1,20 +1,20 @@
-#ifndef _AND3_H
-#define _AND3_H
+#ifndef _NOR3_H
+#define _NOR3_H
 
 /*
-  Class AND3
+  Class NOR3
   -----------
-  represent the 3-input AND gate
+  represent the 3-input NOR gate
 */
 
 #include "Gate.h"
 
-class AND3 :public Gate///
+class NOR3 :public Gate///
 {
 public:
-	AND3(const GraphicsInfo& r_GfxInfo, int r_FanOut);
-	virtual void Operate();	//Calculates the output of the AND gate
-	virtual void Draw(Output* pOut);	//Draws 3-input AND gate
+	NOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut);
+	virtual void Operate();	//Calculates the output of the NOR gate
+	virtual void Draw(Output* pOut);	//Draws 3-input NOR gate
 
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual int GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1

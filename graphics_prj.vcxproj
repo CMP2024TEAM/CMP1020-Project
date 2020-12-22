@@ -172,6 +172,7 @@
     <ClCompile Include="Components\OutputPin.cpp" />
     <ClCompile Include="Components\Pin.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="Components\XOR3.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="main.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="Components\OutputPin.h" />
     <ClInclude Include="Components\Pin.h" />
     <ClInclude Include="ApplicationManager.h" />
+    <ClInclude Include="Components\XOR3.h" />
     <ClInclude Include="Defs.H" />
     <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />

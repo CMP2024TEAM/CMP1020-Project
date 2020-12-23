@@ -1,5 +1,5 @@
 #pragma once
-#include"Components/Gate.h"
+#include"Gate.h"
 /*class OR2
 represent the 2 input OR2 gate
 */

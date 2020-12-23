@@ -15,7 +15,7 @@ OR2::OR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 /// //////////////Operate////////////////////////////
 void OR2::Operate()
 {
-
+	m_OutputPin = GetInputPinStatus(0) || GetInputPinStatus(1);
 }
 /////////////////Draw Function////////////////////////
 void OR2::Draw(Output* pOut)

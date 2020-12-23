@@ -1,7 +1,7 @@
 /*class NAND2 
 represent the 2 input NAND gate
 */
-#include"Components/Gate.h"
+#include"Gate.h"
 class NAND2:public Gate
 {
 public:

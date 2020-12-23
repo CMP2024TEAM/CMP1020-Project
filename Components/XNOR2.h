@@ -1,10 +1,10 @@
 #pragma once
 #include "Gate.h"
-class XONR2 :
+class XNOR2 :
     public Gate
 {
 public:
-	XONR2(const GraphicsInfo& r_GfxInfo, int r_FanOut);
+	XNOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut);
 	virtual void Operate();	//Calculates the output of the XNOR2 gate
 	virtual void Draw(Output* pOut);	//Draws 2-input gate
 

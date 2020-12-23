@@ -130,7 +130,10 @@ enum toolbarmenu
 //assume fan out is 5 for now it can be read from the user or can be predefined as const
 enum FANOUT
 {
-	AND2_FANOUT = 5	//Default fan out of 2-input AND gate
+	AND2_FANOUT = 5,	//Default fan out of 2-input AND gate
+	XOR2_FANOUT = 5,
+	XNOR2_FANOUT = 5,
+	BUFFER_FANOUT=5
 };
 
 //A structure to contain drawing parameters for each component

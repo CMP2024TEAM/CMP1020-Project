@@ -1,6 +1,6 @@
-#include "XONR2.h"
+#include "XNOR2.h"
 
-XONR2::XONR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
+XNOR2::XNOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -8,7 +8,7 @@ XONR2::XONR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 }
 
-void XONR2::Operate()
+void XNOR2::Operate()
 {
 	int input[2];
 	input[0] = GetInputPinStatus(1);
@@ -19,22 +19,22 @@ void XONR2::Operate()
 		m_OutputPin.setStatus(LOW);
 }
 
-void XONR2::Draw(Output* pOut)
+void XNOR2::Draw(Output* pOut)
 {//Call output class and pass gate drawing info to it.
 	pOut->Draw_XNOR2(m_GfxInfo);
 }
 
-int XONR2::GetOutPinStatus()
+int XNOR2::GetOutPinStatus()
 {
 	return m_OutputPin.getStatus();
 }
 
-int XONR2::GetInputPinStatus(int n)
+int XNOR2::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
-void XONR2::setInputPinStatus(int n, STATUS s)
+void XNOR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }

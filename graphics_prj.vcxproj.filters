@@ -173,9 +173,6 @@
     <ClCompile Include="Components\XOR2.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Components\XONR2.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Components\BUFFER.CPP">
       <Filter>Components</Filter>
     </ClCompile>
@@ -187,6 +184,18 @@
     </ClCompile>
     <ClCompile Include="Actions\AddORgate2.cpp">
       <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddBUFFERgate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddXNORgate2.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddXORgate2.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\XNOR2.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -323,9 +332,6 @@
     <ClInclude Include="Components\XOR2.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components\XONR2.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Components\BUFFER.H">
       <Filter>Components</Filter>
     </ClInclude>
@@ -337,6 +343,18 @@
     </ClInclude>
     <ClInclude Include="Actions\AddORgate2.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddBUFFERgate.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddXNORgate2.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddXORgate2.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\XNOR2.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

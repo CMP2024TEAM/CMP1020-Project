@@ -179,6 +179,15 @@
     <ClCompile Include="Components\BUFFER.CPP">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\AddNANDgate2.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddNORgte2.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddORgate2.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -319,6 +328,15 @@
     </ClInclude>
     <ClInclude Include="Components\BUFFER.H">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddNANDgate2.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddNORgate2.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddORgate2.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,8 +2,8 @@
 #ifndef _ADD_AND_GATE_H
 #define _ADD_AND_GATE_H
 
-#include "Actions/Action.h"
-#include "Components/NOR2.h"
+#include "Action.h"
+#include "..\Components\NOR2.h"
 
 class AddNORgate2 : public Action
 {

@@ -3,7 +3,7 @@
 #define _ADD_OR_GATE_H
 
 #include"Action.h"
-#include "Components/OR2.h"
+#include "..\Components\OR2.h"
 
 class AddORgate2 : public Action
 {

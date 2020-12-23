@@ -1,5 +1,5 @@
 #include "AddNORgate2.h"
-#include"ApplicationManager.h"
+#include"..\ApplicationManager.h"
 
 AddNORgate2::AddNORgate2(ApplicationManager* pApp) :Action(pApp)
 {

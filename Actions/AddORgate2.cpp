@@ -1,5 +1,5 @@
 #include "AddORgate2.h"
-#include"ApplicationManager.h"
+#include"..\ApplicationManager.h"
 
 AddORgate2::AddORgate2(ApplicationManager* pApp) :Action(pApp)
 {

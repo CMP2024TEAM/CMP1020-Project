@@ -167,6 +167,18 @@
     <ClCompile Include="Components\OR2.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\LED.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\XOR2.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\XONR2.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\BUFFER.CPP">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -294,6 +306,18 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\OR2.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\LED.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\XOR2.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\XONR2.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\BUFFER.H">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

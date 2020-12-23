@@ -1,5 +1,5 @@
 #include "NOT.h"
-NOT::NOT(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
+NOT::NOT(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -13,7 +13,7 @@ void NOT::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
-	if (m_InputPins[0].getStatus() == HIGH)
+	if (m_InputPins->getStatus() == HIGH)
 		m_OutputPin.setStatus(LOW);
 	else
 		m_OutputPin.setStatus(HIGH);
@@ -39,11 +39,11 @@ int NOT::GetOutPinStatus()
 //returns status of Inputpin #n
 int NOT::GetInputPinStatus()
 {
-	return m_InputPins[0].getStatus();	//n starts from 1 but array index starts from 0.
+	return m_InputPins->getStatus();	//n starts from 1 but array index starts from 0.
 }
 
 //Set status of an input pin ot HIGH or LOW
 void NOT::setInputPinStatus( STATUS s)
 {
-	m_InputPins[0].setStatus(s);
+	m_InputPins->setStatus(s);
 }

@@ -1,6 +1,5 @@
-#pragma once
-#ifndef _ADD_AND_GATE_H
-#define _ADD_AND_GATE_H
+#ifndef _ADD_NAND_GATE_H
+#define _ADD_NAND_GATE_H
 
 #include "Action.h"
 #include "..\Components\NAND2.h"

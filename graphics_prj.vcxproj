@@ -129,7 +129,7 @@
     <ClCompile Include="Actions\AddANDgate2.cpp" />
     <ClCompile Include="Actions\AddBUFFERgate.cpp" />
     <ClCompile Include="Actions\AddNANDgate2.cpp" />
-    <ClCompile Include="Actions\AddNORgte2.cpp" />
+    <ClCompile Include="Actions\AddNORgate2.cpp" />
     <ClCompile Include="Actions\AddORgate2.cpp" />
     <ClCompile Include="Actions\AddXNORgate2.cpp" />
     <ClCompile Include="Actions\AddXORgate2.cpp" />

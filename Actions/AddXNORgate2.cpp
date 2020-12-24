@@ -15,7 +15,7 @@ void AddXNORgate2::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("2-Input XNOR2 Gate: Click to add the gate");
+	pOut->PrintMsg("2-Input XNOR Gate: Click to add the gate");
 
 	//Wait for User Input
 	pIn->GetPointClicked(Cx, Cy);

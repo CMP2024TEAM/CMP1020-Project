@@ -179,9 +179,6 @@
     <ClCompile Include="Actions\AddNANDgate2.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\AddNORgte2.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\AddORgate2.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -196,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="Components\XNOR2.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddNORgate2.cpp">
+      <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

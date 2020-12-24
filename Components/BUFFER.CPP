@@ -30,12 +30,12 @@ int BUFFER::GetOutPinStatus()
 
 }
 
-int BUFFER::GetInputPinStatus()
+int BUFFER::GetInputPinStatus(int n)
 {
 	return m_InputPins->getStatus();	//n starts from 1 but array index starts from 0.
 }
 
-void BUFFER::setInputPinStatus(STATUS s)
+void BUFFER::setInputPinStatus(int n ,STATUS s)
 {
 	m_InputPins->setStatus(s);
 }

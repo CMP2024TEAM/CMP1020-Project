@@ -44,13 +44,13 @@ int Switch::GetOutPinStatus()
 
 
 //returns status of Inputpin #n
-int Switch::GetInputPinStatus()
+int Switch::GetInputPinStatus(int n )
 {
 	return -1;	//n starts from 1 but array index starts from 0.
 }
 
 //Set status of an input pin ot HIGH or LOW
-void Switch::setInputPinStatus(STATUS s)
+void Switch::setInputPinStatus(int n, STATUS s)
 {
 	return;
 }

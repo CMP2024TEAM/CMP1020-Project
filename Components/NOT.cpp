@@ -37,13 +37,13 @@ int NOT::GetOutPinStatus()
 
 
 //returns status of Inputpin #n
-int NOT::GetInputPinStatus()
+int NOT::GetInputPinStatus(int n)
 {
 	return m_InputPins->getStatus();	//n starts from 1 but array index starts from 0.
 }
 
 //Set status of an input pin ot HIGH or LOW
-void NOT::setInputPinStatus( STATUS s)
+void NOT::setInputPinStatus( int n,STATUS s)
 {
 	m_InputPins->setStatus(s);
 }

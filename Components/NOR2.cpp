@@ -20,7 +20,7 @@ void NOR2::Operate()
 /////////////////Draw Function////////////////////////
 void NOR2::Draw(Output* pOut)
 {
-	pOut->DrawNAND2(m_GfxInfo);
+	pOut->DrawNOR2(m_GfxInfo);
 }
 /////////////////GEToutpinstatus////////////////////////
 int NOR2::GetOutPinStatus()

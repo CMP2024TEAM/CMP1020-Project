@@ -25,7 +25,7 @@ int LED::GetInputPinStatus(int n)
 		return 0;
 }
 
-void LED::setInputPinStatus( STATUS s)
+void LED::setInputPinStatus(int n, STATUS s)
 {
 	the_output.setStatus(s);
 }

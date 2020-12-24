@@ -8,5 +8,5 @@ public:
 	LED(const GraphicsInfo& r_GfxInfo);
 	void Operate();
 	int GetInputPinStatus(int n);
-	void setInputPinStatus( STATUS s);
+	void setInputPinStatus(int n, STATUS s);
 };

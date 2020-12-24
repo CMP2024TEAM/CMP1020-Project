@@ -6,7 +6,7 @@
 #include "Actions/AddORgate2.h"
 #include "Actions/AddXNORgate2.h"
 #include "Actions/AddXORgate2.h"
-
+#include "Actions/AddNOTgate.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -58,6 +58,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case ADD_Buff:
 			pAct = new AddBUFFERgate(this);
+			break;
+		case ADD_INV:
+			pAct = new AddNOTgate(this);
 			break;
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here

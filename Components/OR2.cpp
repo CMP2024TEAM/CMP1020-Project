@@ -20,7 +20,7 @@ void OR2::Operate()
 /////////////////Draw Function////////////////////////
 void OR2::Draw(Output* pOut)
 {
-	pOut->DrawNAND2(m_GfxInfo);
+	pOut->DrawOR2(m_GfxInfo);
 }
 /////////////////GEToutpinstatus////////////////////////
 int OR2::GetOutPinStatus()

@@ -37,7 +37,6 @@ enum ActionType
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
 
-	ADD_Gate,
 	START_SELECT,
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
@@ -108,7 +107,6 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 enum toolbarmenu
 {
 	ITM_START,		//start simulation		
-	ITM_Add_Gate,	//Add gate
 	ITM_Undo,		//Undo item in menu
 	ITM_Save,       //save item in menu
 	ITM_Select,		 //select item in men
@@ -116,10 +114,12 @@ enum toolbarmenu
 
 
 	ITM_STOP,		//stop simulation
-	ITM_Label,      //label item in menu
 	ITM_Redo,		//Redo item in menu
 	ITM_Load,       //load item in menu
 	ITM_Move,     //move item in menu
+	ITM_Label,      //label item in menu
+	
+	
 
     ITM_TB_CNT
 };

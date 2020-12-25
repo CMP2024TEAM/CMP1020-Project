@@ -182,7 +182,6 @@ void Output::CreateCommonToolBar() const
 	TOOLBAR[ITM_Undo] = "images\\Menu\\Menu_Undo.jpg";
 	TOOLBAR[ITM_Redo] = "images\\Menu\\Menu_Redo.jpg";
 	TOOLBAR[ITM_Label]= "images\\Menu\\Menu_Label.jpg";
-	TOOLBAR[ITM_Add_Gate] = "images\\Menu\\Menu_AND2.jpg";
 	TOOLBAR[ITM_Save] = "images\\Menu\\Menu_Save.jpg";
 	TOOLBAR[ITM_Load] = "images\\Menu\\Menu_Load.jpg";
 	TOOLBAR[ITM_Select] = "images\\Menu\\Menu_Select.jpg";
@@ -190,13 +189,13 @@ void Output::CreateCommonToolBar() const
 	TOOLBAR[ITM_Delete] = "images\\Menu\\Menu_Delete.jpg";
 
 	
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		pWind->DrawImage(TOOLBAR[i], 900, (i + 1) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
-	for (int i = 6; i < 11; i++)
+	for (int i = 5; i < ITM_TB_CNT; i++)
 	{
-		pWind->DrawImage(TOOLBAR[i], 940, (i - 5) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
+		pWind->DrawImage(TOOLBAR[i], 940, (i - 4) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
 
 	pWind->SetPen(RED, 3);

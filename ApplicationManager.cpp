@@ -10,6 +10,7 @@
 #include "Actions/AddANDgate3.h"
 #include "Actions/AddNORgate3.h"
 #include "Actions/AddXORgate3.h"
+#include "Actions/StartStopSimulation.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -74,6 +75,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_INV:
 			pAct = new AddNOTgate(this);
 			break;
+		case DSN_MODE:
+			pAct = new StartStopSimulation(this, DSN_MODE);
+			break;
+		case SIM_MODE:
+			pAct = new StartStopSimulation(this, SIM_MODE);
+			break;
+
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
 			break;

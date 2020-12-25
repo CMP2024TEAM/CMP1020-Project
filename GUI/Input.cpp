@@ -69,14 +69,14 @@ ActionType Input::GetUserAction(int Page) const
 		// Items on the right
 		if (x > 940)
 		{
-			ClickedItemOrder += 6;
+			ClickedItemOrder += 5;
 			switch (ClickedItemOrder)
 			{
 			case ITM_STOP: return DSN_MODE;
-			case ITM_Label: return ADD_Label;
 			case ITM_Redo: return REDO;
 			case ITM_Load: return LOAD;
 			case ITM_Move: return MOVE;
+			case ITM_Label: return ADD_Label;
 			default: return COMMON_BAR;
 			}
 		}
@@ -86,7 +86,6 @@ ActionType Input::GetUserAction(int Page) const
 			switch (ClickedItemOrder)
 			{
 			case ITM_START: return SIM_MODE;
-			case ITM_Add_Gate: return ADD_Gate;
 			case ITM_Undo: return UNDO;
 			case ITM_Save: return SAVE;
 			case ITM_Select: return START_SELECT;

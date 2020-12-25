@@ -131,6 +131,7 @@
     <ClCompile Include="Actions\AddBUFFERgate.cpp" />
     <ClCompile Include="Actions\AddNANDgate2.cpp" />
     <ClCompile Include="Actions\AddNORgate2.cpp" />
+    <ClCompile Include="Actions\AddNORgate3.cpp" />
     <ClCompile Include="Actions\AddNOTgate.cpp" />
     <ClCompile Include="Actions\AddORgate2.cpp" />
     <ClCompile Include="Actions\AddSwitch.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Actions\AddBUFFERgate.h" />
     <ClInclude Include="Actions\AddNANDgate2.h" />
     <ClInclude Include="Actions\AddNORgate2.h" />
+    <ClInclude Include="Actions\AddNORgate3.h" />
     <ClInclude Include="Actions\AddNOTgate.h" />
     <ClInclude Include="Actions\AddORgate2.h" />
     <ClInclude Include="Actions\AddSwitch.h" />

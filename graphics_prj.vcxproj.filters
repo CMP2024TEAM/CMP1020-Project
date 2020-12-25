@@ -203,6 +203,9 @@
     <ClCompile Include="Actions\AddSwitch.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\AddANDgate3.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -366,6 +369,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\AddSwitch.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddANDgate3.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

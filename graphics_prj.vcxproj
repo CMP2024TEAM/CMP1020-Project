@@ -127,6 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\AddANDgate2.cpp" />
+    <ClCompile Include="Actions\AddANDgate3.cpp" />
     <ClCompile Include="Actions\AddBUFFERgate.cpp" />
     <ClCompile Include="Actions\AddNANDgate2.cpp" />
     <ClCompile Include="Actions\AddNORgate2.cpp" />
@@ -198,6 +199,7 @@
   <ItemGroup>
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\AddANDgate2.h" />
+    <ClInclude Include="Actions\AddANDgate3.h" />
     <ClInclude Include="Actions\AddBUFFERgate.h" />
     <ClInclude Include="Actions\AddNANDgate2.h" />
     <ClInclude Include="Actions\AddNORgate2.h" />

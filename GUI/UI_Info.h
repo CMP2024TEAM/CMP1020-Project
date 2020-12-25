@@ -36,6 +36,10 @@ struct UI_Info	//User Interface Info.
 		XNOR2_Width = 50,
 		XNOR2_Height = 50,
 		BUFFER_Width = 50,
+		LED_Width = 50,
+		Swtich_Width=50,
+		Swtich_Height=50,
+		LED_Height = 50,
 		BUFFER_Height = 50;
 	int PageNumber = 1;
 }UI;	//create a single global object UI

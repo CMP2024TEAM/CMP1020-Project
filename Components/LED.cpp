@@ -29,3 +29,12 @@ void LED::setInputPinStatus(int n, STATUS s)
 {
 	the_output.setStatus(s);
 }
+
+void LED::Draw(Output* pOut)
+{
+}
+
+int LED::GetOutPinStatus()
+{
+	return 0;
+}

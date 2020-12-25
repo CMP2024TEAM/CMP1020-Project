@@ -9,4 +9,6 @@ public:
 	void Operate();
 	int GetInputPinStatus(int n);
 	void setInputPinStatus(int n, STATUS s);
+	void Draw(Output* pOut);
+	int GetOutPinStatus();
 };

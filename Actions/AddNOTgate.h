@@ -1,6 +1,9 @@
-#pragma once
+#ifndef _ADD_NOT_GATE_H
+#define _ADD_NOT_GATE_H
+
 #include "action.h"
 #include "..\Components\NOT.h"
+
 class AddNOTgate : public Action
 {
 private:
@@ -20,4 +23,4 @@ public:
 	virtual void Redo();
 
 };
-
+#endif

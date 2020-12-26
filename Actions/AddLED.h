@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _ADD_LED_H
+#define _ADD_LED_H
+
 #include "action.h"
 #include "..\Components\LED.h"
 class AddLED :
@@ -21,3 +23,4 @@ public:
 	virtual void Redo();
 
 };
+#endif 

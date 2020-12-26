@@ -11,6 +11,7 @@
 #include "Actions/AddNORgate3.h"
 #include "Actions/AddXORgate3.h"
 #include "Actions/StartStopSimulation.h"
+#include "Actions/GetClickedComponent.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -81,9 +82,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SIM_MODE:
 			pAct = new StartStopSimulation(this, SIM_MODE);
 			break;
-
-		case ADD_CONNECTION:
+		case START_SELECT:
 			//TODO: Create AddConection Action here
+			pAct = new GetClickedComponent(this);
 			break;
 	
 
@@ -118,7 +119,17 @@ Output* ApplicationManager::GetOutput()
 {
 	return OutputInterface;
 }
-
+////////////////////////////////////////////////////////////////////
+void ApplicationManager::GetComponentList(Component** & p,int &c)
+{
+	if (CompCount == 0)
+	{
+		p = NULL;
+		c = CompCount;
+	}
+	p = CompList;
+	c = CompCount;
+}
 ////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()

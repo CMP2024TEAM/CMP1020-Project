@@ -140,6 +140,7 @@
     <ClCompile Include="Actions\AddXORgate2.cpp" />
     <ClCompile Include="Actions\AddXORgate3.cpp" />
     <ClCompile Include="Actions\Add_Switch.cpp" />
+    <ClCompile Include="Actions\GetClickedComponent.cpp" />
     <ClCompile Include="Actions\StartStopSimulation.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="Actions\AddXORgate2.h" />
     <ClInclude Include="Actions\AddXORgate3.h" />
     <ClInclude Include="Actions\Add_Switch.h" />
+    <ClInclude Include="Actions\GetClickedComponent.h" />
     <ClInclude Include="Actions\StartStopSimulation.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />

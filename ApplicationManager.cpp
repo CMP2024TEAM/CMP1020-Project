@@ -82,9 +82,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SIM_MODE:
 			pAct = new StartStopSimulation(this, SIM_MODE);
 			break;
-		case START_SELECT:
+		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
-			pAct = new GetClickedComponent(this);
 			break;
 	
 

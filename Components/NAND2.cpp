@@ -36,3 +36,7 @@ void NAND2::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n - 1].setStatus(s);
 }
 
+int NAND2::getm_Inputs()
+{
+	return  m_Inputs;
+}

@@ -50,6 +50,7 @@ string Input::GetSrting(Output* pOut)
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction(int Page) const
 {
+	Page = UI.PageNumber;
 	// 0 to 40
 	// 45 + 40 to 45 + 40 * 2				//Kotb
 	// 45 * 2 + 40 * 2 to 45 * 2 + 40 * 3

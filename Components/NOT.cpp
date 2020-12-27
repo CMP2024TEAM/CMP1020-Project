@@ -47,3 +47,7 @@ void NOT::setInputPinStatus( int n,STATUS s)
 {
 	m_InputPins->setStatus(s);
 }
+int NOT:: getm_Inputs()
+{
+	return  m_Inputs;
+}

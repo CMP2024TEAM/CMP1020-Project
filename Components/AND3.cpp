@@ -54,3 +54,7 @@ void AND3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+int AND3::getm_Inputs()
+{
+	return  m_Inputs;
+}

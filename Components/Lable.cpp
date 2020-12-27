@@ -14,3 +14,7 @@ string Lable ::getlable() const
 }
 Lable ::~Lable()
 {}
+int Lable::getm_Inputs()
+{
+	return  -1;
+}

@@ -38,3 +38,7 @@ int LED::GetOutPinStatus()
 {
 	return 0;
 }
+int LED::getm_Inputs()
+{
+	return  1;
+}

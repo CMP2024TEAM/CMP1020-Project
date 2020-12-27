@@ -11,4 +11,5 @@ public:
 	void setInputPinStatus(int n, STATUS s);
 	void Draw(Output* pOut);
 	int GetOutPinStatus();
+	virtual int getm_Inputs();
 };

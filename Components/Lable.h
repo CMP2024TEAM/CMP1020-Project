@@ -11,6 +11,7 @@ public:
 	Lable(string);
 	void	setLable(string);//setting and editing
 	string  getlable() const;
+	virtual int getm_Inputs();
 
 	~Lable();
 

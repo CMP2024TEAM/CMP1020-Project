@@ -54,3 +54,7 @@ void Switch::setInputPinStatus(int n, STATUS s)
 {
 	return;
 }
+int Switch::getm_Inputs()
+{
+	return  -1;
+}

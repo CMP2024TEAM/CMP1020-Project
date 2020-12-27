@@ -39,3 +39,7 @@ void BUFFER::setInputPinStatus(int n ,STATUS s)
 {
 	m_InputPins->setStatus(s);
 }
+int BUFFER::getm_Inputs()
+{
+	return  m_Inputs;
+}

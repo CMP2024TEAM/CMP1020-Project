@@ -392,9 +392,8 @@ void Output::DrawSWITCHOFF(GraphicsInfo r_GfxInfo, bool selected) const
 void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
 {
 
-	int ix=0, iy=0, fx=0, fy=0,y=0,x=0;
-	pWind->WaitMouseClick(ix, iy);
-	pWind->WaitMouseClick(fx, fy);
+	int ix= r_GfxInfo.x1, iy= r_GfxInfo.y1, fx= r_GfxInfo.x2, fy= r_GfxInfo.y2,y=0,x=0;
+	
 	if (selected==true) pWind->SetPen(RED,3);
 	else pWind->SetPen(BLACK,3);
 	x = (fx - ix) / 2;

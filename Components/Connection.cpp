@@ -46,3 +46,7 @@ void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
 }
+int Connection::getm_Inputs()
+{
+	return  0;
+}

@@ -12,7 +12,8 @@
 #include "Actions/AddXORgate3.h"
 #include "Actions/StartStopSimulation.h"
 #include "Actions/GetClickedComponent.h"
-
+#include "Actions/Arrows.h"
+#include "Actions/AddConnection.h"
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -82,8 +83,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SIM_MODE:
 			pAct = new StartStopSimulation(this, SIM_MODE);
 			break;
+		case Page_One:
+			pAct = new Arrows(this, Page_One);
+			break;
+		case Page_Two:
+			pAct = new Arrows(this, Page_Two);
+			break;
 		case ADD_CONNECTION:
-			//TODO: Create AddConection Action here
+			pAct = new AddConnection(this);
 			break;
 	
 

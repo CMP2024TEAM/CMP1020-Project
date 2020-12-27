@@ -19,10 +19,12 @@ void AddConnection::ReadActionParameters()
 
 	//Print Action Message
 	pOut->PrintMsg("Connection: Click on a Pin to add the Connection");
+	GCC->Execute();
 	GCC->GetComponent(p1, isp1Gate);//source
-	pIn->GetPointClicked(Cx11, Cy11);
+	GCC->GetPoint(Cx11, Cy11);
+	GCC->Execute();
 	GCC->GetComponent(p2, isp2Gate);//distanition
-	pIn->GetPointClicked(Cx22, Cy22);
+	GCC->GetPoint(Cx22, Cy22);
 
 	//Wait for User Input
 	
@@ -53,44 +55,46 @@ void AddConnection::Execute()
 		n = p2->getm_Inputs();
 	SrcPin.setStatus ((STATUS)p1->GetOutPinStatus());
 	
+	
 	if (n == 3)
 	{
-		if ((Cx22 < Cx1) && (Cy22 < Cy2 - 9))//pin 1
+		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))//pin 1
 		{
-			GInfo.x2 = Cx2 - 25;
-			GInfo.y2 = Cy2 - 9;
+			
+			GInfo.y1 = Cy2 - 4;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
 		}
-		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 7))//pin 2
+		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 4))//pin 2
 		{
-			GInfo.x2 = Cx2 - 25;
-			GInfo.y2 = Cy2 +7;
+			
+			GInfo.y1 = Cy2 ;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(2));
 		}
-		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 23))//pin 3
+		else if ((Cx22 < Cx2))//pin 3
 		{
-			GInfo.x2 = Cx2 - 25;
-			GInfo.y2 = Cy2 +23;
+			
+			GInfo.y1 = Cy2 +4;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(3));
 		}
 	}
 	if (n == 2)
 	{
-		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 25))//pin 1
+		if ((Cx22 < Cx2) && (Cy22 < Cy2 ))//pin 1
 		{
-			GInfo.x2 = Cx2 - 25;
-			GInfo.y2 = Cy2 -12;
+			
+			GInfo.y1 = Cy2 -5;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
 		}
-		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 25))//pin 2
+		else if ((Cx22 < Cx2) && (Cy22 > Cy2 ))//pin 2
 		{
-			GInfo.x2 = Cx2 - 25;
-			GInfo.y2 = Cy2 +12;
+			GInfo.y1 = Cy2 +5;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(2));
 		}
 	}
-	GInfo.x1 = Cx2 + 25;
-	GInfo.y1 = Cy2 + 12;
+	GInfo.x1 = Cx2 - 20;
+	
+	GInfo.x2 = Cx1 + 20;
+	GInfo.y2 = Cy1 ;
 	Connection* pA = new Connection(GInfo,&SrcPin,&DstPin);
 	pManager->AddComponent(pA);
 }

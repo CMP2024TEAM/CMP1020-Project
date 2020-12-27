@@ -64,7 +64,11 @@ void GetClickedComponent::GetComponent(Component* &Pcom, bool &isgate)
 	Pcom = ClickedComponent;
 	isgate = IsGate;
 }
-
+void GetClickedComponent::GetPoint(int& x, int& y)
+{
+	x = Cx;
+	y = Cy;
+}
 void GetClickedComponent::Undo()
 {}
 

@@ -21,7 +21,7 @@ public:
 	virtual void Undo();
 	virtual void Redo();
 	void GetComponent(Component*&,bool&);
-
+	void GetPoint(int& x, int& y);
 };
 
 #endif

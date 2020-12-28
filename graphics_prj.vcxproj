@@ -140,6 +140,7 @@
     <ClCompile Include="Actions\AddXNORgate2.cpp" />
     <ClCompile Include="Actions\AddXORgate2.cpp" />
     <ClCompile Include="Actions\AddXORgate3.cpp" />
+    <ClCompile Include="Actions\Add_LABLE.cpp" />
     <ClCompile Include="Actions\Add_Switch.cpp" />
     <ClCompile Include="Actions\Arrows.cpp" />
     <ClCompile Include="Actions\GetClickedComponent.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="Actions\AddXNORgate2.h" />
     <ClInclude Include="Actions\AddXORgate2.h" />
     <ClInclude Include="Actions\AddXORgate3.h" />
+    <ClInclude Include="Actions\Add_LABLE.h" />
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
     <ClInclude Include="Actions\GetClickedComponent.h" />

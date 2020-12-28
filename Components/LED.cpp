@@ -32,6 +32,10 @@ void LED::setInputPinStatus(int n, STATUS s)
 
 void LED::Draw(Output* pOut)
 {
+	if (the_output.getStatus() == 1)
+		pOut->DrawLEDON(m_GfxInfo);
+	else
+		pOut->DrawLEDOFF(m_GfxInfo);
 }
 
 int LED::GetOutPinStatus()
@@ -40,5 +44,5 @@ int LED::GetOutPinStatus()
 }
 int LED::getm_Inputs()
 {
-	return  1;
+	return  0;
 }

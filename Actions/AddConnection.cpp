@@ -18,10 +18,12 @@ void AddConnection::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("Connection: Click on a Pin to add the Connection");
+	pOut->PrintMsg("Connection: Click on an output Pin to add the Connection");
 	GCC->Execute();
 	GCC->GetComponent(p1, isp1Gate);//source
 	GCC->GetPoint(Cx11, Cy11);
+	pOut->ClearStatusBar();
+	pOut->PrintMsg("Connection: Click on an input Pin to add the Connection");
 	GCC->Execute();
 	GCC->GetComponent(p2, isp2Gate);//distanition
 	GCC->GetPoint(Cx22, Cy22);
@@ -51,7 +53,7 @@ void AddConnection::Execute()
 
 	//Gfx info to be used to construct the AND2 gate
 	int n;
-	if (isp2Gate)
+	//if (isp2Gate)
 		n = p2->getm_Inputs();
 	SrcPin.setStatus ((STATUS)p1->GetOutPinStatus());
 	
@@ -61,7 +63,7 @@ void AddConnection::Execute()
 		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))//pin 1
 		{
 			
-			GInfo.y1 = Cy2 - 4;
+			GInfo.y1 = Cy2 - 5;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
 		}
 		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 4))//pin 2
@@ -73,7 +75,7 @@ void AddConnection::Execute()
 		else if ((Cx22 < Cx2))//pin 3
 		{
 			
-			GInfo.y1 = Cy2 +4;
+			GInfo.y1 = Cy2 +5;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(3));
 		}
 	}
@@ -82,14 +84,25 @@ void AddConnection::Execute()
 		if ((Cx22 < Cx2) && (Cy22 < Cy2 ))//pin 1
 		{
 			
-			GInfo.y1 = Cy2 -5;
+			GInfo.y1 = Cy2 -4;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
 		}
 		else if ((Cx22 < Cx2) && (Cy22 > Cy2 ))//pin 2
 		{
-			GInfo.y1 = Cy2 +5;
+			GInfo.y1 = Cy2 +4;
 			DstPin.setStatus((STATUS)p2->GetInputPinStatus(2));
 		}
+	}
+	if (n == 1)
+	{
+		GInfo.y1 = Cy2;
+		DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
+	}
+	if (n == 0)
+	{
+		GInfo.y1 = Cy2+25;
+		Cx2 += 10;
+		DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
 	}
 	GInfo.x1 = Cx2 - 20;
 	

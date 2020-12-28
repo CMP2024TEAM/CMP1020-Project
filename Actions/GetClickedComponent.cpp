@@ -14,7 +14,8 @@ void GetClickedComponent::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("Click On a Component To Select it");
+
+	//pOut->PrintMsg("Click On a Component To Select it");
 
 	//Wait for User Input
 	pIn->GetPointClicked(Cx, Cy);

@@ -14,6 +14,8 @@
 #include "Actions/GetClickedComponent.h"
 #include "Actions/Arrows.h"
 #include "Actions/AddConnection.h"
+#include "Actions/AddLED.h"
+#include "Actions/Add_Switch.h"
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -76,6 +78,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case ADD_INV:
 			pAct = new AddNOTgate(this);
+			break;
+		case ADD_LED:
+			pAct = new AddLED(this);
+			break;
+		case ADD_Switch:
+			pAct = new Add_Switch(this);
 			break;
 		case DSN_MODE:
 			pAct = new StartStopSimulation(this, DSN_MODE);

@@ -144,6 +144,7 @@
     <ClCompile Include="Actions\Add_Switch.cpp" />
     <ClCompile Include="Actions\Arrows.cpp" />
     <ClCompile Include="Actions\GetClickedComponent.cpp" />
+    <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="Actions\StartStopSimulation.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
     <ClInclude Include="Actions\GetClickedComponent.h" />
+    <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="Actions\StartStopSimulation.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />

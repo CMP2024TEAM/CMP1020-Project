@@ -16,9 +16,14 @@
 #include "Actions/AddConnection.h"
 #include "Actions/AddLED.h"
 #include "Actions/Add_Switch.h"
+#include"Actions/Select.h"
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
+
+	RemCompCount = 0;
+	for (int i = 0; i < MaxCompCount; i++)
+		RemComp[i] = NULL;
 
 	for(int i=0; i<MaxCompCount; i++)
 		CompList[i] = NULL;
@@ -100,7 +105,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_CONNECTION:
 			pAct = new AddConnection(this);
 			break;
-	
+		case SELECT:
+		{
+			GetClickedComponent* comp = new GetClickedComponent(this);
+			Component* CC; bool is;
+			comp->Execute();
+			comp->GetComponent(CC, is);
+			pAct = new Select(CC, this);
+			break;
+		}
+		case UNDO:
+			this->Undo();
+			break;
+
+		case REDO:
+			this->Redo();
+			break;
 
 		case EXIT:
 			///TODO: create ExitAction here
@@ -117,7 +137,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-		for(int i=0; i<CompCount; i++)
+	/*delete OutputInterface;
+OutputInterface = new Output;*/
+	OutputInterface->ClearDrawingArea();
+	for (int i = 0; i < CompCount; i++)
+		if (CompList[i] != NULL)
 			CompList[i]->Draw(OutputInterface);
 
 }
@@ -145,11 +169,42 @@ void ApplicationManager::GetComponentList(Component** & p,int &c)
 	c = CompCount;
 }
 ////////////////////////////////////////////////////////////////////
+//Delete Component
+void ApplicationManager::DeleteComponent(Component* pComp)
+{
+
+	for (int j = 0; j < CompCount; j++)
+	{
+		if (pComp == CompList[j])
+		{
+			Component* Temp;
+			RemComp[RemCompCount++] = CompList[j];
+			CompList[j] = NULL;
+			Temp = CompList[j];
+			CompList[j] = CompList[CompCount - 1];
+			CompList[CompCount - 1] = Temp;
+			CompCount--;
+		}
+	}
+	UpdateInterface();
+}
+void ApplicationManager::Undo()
+{
+	this->DeleteComponent(CompList[CompCount - 1]);
+}
+void ApplicationManager::Redo()
+{
+	this->AddComponent(RemComp[RemCompCount - 1]);
+	RemComp[RemCompCount--] = NULL;
+}
+
 
 ApplicationManager::~ApplicationManager()
 {
 	for(int i=0; i<CompCount; i++)
 		delete CompList[i];
+	for (int i = 0; i < RemCompCount; i++)
+		delete RemComp[i];
 	delete OutputInterface;
 	delete InputInterface;
 	

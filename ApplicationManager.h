@@ -15,8 +15,9 @@ class ApplicationManager
 
 private:
 	int CompCount;		//Actual number of Components
+	int RemCompCount;
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
-
+	Component* RemComp[MaxCompCount];   //List of recently removed Components
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
 
@@ -42,6 +43,10 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	void GetComponentList(Component** &, int&);
+
+	void DeleteComponent(Component* pComp);
+	void Undo();
+	void Redo();
 	//destructor
 	~ApplicationManager();
 };

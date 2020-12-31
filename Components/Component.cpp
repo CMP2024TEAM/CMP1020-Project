@@ -8,6 +8,14 @@ GraphicsInfo Component::GetLocation()
 {
 	return m_GfxInfo;
 }
+bool Component::IsInsideMe(int x, int y)
+{
+	if (m_GfxInfo.x1 < x && m_GfxInfo.x2 > x && m_GfxInfo.y1 < y && m_GfxInfo.y2 > y)
+	{
+		return true;
+	}
+	return false;
+}
 Component::Component()
 {}
 

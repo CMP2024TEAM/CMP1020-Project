@@ -106,14 +106,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddConnection(this);
 			break;
 		case SELECT:
-		{
 			GetClickedComponent* comp = new GetClickedComponent(this);
 			Component* CC; bool is;
 			comp->Execute();
 			comp->GetComponent(CC, is);
 			pAct = new Select(CC, this);
 			break;
-		}
 		case UNDO:
 			this->Undo();
 			break;
@@ -197,8 +195,18 @@ void ApplicationManager::Redo()
 	this->AddComponent(RemComp[RemCompCount - 1]);
 	RemComp[RemCompCount--] = NULL;
 }
-
-
+void ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->IsInsideMe(x,y))
+		{
+			c = CompList[i];
+			return;
+		}
+	}
+	c = NULL;
+}
 ApplicationManager::~ApplicationManager()
 {
 	for(int i=0; i<CompCount; i++)

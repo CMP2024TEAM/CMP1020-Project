@@ -45,6 +45,7 @@ public:
 	void GetComponentList(Component** &, int&);
 
 	void DeleteComponent(Component* pComp);
+	void CheckWhichComponent(int, int, Component*&);
 	void Undo();
 	void Redo();
 	//destructor

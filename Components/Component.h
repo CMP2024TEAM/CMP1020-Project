@@ -24,6 +24,7 @@ public:
 	virtual int getm_Inputs()=0;
 	
 	GraphicsInfo GetLocation();
+	bool IsInsideMe(int, int);
 	Component();	
 	
 	//Destructor must be virtual

@@ -1,7 +1,9 @@
 #include "AddConnection.h"
 #include "..\ApplicationManager.h"
+#include "..\Components\Switch.h"
+#include "..\Components\LED.h"
 
-AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp), SrcPin(5)
+AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
 {
 	GCC = new GetClickedComponent(pManager);
 }
@@ -29,7 +31,7 @@ void AddConnection::ReadActionParameters()
 	GCC->GetPoint(Cx22, Cy22);
 
 	//Wait for User Input
-	
+
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -52,63 +54,83 @@ void AddConnection::Execute()
 	int Wdth = UI.AND2_Height;
 
 	//Gfx info to be used to construct the AND2 gate
-	int n;
+	int n,j;
 	//if (isp2Gate)
-		n = p2->getm_Inputs();
-	SrcPin.setStatus ((STATUS)p1->GetOutPinStatus());
-	
-	
+	n = p2->getm_Inputs();
+	Gate* gate1 = dynamic_cast<Gate*>(p1);
+	if (gate1 != NULL)
+	{
+		SrcPin = gate1->getoutputpin();
+	}
+	Switch* SWITCH = dynamic_cast<Switch*>(p1);
+	if (SWITCH != NULL)
+	{
+		SrcPin = SWITCH->getoutputpin();
+	}
+
+
 	if (n == 3)
 	{
 		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))//pin 1
 		{
-			
+
 			GInfo.y1 = Cy2 - 5;
-			DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
+			j = 1;
 		}
 		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 4))//pin 2
 		{
-			
-			GInfo.y1 = Cy2 ;
-			DstPin.setStatus((STATUS)p2->GetInputPinStatus(2));
+
+			GInfo.y1 = Cy2;
+			j = 2;
 		}
 		else if ((Cx22 < Cx2))//pin 3
 		{
-			
-			GInfo.y1 = Cy2 +5;
-			DstPin.setStatus((STATUS)p2->GetInputPinStatus(3));
+
+			GInfo.y1 = Cy2 + 5;
+			j = 3;
 		}
 	}
 	if (n == 2)
 	{
-		if ((Cx22 < Cx2) && (Cy22 < Cy2 ))//pin 1
+		if ((Cx22 < Cx2) && (Cy22 < Cy2))//pin 1
 		{
-			
-			GInfo.y1 = Cy2 -4;
-			DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
+
+			GInfo.y1 = Cy2 - 4;
+			j = 1;
 		}
-		else if ((Cx22 < Cx2) && (Cy22 > Cy2 ))//pin 2
+		else if ((Cx22 < Cx2) && (Cy22 > Cy2))//pin 2
 		{
-			GInfo.y1 = Cy2 +4;
-			DstPin.setStatus((STATUS)p2->GetInputPinStatus(2));
+			GInfo.y1 = Cy2 + 4;
+			j = 2;
 		}
 	}
 	if (n == 1)
 	{
 		GInfo.y1 = Cy2;
-		DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
+		j = 1;
 	}
 	if (n == 0)
 	{
-		GInfo.y1 = Cy2+25;
+		GInfo.y1 = Cy2 + 25;
 		Cx2 += 10;
-		DstPin.setStatus((STATUS)p2->GetInputPinStatus(1));
+		
+
+	}
+	Gate* gate2 = dynamic_cast<Gate*>(p2);
+	if (gate2 != NULL)
+	{
+		DstPin = gate2->getinputpin(j);
+	}
+	LED* Led = dynamic_cast<LED*>(p2);
+	if (Led != NULL)
+	{
+		DstPin = Led->getinputpin(1);
 	}
 	GInfo.x1 = Cx2 - 20;
-	
+
 	GInfo.x2 = Cx1 + 20;
-	GInfo.y2 = Cy1 ;
-	Connection* pA = new Connection(GInfo,&SrcPin,&DstPin);
+	GInfo.y2 = Cy1;
+	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
 	pManager->AddComponent(pA);
 }
 

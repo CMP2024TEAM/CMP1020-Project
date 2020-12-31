@@ -58,3 +58,7 @@ int Switch::getm_Inputs()
 {
 	return  0;
 }
+OutputPin* Switch::getoutputpin()
+{
+	return (&SrcPin);
+}

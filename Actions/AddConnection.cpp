@@ -5,12 +5,12 @@
 
 AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
 {
-	GCC = new GetClickedComponent(pManager);
+
 }
 
 AddConnection::~AddConnection(void)
 {
-	delete GCC;
+
 }
 
 void AddConnection::ReadActionParameters()
@@ -21,17 +21,20 @@ void AddConnection::ReadActionParameters()
 
 	//Print Action Message
 	pOut->PrintMsg("Connection: Click on an output Pin to add the Connection");
-	GCC->Execute();
-	GCC->GetComponent(p1, isp1Gate);//source
-	GCC->GetPoint(Cx11, Cy11);
+	do
+	{
+		pIn->GetPointClicked(Cx11, Cy11);
+		pManager->CheckWhichComponent(Cx11, Cy11, p1);
+	} while (p1 == NULL);
 	pOut->ClearStatusBar();
 	pOut->PrintMsg("Connection: Click on an input Pin to add the Connection");
-	GCC->Execute();
-	GCC->GetComponent(p2, isp2Gate);//distanition
-	GCC->GetPoint(Cx22, Cy22);
+	do
+	{
+		pIn->GetPointClicked(Cx22, Cy22);
+		pManager->CheckWhichComponent(Cx22, Cy22, p2);
+	} while (p2 == NULL);
 
 	//Wait for User Input
-
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -54,7 +57,7 @@ void AddConnection::Execute()
 	int Wdth = UI.AND2_Height;
 
 	//Gfx info to be used to construct the AND2 gate
-	int n,j;
+	int n, j;
 	//if (isp2Gate)
 	n = p2->getm_Inputs();
 	Gate* gate1 = dynamic_cast<Gate*>(p1);
@@ -86,7 +89,7 @@ void AddConnection::Execute()
 		else if ((Cx22 < Cx2))//pin 3
 		{
 
-			GInfo.y1 = Cy2 + 5;
+			GInfo.y1 = Cy2 + 4;
 			j = 3;
 		}
 	}
@@ -95,12 +98,12 @@ void AddConnection::Execute()
 		if ((Cx22 < Cx2) && (Cy22 < Cy2))//pin 1
 		{
 
-			GInfo.y1 = Cy2 - 4;
+			GInfo.y1 = Cy2 - 4.5;
 			j = 1;
 		}
 		else if ((Cx22 < Cx2) && (Cy22 > Cy2))//pin 2
 		{
-			GInfo.y1 = Cy2 + 4;
+			GInfo.y1 = Cy2 + 4.5;
 			j = 2;
 		}
 	}
@@ -113,7 +116,7 @@ void AddConnection::Execute()
 	{
 		GInfo.y1 = Cy2 + 25;
 		Cx2 += 10;
-		
+
 
 	}
 	Gate* gate2 = dynamic_cast<Gate*>(p2);
@@ -129,9 +132,19 @@ void AddConnection::Execute()
 	GInfo.x1 = Cx2 - 20;
 
 	GInfo.x2 = Cx1 + 20;
-	GInfo.y2 = Cy1;
+	GInfo.y2 = Cy1-0.5;
 	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
-	pManager->AddComponent(pA);
+	if (SrcPin->ConnectTo(pA))
+	{
+		
+		pManager->AddComponent(pA);
+	}
+	else
+	{
+		delete pA;
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMsg("Connection: Can't add any more due to FANOUT");
+	}
 }
 
 void AddConnection::Undo()

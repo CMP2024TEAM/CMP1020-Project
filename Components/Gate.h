@@ -22,6 +22,8 @@ protected:
 public:
 	Gate(int r_Inputs, int r_FanOut);
 	virtual int getm_Inputs();
+	InputPin* getinputpin(int n);
+	OutputPin* getoutputpin();
 
 };
 

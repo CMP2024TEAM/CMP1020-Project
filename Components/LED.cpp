@@ -46,3 +46,7 @@ int LED::getm_Inputs()
 {
 	return  0;
 }
+InputPin* LED::getinputpin(int n)
+{
+	return (&the_output);
+}

@@ -6,7 +6,7 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
-
+#include"Actions\Save.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -20,7 +20,7 @@ private:
 	Component* RemComp[MaxCompCount];   //List of recently removed Components
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
-
+	Save* the_saver;
 
 public:
 
@@ -48,6 +48,9 @@ public:
 	void CheckWhichComponent(int, int, Component*&);
 	void Undo();
 	void Redo();
+	int get_compcount();
+	
+
 	//destructor
 	~ApplicationManager();
 };

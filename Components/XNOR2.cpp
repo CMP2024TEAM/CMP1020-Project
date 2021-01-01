@@ -1,5 +1,5 @@
 #include "XNOR2.h"
-
+#include<fstream>
 XNOR2::XNOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -32,6 +32,17 @@ int XNOR2::GetOutPinStatus()
 int XNOR2::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
+}
+
+void XNOR2::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "XNOR2 " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
 }
 
 void XNOR2::setInputPinStatus(int n, STATUS s)

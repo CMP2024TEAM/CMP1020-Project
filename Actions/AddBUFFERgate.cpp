@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 AddBUFFERgate::AddBUFFERgate(ApplicationManager* pApp) :Action(pApp)
 {
+	
 }
 
 AddBUFFERgate::~AddBUFFERgate(void)
@@ -39,6 +40,11 @@ void AddBUFFERgate::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	BUFFER* pA = new BUFFER(GInfo, BUFFER_FANOUT);
 	pManager->AddComponent(pA);
+}
+
+void AddBUFFERgate::save()
+{
+
 }
 
 void AddBUFFERgate::Undo()

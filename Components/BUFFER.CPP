@@ -1,5 +1,5 @@
 #include"BUFFER.H"
-
+#include<fstream>
 BUFFER::BUFFER(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -34,6 +34,19 @@ int BUFFER::GetInputPinStatus(int n)
 {
 	return m_InputPins->getStatus();	//n starts from 1 but array index starts from 0.
 }
+
+void BUFFER::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "BUFFER" << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
+}
+
+
 
 void BUFFER::setInputPinStatus(int n ,STATUS s)
 {

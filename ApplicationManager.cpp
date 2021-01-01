@@ -17,9 +17,13 @@
 #include "Actions/AddLED.h"
 #include "Actions/Add_Switch.h"
 #include"Actions/Select.h"
+#include<iostream>
+#include<fstream>
+using namespace std;
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
+
 
 	RemCompCount = 0;
 	for (int i = 0; i < MaxCompCount; i++)
@@ -118,7 +122,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case UNDO:
 		this->Undo();
 		break;
-
+	case SAVE:
+	{the_saver->save_gates(CompList,CompCount);
+	
+	OutputInterface->PrintMsg(" the circuit is saved");
+	}
 	case REDO:
 		this->Redo();
 		break;
@@ -198,6 +206,12 @@ void ApplicationManager::Redo()
 	this->AddComponent(RemComp[RemCompCount - 1]);
 	RemComp[RemCompCount--] = NULL;
 }
+int ApplicationManager::get_compcount()
+{
+	return CompCount;
+}
+
+
 void ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 {
 	for (int i = 0; i < CompCount; i++)

@@ -11,6 +11,7 @@ private:
 	string m_Label;
 protected:
 	GraphicsInfo m_GfxInfo;	//The parameters required to draw a component
+	
 public:
 	Component(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
@@ -22,8 +23,9 @@ public:
 
 	virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 	virtual int getm_Inputs()=0;
-	
+	virtual void save(int y) ;
 	GraphicsInfo GetLocation();
+	string get_mlabel();
 	bool IsInsideMe(int, int);
 	Component();	
 	

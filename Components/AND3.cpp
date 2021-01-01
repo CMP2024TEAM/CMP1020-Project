@@ -1,5 +1,5 @@
 #include "AND3.h"
-
+#include <fstream>
 AND3::AND3(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(3, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -49,6 +49,8 @@ int AND3::GetInputPinStatus(int n)
 	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
 }
 
+
+
 //Set status of an input pin ot HIGH or LOW
 void AND3::setInputPinStatus(int n, STATUS s)
 {
@@ -57,4 +59,16 @@ void AND3::setInputPinStatus(int n, STATUS s)
 int AND3::getm_Inputs()
 {
 	return  m_Inputs;
+}
+
+void AND3::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt",ios::app);
+	the_added_component << endl << "AND3  " <<"     "<<y<< "     " <<get_mlabel()<<"     "<< cx << "     " << cy << endl;
+	the_added_component.close();
+	//Gate::save(y);
 }

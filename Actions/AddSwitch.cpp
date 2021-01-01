@@ -1,6 +1,5 @@
 #include "AddSwitch.h"
 #include "..\ApplicationManager.h"
-
 AddSwitch::AddSwitch(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -44,6 +43,8 @@ void AddSwitch::Execute()
 	Switch* pA = new Switch(GInfo);
 	pManager->AddComponent(pA);
 }
+
+
 
 void AddSwitch::Undo()
 {}

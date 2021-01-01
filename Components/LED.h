@@ -12,5 +12,6 @@ public:
 	void Draw(Output* pOut);
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
-	InputPin* getinputpin(int n);
+	void save(int y);
+	InputPin* getinputpin();
 };

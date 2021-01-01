@@ -1,5 +1,5 @@
 #include"OR2.h"
-
+#include<fstream>
 /*class OR2
 represent the 2 input OR2 gate
 */
@@ -21,6 +21,16 @@ void OR2::Operate()
 void OR2::Draw(Output* pOut)
 {
 	pOut->DrawOR2(m_GfxInfo);
+}
+void OR2::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "OR2   " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
 }
 /////////////////GEToutpinstatus////////////////////////
 int OR2::GetOutPinStatus()

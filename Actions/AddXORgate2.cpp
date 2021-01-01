@@ -1,6 +1,5 @@
 #include "AddXORgate2.h"
 #include "..\ApplicationManager.h"
-
 AddXORgate2::AddXORgate2(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -41,6 +40,8 @@ void AddXORgate2::Execute()
 	XOR2* pA = new XOR2(GInfo, XOR2_FANOUT);
 	pManager->AddComponent(pA);
 }
+
+
 
 void AddXORgate2::Undo()
 {

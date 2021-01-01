@@ -1,6 +1,5 @@
 #include "AddNANDgate2.h"
 #include "..\ApplicationManager.h"
-
 AddNANDgate2::AddNANDgate2(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -44,6 +43,8 @@ void AddNANDgate2::Execute()
 	NAND2* pA = new NAND2(GInfo, AND2_FANOUT);
 	pManager->AddComponent(pA);
 }
+
+
 
 void AddNANDgate2::Undo()
 {}

@@ -1,5 +1,5 @@
 #include "Switch.h"
-
+#include<fstream>
 Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(5)
 {
 
@@ -34,6 +34,17 @@ void Switch::Draw(Output* pOut)
 		pOut->DrawSWITCHOFF(m_GfxInfo);
 	if (SrcPin.getStatus() == HIGH)
 		pOut->DrawSWITCHON(m_GfxInfo);
+}
+
+void Switch::save(int y)
+{
+	double Cx, Cy;
+	Cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	Cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt",ios::app);
+	the_added_component << endl << "switch"  << "     " << y << "     " << get_mlabel() << "     " << Cx << "     " << Cy << "     " << endl;
+	the_added_component.close();
 }
 
 //returns status of outputpin

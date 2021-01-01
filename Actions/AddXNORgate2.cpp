@@ -42,6 +42,8 @@ void AddXNORgate2::Execute()
 	pManager->AddComponent(pA);
 }
 
+
+
 void AddXNORgate2::Undo()
 {
 }

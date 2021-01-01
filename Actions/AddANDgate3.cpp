@@ -45,6 +45,8 @@ void AddANDgate3::Execute()
 	pManager->AddComponent(pA);
 }
 
+
+
 void AddANDgate3::Undo()
 {}
 

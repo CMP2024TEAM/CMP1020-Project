@@ -1,5 +1,5 @@
 #include "XOR3.h"
-
+#include<fstream>
 XOR3::XOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(3, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -54,6 +54,16 @@ int XOR3::GetInputPinStatus(int n)
 void XOR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
+}
+void XOR3::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "XOR3  " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
 }
 int XOR3:: getm_Inputs()
 {

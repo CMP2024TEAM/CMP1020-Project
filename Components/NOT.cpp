@@ -1,4 +1,5 @@
 #include "NOT.h"
+#include<fstream>
 NOT::NOT(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -46,6 +47,16 @@ int NOT::GetInputPinStatus(int n)
 void NOT::setInputPinStatus( int n,STATUS s)
 {
 	m_InputPins->setStatus(s);
+}
+void NOT::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "NOT   " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
 }
 int NOT:: getm_Inputs()
 {

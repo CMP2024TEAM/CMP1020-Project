@@ -2,7 +2,7 @@
 #include "component.h"
 #include "InputPin.h"
 #include "OutputPin.h"
-
+#include"Gate.h"
 class Connection :	public Component
 {
 	//Component*	SrcCmpnt;	//Connection source component
@@ -23,7 +23,7 @@ public:
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual int getm_Inputs();
-
+	void save(int y, int t, int u);
 
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual int GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1

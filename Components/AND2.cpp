@@ -1,5 +1,5 @@
 #include "AND2.h"
-
+#include<fstream>
 AND2::AND2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
@@ -47,6 +47,19 @@ void AND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
 }
+
+void AND2::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "AND3  " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
+	//Gate::save(y);
+}
+
 int AND2::getm_Inputs()
 
 {

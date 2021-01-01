@@ -1,5 +1,6 @@
 #include "AddLED.h"
 #include "..\ApplicationManager.h"
+
 AddLED::AddLED(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -40,6 +41,8 @@ void AddLED::Execute()
 	LED* pA = new LED(GInfo);
 	pManager->AddComponent(pA);
 }
+
+
 
 void AddLED::Undo()
 {

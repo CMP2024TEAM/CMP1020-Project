@@ -1,6 +1,6 @@
 #include "AddNOTgate.h"
 #include "..\ApplicationManager.h"
-
+#include<fstream>
 AddNOTgate::AddNOTgate(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -44,6 +44,8 @@ void AddNOTgate::Execute()
 	NOT* pA = new NOT (GInfo, AND2_FANOUT);
 	pManager->AddComponent(pA);
 }
+
+
 
 void AddNOTgate::Undo()
 {}

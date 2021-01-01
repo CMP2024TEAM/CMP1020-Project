@@ -5,7 +5,7 @@
 
 AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
 {
-
+	
 }
 
 AddConnection::~AddConnection(void)
@@ -127,7 +127,7 @@ void AddConnection::Execute()
 	LED* Led = dynamic_cast<LED*>(p2);
 	if (Led != NULL)
 	{
-		DstPin = Led->getinputpin(1);
+		DstPin = Led->getinputpin();
 	}
 	GInfo.x1 = Cx2 - 20;
 
@@ -147,6 +147,10 @@ void AddConnection::Execute()
 	}
 }
 
+void AddConnection::save()
+{
+
+}
 void AddConnection::Undo()
 {}
 

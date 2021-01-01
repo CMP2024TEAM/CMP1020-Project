@@ -1,5 +1,5 @@
 #include "LED.h"
-
+#include<fstream>
 LED::LED(const GraphicsInfo& r_GfxInfo)
 {
 	the_output.setStatus(LOW);
@@ -46,7 +46,17 @@ int LED::getm_Inputs()
 {
 	return  0;
 }
-InputPin* LED::getinputpin(int n)
+void LED::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "LED   " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
+}
+InputPin* LED::getinputpin()
 {
 	return (&the_output);
 }

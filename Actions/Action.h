@@ -9,8 +9,9 @@ class Action
 {
 protected:
 	ApplicationManager *pManager;	//Actions needs AppMngr to do their job
+	
 public:
-	Action(ApplicationManager *pApp) { pManager = pApp; }	//constructor
+	Action(ApplicationManager* pApp) { pManager = pApp;  }	//constructor
 	
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters()=0;
@@ -23,6 +24,7 @@ public:
 
 	//To redo this action (code depends on action type)
 	virtual void Redo()=0;
+	
 
 };
 

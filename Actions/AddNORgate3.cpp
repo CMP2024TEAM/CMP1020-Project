@@ -1,6 +1,5 @@
 #include "AddNORgate3.h"
 #include "..\ApplicationManager.h"
-
 AddNORgate3::AddNORgate3(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -44,6 +43,7 @@ void AddNORgate3::Execute()
 	NOR3* pA = new NOR3(GInfo, AND2_FANOUT);
 	pManager->AddComponent(pA);
 }
+
 
 void AddNORgate3::Undo()
 {}

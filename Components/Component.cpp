@@ -4,9 +4,18 @@ Component::Component(const GraphicsInfo &r_GfxInfo)
 {
 	m_GfxInfo = r_GfxInfo;	
 }
-GraphicsInfo Component::GetLocation() 
+
+void Component::save(int y)
+{
+}
+
+GraphicsInfo Component::GetLocation()
 {
 	return m_GfxInfo;
+}
+string Component::get_mlabel()
+{
+	return m_Label;
 }
 bool Component::IsInsideMe(int x, int y)
 {

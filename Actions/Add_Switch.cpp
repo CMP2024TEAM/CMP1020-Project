@@ -43,6 +43,8 @@ void Add_Switch::Execute()
 	pManager->AddComponent(pA);
 }
 
+
+
 void Add_Switch::Undo()
 {
 }

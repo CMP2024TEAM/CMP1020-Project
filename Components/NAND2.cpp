@@ -1,4 +1,5 @@
 #include"NAND2.h"
+#include<fstream>
 
 
 /// ////////////////Constructor///////////////////////////
@@ -29,6 +30,16 @@ int NAND2::GetOutPinStatus()
 int NAND2::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();
+}
+void NAND2::save(int y)
+{
+	double cx, cy;
+	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
+	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	ofstream the_added_component;
+	the_added_component.open("file format.txt", ios::app);
+	the_added_component << endl << "NAND2 " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component.close();
 }
 ///////////////setinputpinstatus////////////////////
 void NAND2::setInputPinStatus(int n, STATUS s)

@@ -393,13 +393,14 @@ void Output::DrawSWITCHOFF(GraphicsInfo r_GfxInfo, bool selected) const
 //The drawing function of Conection
 void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
 {
+	
 	int ix= r_GfxInfo.x1, iy= r_GfxInfo.y1, fx= r_GfxInfo.x2, fy= r_GfxInfo.y2,y=0,x=0;
 	if (selected==true) pWind->SetPen(RED,3);
 	else pWind->SetPen(BLUE,2);
-	x = (fx - ix) / 2;
+	x = abs(fx - ix) / 2;
 	if (iy != fy)
 	{
-		y = fy - iy;
+		y = abs(fy - iy);
 		if (y > 0);
 		else y = (-1) * y;
 		pWind->DrawLine(ix, iy, ix + x, iy);

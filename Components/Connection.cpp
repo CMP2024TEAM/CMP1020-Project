@@ -1,24 +1,43 @@
 #include "Connection.h"
 #include<fstream>
-Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
-	
+
+Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin) :Component(r_GfxInfo)
+
 {
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
 }
-void Connection::setSourcePin(OutputPin *pSrcPin)
-{	SrcPin = pSrcPin;	}
+void Connection::setSourcePin(OutputPin* pSrcPin)
+{
+	SrcPin = pSrcPin;
+}
 
 OutputPin* Connection::getSourcePin()
-{	return SrcPin;	}
+{
+	return SrcPin;
+}
 
 
-void Connection::setDestPin(InputPin *pDstPin)
-{	DstPin = pDstPin;	}
+void Connection::setDestPin(InputPin* pDstPin)
+{
+	DstPin = pDstPin;
+}
 
 InputPin* Connection::getDestPin()
-{	return DstPin;	}
+{
+	return DstPin;
+}
+void Connection::setSourceCmpnt(Component* pSrcCmpnt)
+{
+	SrcCmpnt = pSrcCmpnt;
+}
 
+void Connection::setDestCmpnt(Component* pDstCmpnt,int n,int j)
+{
+	DstCmpnt = pDstCmpnt;
+	DstPinNum = j;
+	DstPins = n;
+}
 
 void Connection::Operate()
 {
@@ -26,9 +45,70 @@ void Connection::Operate()
 	DstPin->setStatus((STATUS)SrcPin->getStatus());
 }
 
-void Connection::Draw(Output* pOut,bool selected)
+void Connection::Draw(Output* pOut, bool selected)
 {
-	pOut->DrawConnection(m_GfxInfo,selected);
+	GraphicsInfo GInfo;
+	//Get Center point of the Gate
+	int Cx1, Cy1, Cx2, Cy2;
+
+	GInfo = SrcCmpnt->GetLocation();//get gfxinfo
+	Cx1 = (GInfo.x1 + GInfo.x2) / 2;
+	Cy1 = (GInfo.y1 + GInfo.y2) / 2;
+
+	GInfo = DstCmpnt->GetLocation();//get gfxinfo
+	Cx2 = (GInfo.x1 + GInfo.x2) / 2;
+	Cy2 = (GInfo.y1 + GInfo.y2) / 2;
+	//Calculate the rectangle Corners
+
+	//validation of the drawconnection true start and end point
+	if (DstPins == 3)
+	{
+		if (DstPinNum == 1)// pin 1
+		{
+			GInfo.y2 = Cy2 - 5;
+			
+		}
+		else if (DstPinNum == 2)// pin 2
+		{
+
+			GInfo.y2 = Cy2;
+			
+		}
+		else if (DstPinNum == 3)// pin 3
+		{
+
+			GInfo.y2 = Cy2 + 4;
+			
+		}
+	}
+	if (DstPins == 2)
+	{
+		if (DstPinNum ==  1) //pin 1
+		{
+			GInfo.y2 = Cy2 - 4.5;
+			
+		}
+		else if (DstPinNum==2) // pin 2
+		{
+			GInfo.y2 = Cy2 + 4.5;
+			
+		}
+	}
+	if (DstPins == 1)
+	{
+		GInfo.y2 = Cy2;
+	}
+	if (DstPins == 0)
+	{
+		GInfo.y2 = Cy2 + 25;
+		Cx2 += 10;
+	}
+
+	GInfo.x2 = Cx2 - 20;
+	GInfo.x1 = Cx1 + 20;
+	GInfo.y1 = Cy1 - 0.5;
+	m_GfxInfo = GInfo;
+	pOut->DrawConnection(m_GfxInfo, selected);
 }
 
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
@@ -52,7 +132,7 @@ int Connection::getm_Inputs()
 	return  0;
 }
 
-void Connection::save(int y,int t,int u)
+void Connection::save(int y, int t, int u)
 {
 	ofstream the_added_connection;
 	the_added_connection.open("file format.txt", ios::app);

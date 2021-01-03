@@ -8,7 +8,7 @@ private:
 	Component* Comp;
 	int Cx=0, Cy=0;
 public:
-	Select(Component*, ApplicationManager*);
+	Select(ApplicationManager*);
 	~Select();
 	virtual void Execute();
 	virtual void ReadActionParameters();

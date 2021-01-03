@@ -9,7 +9,7 @@ public:
 	void Operate();
 	int GetInputPinStatus(int n);
 	void setInputPinStatus(int n, STATUS s);
-	void Draw(Output* pOut);
+	void Draw(Output* pOut,bool selected);
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
 	void save(int y);

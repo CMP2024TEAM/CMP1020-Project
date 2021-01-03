@@ -21,7 +21,7 @@ private:
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
 	Save* the_saver;
-
+	Component* Selected_Comp;
 public:
 
 
@@ -46,6 +46,7 @@ public:
 
 	void DeleteComponent(Component* pComp);
 	void CheckWhichComponent(int, int, Component*&);
+	void SetSelectedComponent(Component*);
 	void Undo();
 	void Redo();
 	int get_compcount();

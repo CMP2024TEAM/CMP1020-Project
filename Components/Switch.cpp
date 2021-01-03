@@ -27,13 +27,13 @@ void Switch::Operate()
 
 // Function Draw
 // Draws 2-input AND gate
-void Switch::Draw(Output* pOut)
+void Switch::Draw(Output* pOut,bool selected)
 {
 	//Call output class and pass gate drawing info to it.
 	if (SrcPin.getStatus() == LOW)
-		pOut->DrawSWITCHOFF(m_GfxInfo);
+		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
 	if (SrcPin.getStatus() == HIGH)
-		pOut->DrawSWITCHON(m_GfxInfo);
+		pOut->DrawSWITCHON(m_GfxInfo, selected);
 }
 
 void Switch::save()

@@ -145,6 +145,7 @@
     <ClCompile Include="Actions\Add_Switch.cpp" />
     <ClCompile Include="Actions\Arrows.cpp" />
     <ClCompile Include="Actions\Copy.cpp" />
+    <ClCompile Include="Actions\Delete.cpp" />
     <ClCompile Include="Actions\GetClickedComponent.cpp" />
     <ClCompile Include="Actions\Past.cpp" />
     <ClCompile Include="Actions\SAVE.cpp" />
@@ -229,7 +230,6 @@
     <ClInclude Include="Actions\Add_LABLE.h" />
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
-    <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\GetClickedComponent.h" />
     <ClInclude Include="Actions\Past.h" />
     <ClInclude Include="Actions\SAVE.h" />

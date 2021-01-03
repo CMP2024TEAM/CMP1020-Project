@@ -14,17 +14,13 @@ void Save::save_gates(Component** y, int t)
 	{
 		Connection* p = dynamic_cast<Connection*>(y[i]);
 		if (p == NULL)
-
 		{
-
-
 			y[i]->save(i+1);
 		}
 		else
 			the_num_connections++;
 	}
 	the_added_component.close();
-
 	array_connections = new Component * [the_num_connections];
 	the_gates = new Component * [t - the_num_connections];
 	int j = 0; int w = 0;
@@ -32,19 +28,14 @@ void Save::save_gates(Component** y, int t)
 	{
 		Connection* t = dynamic_cast<Connection*>(y[i]);
 		if (t != NULL)
-
 		{
-
 			array_connections[j] = y[i];
 			j++;
 		}
 		else {
-
 			the_gates[w] = y[i];
 			w++;
-
 		}
-
 	}
 	Component** the_source, **the_des;
 	the_source = new Component * [j];
@@ -82,16 +73,9 @@ void Save::save_gates(Component** y, int t)
 				}
 				else
 				{
-
-
 					if (((Switch*)the_gates[k])->getoutputpin() == ((Connection*)array_connections[i])->getSourcePin())
 						the_source[k] = the_gates[k];
-
-
 				}
-
-
-
 			}
 		}
 	int* p = new int[j]; 
@@ -109,16 +93,12 @@ void Save::save_gates(Component** y, int t)
 				k[i] = a;
 			else if (the_des[i] == y[a-1])
 				p[i] = a;
-
-
-
 		}
-		
 	}
 	for (int i = 0; i < j; i++)
 	{
-		((Connection*)array_connections[i])->save(k[i], p[i], 1);*/
-	//}
+		((Connection*)array_connections[i])->save(k[i], p[i], 1);
+	}
 
 }
 

@@ -22,6 +22,7 @@ private:
 	Input* InputInterface; //pointer to the Input Clase Interface
 	Save* the_saver;
 	Component* Clipboard;
+	Component* Selected_Comp;
 public:
 
 
@@ -44,9 +45,12 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	void GetComponentList(Component** &, int&);
-
+	
 	void DeleteComponent(Component* pComp);
 	void CheckWhichComponent(int, int, Component*&);
+	void SetSelectedComponent(Component*);
+	void DeleteAllConnnectionsWithThisInputPin(InputPin* P);
+	void DeleteAllConnnectionsWithThisOutputPin(OutputPin* P);
 	void Undo();
 	void Redo();
 	int get_compcount();

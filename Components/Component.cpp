@@ -28,6 +28,9 @@ bool Component::IsInsideMe(int x, int y)
 Component::Component()
 {}
 
+void Component::Draw(Output* pOut, bool selected)
+{}
+
 Component::~Component()
 {}
 

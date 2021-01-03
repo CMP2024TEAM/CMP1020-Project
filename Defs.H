@@ -37,6 +37,9 @@ enum ActionType
 	UNDO,		//Undo the last Action preformed
 	REDO,		//Redo the last Action canceled
 
+	COPY,		//Copy to clipboard
+	PASTE,		//paste from clipboard
+
 	START_SELECT,
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
@@ -109,16 +112,17 @@ enum toolbarmenu
 	ITM_START,		//start simulation		
 	ITM_Undo,		//Undo item in menu
 	ITM_Save,       //save item in menu
-	ITM_Select,		 //select item in men
+	ITM_Select,		//select item in men
 	ITM_Delete,		//delete item in menu
+	ITM_Copy,		//Copy item in menu
 
 
 	ITM_STOP,		//stop simulation
 	ITM_Redo,		//Redo item in menu
 	ITM_Load,       //load item in menu
-	ITM_Move,     //move item in menu
+	ITM_Move,       //move item in menu
 	ITM_Label,      //label item in menu
-	
+	ITM_Paste,		//Paste item in menu
 	
 
     ITM_TB_CNT

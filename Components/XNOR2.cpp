@@ -19,9 +19,9 @@ void XNOR2::Operate()
 		m_OutputPin.setStatus(LOW);
 }
 
-void XNOR2::Draw(Output* pOut)
+void XNOR2::Draw(Output* pOut,bool selected)
 {//Call output class and pass gate drawing info to it.
-	pOut->Draw_XNOR2(m_GfxInfo);
+	pOut->Draw_XNOR2(m_GfxInfo, selected);
 }
 
 int XNOR2::GetOutPinStatus()

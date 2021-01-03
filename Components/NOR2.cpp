@@ -18,9 +18,9 @@ void NOR2::Operate()
 	m_OutputPin = !(GetInputPinStatus(0) || GetInputPinStatus(1));
 }
 /////////////////Draw Function////////////////////////
-void NOR2::Draw(Output* pOut)
+void NOR2::Draw(Output* pOut,bool selected)
 {
-	pOut->DrawNOR2(m_GfxInfo);
+	pOut->DrawNOR2(m_GfxInfo,selected);
 }
 /////////////////GEToutpinstatus////////////////////////
 int NOR2::GetOutPinStatus()

@@ -1,3 +1,6 @@
+#ifndef _LED_H_
+#define _LED_H_
+
 #include"Component.h"
 #include "InputPin.h"
 class LED :public Component
@@ -9,9 +12,10 @@ public:
 	void Operate();
 	int GetInputPinStatus(int n);
 	void setInputPinStatus(int n, STATUS s);
-	void Draw(Output* pOut);
+	void Draw(Output* pOut,bool selected);
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
 	void save();
 	InputPin* getinputpin();
 };
+#endif

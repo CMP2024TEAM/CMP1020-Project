@@ -24,10 +24,10 @@ void NOT::Operate()
 
 // Function Draw
 // Draws 2-input AND gate
-void NOT::Draw(Output* pOut)
+void NOT::Draw(Output* pOut,bool selected)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawNOT(m_GfxInfo);
+	pOut->DrawNOT(m_GfxInfo, selected);
 }
 
 //returns status of outputpin

@@ -17,6 +17,7 @@
 #include "Actions/AddLED.h"
 #include "Actions/Add_Switch.h"
 #include"Actions/Select.h"
+#include"Actions/Copy.h"
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -35,6 +36,14 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+}
+void ApplicationManager::set_clipboard(Component* object)
+{
+	*Clipboard = *object;
+}
+Component* ApplicationManager::get_clipboard()
+{
+	return Clipboard;
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
@@ -141,6 +150,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;
 		pAct = NULL;
 	}
+	
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -209,6 +219,14 @@ void ApplicationManager::Redo()
 int ApplicationManager::get_compcount()
 {
 	return CompCount;
+}
+
+void ApplicationManager::save()
+{
+	for (int i = 0; i < CompCount; i++)
+		if (CompList[i] != NULL)
+			CompList[i]->save();
+
 }
 
 

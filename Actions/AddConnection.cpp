@@ -147,10 +147,7 @@ void AddConnection::Execute()
 	}
 }
 
-void AddConnection::save()
-{
 
-}
 void AddConnection::Undo()
 {}
 

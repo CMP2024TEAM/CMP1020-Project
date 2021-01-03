@@ -240,6 +240,12 @@
     <ClCompile Include="Actions\SAVE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Copy.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Past.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -439,6 +445,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\SAVE.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Copy.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Past.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

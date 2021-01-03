@@ -5,7 +5,7 @@ Component::Component(const GraphicsInfo &r_GfxInfo)
 	m_GfxInfo = r_GfxInfo;	
 }
 
-void Component::save(int y)
+void Component::save()
 {
 }
 

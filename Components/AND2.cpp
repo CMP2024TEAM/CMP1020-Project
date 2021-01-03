@@ -48,14 +48,14 @@ void AND2::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n-1].setStatus(s);
 }
 
-void AND2::save(int y)
+void AND2::save()
 {
 	double cx, cy;
 	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
 	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "AND3  " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component << endl << "AND3  " << "     " << id << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
 	the_added_component.close();
 	//Gate::save(y);
 }

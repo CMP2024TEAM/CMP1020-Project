@@ -22,7 +22,7 @@ OutputPin* Gate::getoutputpin()
 {
 	return (&m_OutputPin);
 }
-void Gate::save(int y)
+void Gate::save()
 {
 	/*ofstream the_added_component;
 	double Cx, Cy;

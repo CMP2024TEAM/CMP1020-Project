@@ -189,15 +189,16 @@ void Output::CreateCommonToolBar() const
 	TOOLBAR[ITM_Delete] = "images\\Menu\\Menu_Delete.jpg";
 	TOOLBAR[ITM_Copy] = "images\\Menu\\Menu_Copy.jpg";
 	TOOLBAR[ITM_Paste] = "images\\Menu\\Menu_Paste.jpg";
-
+	TOOLBAR[ITM_Cut] = "images\\Menu\\Menu_Cut.jpg";
+	TOOLBAR[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
 	
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		pWind->DrawImage(TOOLBAR[i], 900, (i + 1) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
-	for (int i = 6; i < ITM_TB_CNT; i++)
+	for (int i = 7; i < ITM_TB_CNT; i++)
 	{
-		pWind->DrawImage(TOOLBAR[i], 940, (i - 5) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
+		pWind->DrawImage(TOOLBAR[i], 940, (i - 6) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
 
 	pWind->SetPen(RED, 3);

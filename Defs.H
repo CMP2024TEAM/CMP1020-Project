@@ -40,6 +40,9 @@ enum ActionType
 	COPY,		//Copy to clipboard
 	PASTE,		//paste from clipboard
 
+	CUT,		//CUT to clipboard
+	EDIT,		//Edit lable or connection
+
 	START_SELECT,
 	DSN_MODE,	//Switch to Design mode
 	SIM_MODE,	//Switch to Simulatiom mode
@@ -115,6 +118,8 @@ enum toolbarmenu
 	ITM_Select,		//select item in men
 	ITM_Delete,		//delete item in menu
 	ITM_Copy,		//Copy item in menu
+	ITM_Cut,		//Cut item in menu
+
 
 
 	ITM_STOP,		//stop simulation
@@ -123,6 +128,7 @@ enum toolbarmenu
 	ITM_Move,       //move item in menu
 	ITM_Label,      //label item in menu
 	ITM_Paste,		//Paste item in menu
+	ITM_Edit,		//Edit item in menu
 	
 
     ITM_TB_CNT

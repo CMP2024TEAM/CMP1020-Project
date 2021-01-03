@@ -5,9 +5,10 @@
 #include"Gate.h"
 class Connection :	public Component
 {
-	//Component*	SrcCmpnt;	//Connection source component
-	//Component*	DstCmpnt;	//Connection Destination component
-	//int		DstPin;		//The Input pin to which this connection is linked
+	Component*	SrcCmpnt;	//Connection source component
+	Component*	DstCmpnt;	//Connection Destination component
+	int		DstPinNum;		//The Input pin to which this connection is linked
+	int		DstPins;		//the number of inputpins  of dstination
 	OutputPin* SrcPin;	//The Source pin of this connection (an output pin of certain Component)
 	InputPin* DstPin;	//The Destination pin of this connection (an input pin of certain Component)
 public:
@@ -16,10 +17,12 @@ public:
 
 	virtual void Operate() ;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut,bool selected);	//for each component to Draw itself
-
+	
 	
 	void setSourcePin(OutputPin *pSrcPin);
+	void setSourceCmpnt(Component* pSrcCmpnt);
 	void setDestPin(InputPin *pDstPin);
+	void setDestCmpnt(Component* pDstCmpnt,int n,int j);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual int getm_Inputs();

@@ -189,15 +189,16 @@ void Output::CreateCommonToolBar() const
 	TOOLBAR[ITM_Delete] = "images\\Menu\\Menu_Delete.jpg";
 	TOOLBAR[ITM_Copy] = "images\\Menu\\Menu_Copy.jpg";
 	TOOLBAR[ITM_Paste] = "images\\Menu\\Menu_Paste.jpg";
-
+	TOOLBAR[ITM_Cut] = "images\\Menu\\Menu_Cut.jpg";
+	TOOLBAR[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
 	
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 7; i++)
 	{
 		pWind->DrawImage(TOOLBAR[i], 900, (i + 1) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
-	for (int i = 6; i < ITM_TB_CNT; i++)
+	for (int i = 7; i < ITM_TB_CNT; i++)
 	{
-		pWind->DrawImage(TOOLBAR[i], 940, (i - 5) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
+		pWind->DrawImage(TOOLBAR[i], 940, (i - 6) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
 
 	pWind->SetPen(RED, 3);
@@ -393,13 +394,14 @@ void Output::DrawSWITCHOFF(GraphicsInfo r_GfxInfo, bool selected) const
 //The drawing function of Conection
 void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
 {
+	
 	int ix= r_GfxInfo.x1, iy= r_GfxInfo.y1, fx= r_GfxInfo.x2, fy= r_GfxInfo.y2,y=0,x=0;
 	if (selected==true) pWind->SetPen(RED,3);
 	else pWind->SetPen(BLUE,2);
-	x = (fx - ix) / 2;
+	x = abs(fx - ix) / 2;
 	if (iy != fy)
 	{
-		y = fy - iy;
+		y = abs(fy - iy);
 		if (y > 0);
 		else y = (-1) * y;
 		pWind->DrawLine(ix, iy, ix + x, iy);

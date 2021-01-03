@@ -34,11 +34,13 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+	Selected_Comp = NULL;
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;
+	Selected_Comp = pComp;
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -111,15 +113,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CONNECTION:
 		pAct = new AddConnection(this);
 		break;
-	/*case SELECT:
+	case SELECT:
 	{
-		GetClickedComponent* comp = new GetClickedComponent(this);
-		Component* CC; bool is;
-		comp->Execute();
-		comp->GetComponent(CC, is);
-		pAct = new Select(CC, this);
+		pAct = new Select(this);
 		break;
-	}*/
+	}
 	case UNDO:
 		this->Undo();
 		break;
@@ -152,8 +150,12 @@ OutputInterface = new Output;*/
 	OutputInterface->ClearDrawingArea();
 	for (int i = 0; i < CompCount; i++)
 		if (CompList[i] != NULL)
-			CompList[i]->Draw(OutputInterface);
-
+		{
+			bool selected=0;
+			if (CompList[i] == Selected_Comp)
+				selected = 1;
+			CompList[i]->Draw(OutputInterface,selected);
+		}
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -274,6 +276,10 @@ void ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 		}
 	}
 	c = NULL;
+}
+void ApplicationManager::SetSelectedComponent(Component* comp)
+{
+	Selected_Comp = comp;
 }
 ApplicationManager::~ApplicationManager()
 {

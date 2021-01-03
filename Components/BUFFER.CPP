@@ -19,9 +19,9 @@ void BUFFER::Operate()
 
 }
 
-void BUFFER::Draw(Output* pOut)
+void BUFFER::Draw(Output* pOut,bool selected)
 {
-	pOut->Draw_BUFFER(m_GfxInfo);
+	pOut->Draw_BUFFER(m_GfxInfo,selected);
 }
 
 int BUFFER::GetOutPinStatus()

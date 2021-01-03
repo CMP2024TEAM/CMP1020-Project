@@ -19,9 +19,9 @@ void XOR2::Operate()
 		m_OutputPin.setStatus(LOW);
 }
 
-void XOR2::Draw(Output* pOut)
+void XOR2::Draw(Output* pOut,bool selected)
 {//Call output class and pass gate drawing info to it.
-	pOut->Draw_XOR2(m_GfxInfo);
+	pOut->Draw_XOR2(m_GfxInfo, selected);
 }
 
 void XOR2::save(int y)

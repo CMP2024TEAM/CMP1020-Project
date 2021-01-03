@@ -17,9 +17,9 @@ void NAND2::Operate()
 	m_OutputPin = GetInputPinStatus(1) && GetInputPinStatus(2);
 }
 /////////////////Draw Function////////////////////////
-void NAND2::Draw(Output* pOut)
+void NAND2::Draw(Output* pOut,bool selected)
 {
-	pOut->DrawNAND2(m_GfxInfo);
+	pOut->DrawNAND2(m_GfxInfo,selected);
 }
 /////////////////GEToutpinstatus////////////////////////
 int NAND2::GetOutPinStatus()

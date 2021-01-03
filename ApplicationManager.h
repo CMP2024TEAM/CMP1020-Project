@@ -43,9 +43,11 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 	void GetComponentList(Component** &, int&);
-
+	
 	void DeleteComponent(Component* pComp);
 	void CheckWhichComponent(int, int, Component*&);
+	void DeleteAllConnnectionsWithThisInputPin(InputPin* P);
+	void DeleteAllConnnectionsWithThisOutputPin(OutputPin* P);
 	void Undo();
 	void Redo();
 	int get_compcount();

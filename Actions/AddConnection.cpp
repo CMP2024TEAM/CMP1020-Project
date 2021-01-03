@@ -56,7 +56,6 @@ void AddConnection::Execute()
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;
 
-	//Gfx info to be used to construct the AND2 gate
 	int n, j;
 	//if (isp2Gate)
 	n = p2->getm_Inputs();
@@ -70,23 +69,20 @@ void AddConnection::Execute()
 	{
 		SrcPin = SWITCH->getoutputpin();
 	}
-
-
 	if (n == 3)
 	{
-		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))//pin 1
+		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))// pin 1
 		{
-
 			GInfo.y1 = Cy2 - 5;
 			j = 1;
 		}
-		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 4))//pin 2
+		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 4))// pin 2
 		{
 
 			GInfo.y1 = Cy2;
 			j = 2;
 		}
-		else if ((Cx22 < Cx2))//pin 3
+		else if ((Cx22 < Cx2))// pin 3
 		{
 
 			GInfo.y1 = Cy2 + 4;
@@ -95,13 +91,12 @@ void AddConnection::Execute()
 	}
 	if (n == 2)
 	{
-		if ((Cx22 < Cx2) && (Cy22 < Cy2))//pin 1
+		if ((Cx22 < Cx2) && (Cy22 < Cy2)) //pin 1
 		{
-
 			GInfo.y1 = Cy2 - 4.5;
 			j = 1;
 		}
-		else if ((Cx22 < Cx2) && (Cy22 > Cy2))//pin 2
+		else if ((Cx22 < Cx2) && (Cy22 > Cy2)) // pin 2
 		{
 			GInfo.y1 = Cy2 + 4.5;
 			j = 2;
@@ -116,8 +111,6 @@ void AddConnection::Execute()
 	{
 		GInfo.y1 = Cy2 + 25;
 		Cx2 += 10;
-
-
 	}
 	Gate* gate2 = dynamic_cast<Gate*>(p2);
 	if (gate2 != NULL)
@@ -130,13 +123,11 @@ void AddConnection::Execute()
 		DstPin = Led->getinputpin();
 	}
 	GInfo.x1 = Cx2 - 20;
-
 	GInfo.x2 = Cx1 + 20;
 	GInfo.y2 = Cy1-0.5;
 	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
 	if (SrcPin->ConnectTo(pA))
 	{
-		
 		pManager->AddComponent(pA);
 	}
 	else

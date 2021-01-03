@@ -1,3 +1,6 @@
+#ifndef _LED_H_
+#define _LED_H_
+
 #include"Component.h"
 #include "InputPin.h"
 class LED :public Component
@@ -15,3 +18,4 @@ public:
 	void save(int y);
 	InputPin* getinputpin();
 };
+#endif

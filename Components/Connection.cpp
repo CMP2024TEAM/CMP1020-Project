@@ -46,6 +46,7 @@ void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
 }
+
 int Connection::getm_Inputs()
 {
 	return  0;
@@ -56,7 +57,6 @@ void Connection::save(int y,int t,int u)
 	ofstream the_added_connection;
 	the_added_connection.open("file format.txt", ios::app);
 	the_added_connection << endl << y << "     " << t << "     " << u << "     " << endl;
-	
 }
 
 

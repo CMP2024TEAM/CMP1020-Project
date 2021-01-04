@@ -1,11 +1,10 @@
 #pragma once
 #include "Action.h"
-#include "Past.h"
 #include "..\Components\Component.h"
-class Copy :
+class cut :
     public Action
-
-{protected:
+{
+protected:
     Component* the_object;
     int x, y;
 public:
@@ -13,6 +12,6 @@ public:
     void Undo();
     void Redo();
     void ReadActionParameters();
-    Copy(ApplicationManager* pApp);
+    cut(ApplicationManager* pApp);
 };
 

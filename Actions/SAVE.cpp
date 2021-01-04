@@ -5,7 +5,7 @@
 #include "..\Components\Switch.h"
 void Save::save_gates(Component** y, int t)
 {
-	/*Component** array_connections,**the_gates;
+	Component** array_connections,**the_gates;
 	int the_num_connections=0;
 	ofstream the_added_component;
 	the_added_component.open("file format.txt");
@@ -15,12 +15,12 @@ void Save::save_gates(Component** y, int t)
 		Connection* p = dynamic_cast<Connection*>(y[i]);
 		if (p == NULL)
 		{
-			y[i]->save(i+1);
+			y[i]->save();
 		}
 		else
 			the_num_connections++;
 	}
-	the_added_component.close();
+	/*the_added_component.close();
 	array_connections = new Component * [the_num_connections];
 	the_gates = new Component * [t - the_num_connections];
 	int j = 0; int w = 0;
@@ -98,9 +98,10 @@ void Save::save_gates(Component** y, int t)
 	for (int i = 0; i < j; i++)
 	{
 		((Connection*)array_connections[i])->save(k[i], p[i], 1);
-	}
+	}*/
 
 }
+
 
 
 

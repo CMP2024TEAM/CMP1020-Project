@@ -26,7 +26,8 @@ public:
 	InputPin* getinputpin(int n);
 	OutputPin* getoutputpin();
 	 virtual void save();
-
+	
+	 
 };
 
 #endif

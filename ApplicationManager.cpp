@@ -19,6 +19,7 @@
 #include"Actions/Select.h"
 #include"Actions/Delete.h"
 #include"Actions/Copy.h"
+#include"Actions/Cut.h"
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -39,7 +40,7 @@ ApplicationManager::ApplicationManager()
 }
 void ApplicationManager::set_clipboard(Component* object)
 {
-	*Clipboard = *object;
+        Clipboard =object;
 }
 Component* ApplicationManager::get_clipboard()
 {
@@ -114,11 +115,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Delete(this);
 		break;
 	case Page_One:
-		pAct = new Arrows(this, Page_One);
-		break;
+	{pAct = new Arrows(this, Page_One);
+	break;
+	}
 	case Page_Two:
-		pAct = new Arrows(this, Page_Two);
-		break;
+	{	pAct = new Arrows(this, Page_Two);
+	break;
+	}
 	case ADD_CONNECTION:
 		pAct = new AddConnection(this);
 		break;
@@ -138,6 +141,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case REDO:
 		this->Redo();
 		break;
+	case COPY:
+	{pAct = new Copy(this);
+	break; }
+	
+	case PASTE:
+	{pAct = new Past(this);
+	break; }
+	case CUT:
+	{pAct = new cut(this);
+	break; }
+	case EDIT:
 
 	case EXIT:
 		///TODO: create ExitAction here
@@ -218,6 +232,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 			CompList[i] = CompList[CompCount - 1];
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
+			
 		}
 	}
 	UpdateInterface();

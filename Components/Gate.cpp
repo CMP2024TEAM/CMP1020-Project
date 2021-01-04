@@ -14,6 +14,10 @@ Gate::Gate(int r_Inputs, int r_FanOut):m_OutputPin(r_FanOut)
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
 }
+int Gate::getm_Inputs()
+{
+	return 0;
+}
 InputPin* Gate::getinputpin(int n)
 {
 	return (&m_InputPins[n]);
@@ -31,8 +35,4 @@ void Gate::save()
 	the_added_component.open("file format.txt");
 	the_added_component<<y<<"     "<<get_mlabel()<<"     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
 	the_added_component.close();*/
-}
-int Gate::getm_Inputs()
-{
-	return m_Inputs;
 }

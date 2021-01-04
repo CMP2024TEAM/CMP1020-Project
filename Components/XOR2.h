@@ -7,7 +7,7 @@ public:
 	XOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut);
 	virtual void Operate();	//Calculates the output of the XOR2 gate
 	virtual void Draw(Output* pOut,bool selected);	//Draws 2-input gate
-	void save(int y);
+	void save();
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual int GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 	virtual int getm_Inputs();

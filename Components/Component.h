@@ -26,6 +26,8 @@ public:
 	virtual int getm_Inputs()=0;
 	virtual void save() ;
 	GraphicsInfo GetLocation();
+	void set_Location(GraphicsInfo the_new);
+	
 	string get_mlabel();
 	bool IsInsideMe(int, int);
 	Component();	

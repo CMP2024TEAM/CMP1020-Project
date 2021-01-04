@@ -43,8 +43,7 @@ void cut::Execute()
 	{
 		BUFFER* the;
 		the = new BUFFER(*h);
-		
-		pManager->AddComponent(the);
+		pManager->set_clipboard(the);
 		
 	}
 	LED* g = dynamic_cast<LED*>(the_object);
@@ -97,7 +96,6 @@ void cut::Execute()
 	{
 		NOT* the;
 		the = new NOT(*d);
-		
 		pManager->set_clipboard(the);
 		
 	}

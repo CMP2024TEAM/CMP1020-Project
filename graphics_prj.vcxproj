@@ -146,6 +146,7 @@
     <ClCompile Include="Actions\Arrows.cpp" />
     <ClCompile Include="Actions\Delete.cpp" />
     <ClCompile Include="Actions\GetClickedComponent.cpp" />
+    <ClCompile Include="Actions\Move.cpp" />
     <ClCompile Include="Actions\SAVE.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="Actions\StartStopSimulation.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="Actions\Arrows.h" />
     <ClInclude Include="Actions\Delete.h" />
     <ClInclude Include="Actions\GetClickedComponent.h" />
+    <ClInclude Include="Actions\Move.h" />
     <ClInclude Include="Actions\SAVE.h" />
     <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="Actions\StartStopSimulation.h" />

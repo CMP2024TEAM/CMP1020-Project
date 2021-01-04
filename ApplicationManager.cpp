@@ -18,6 +18,7 @@
 #include "Actions/Add_Switch.h"
 #include"Actions/Select.h"
 #include"Actions/Delete.h"
+#include"Actions/Move.h"
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -114,10 +115,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddConnection(this);
 		break;
 	case SELECT:
-	{
 		pAct = new Select(this);
 		break;
-	}
+	//case START_SELECT:
+	//	OutputInterface->PrintMsg("Start Select");
+	//	break;
+	case MOVE:
+		pAct = new Move(this);
+		break;
 	case UNDO:
 		this->Undo();
 		break;
@@ -149,9 +154,8 @@ void ApplicationManager::UpdateInterface()
 OutputInterface = new Output;*/
 	OutputInterface->ClearDrawingArea();
 	for (int i = 0; i < CompCount; i++)
-		if (CompList[i] != NULL)
 		{
-			bool selected=0;
+			bool selected = 0;
 			if (CompList[i] == Selected_Comp)
 				selected = 1;
 			CompList[i]->Draw(OutputInterface,selected);
@@ -265,17 +269,24 @@ int ApplicationManager::get_compcount()
 }
 
 
-void ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
+bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 {
 	for (int i = 0; i < CompCount; i++)
 	{
 		if (CompList[i]->IsInsideMe(x, y))
 		{
 			c = CompList[i];
-			return;
+			return true;
 		}
 	}
+	/*
+	if (Click Is On Start Select)
+	{
+		return false;
+	}
+	*/
 	c = NULL;
+	return true;
 }
 void ApplicationManager::SetSelectedComponent(Component* comp)
 {

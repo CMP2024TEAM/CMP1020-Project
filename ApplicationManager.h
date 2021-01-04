@@ -45,7 +45,7 @@ public:
 	void GetComponentList(Component** &, int&);
 	
 	void DeleteComponent(Component* pComp);
-	void CheckWhichComponent(int, int, Component*&);
+	bool CheckWhichComponent(int, int, Component*&);
 	void SetSelectedComponent(Component*);
 	void DeleteAllConnnectionsWithThisInputPin(InputPin* P);
 	void DeleteAllConnnectionsWithThisOutputPin(OutputPin* P);

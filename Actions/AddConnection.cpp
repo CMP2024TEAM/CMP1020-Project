@@ -122,9 +122,12 @@ void AddConnection::Execute()
 	{
 		DstPin = Led->getinputpin();
 	}
-	GInfo.x1 = Cx2 - 20;
-	GInfo.x2 = Cx1 + 20;
+	GInfo.x2 = Cx2 - 20;
+	GInfo.x1 = Cx1 + 20;
 	GInfo.y2 = Cy1-0.5;
+	int yyy = GInfo.y1;
+	GInfo.y1 = Cy1 - 0.5;
+	GInfo.y2 = yyy;
 	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
 	if (SrcPin->ConnectTo(pA))
 	{

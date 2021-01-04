@@ -1,7 +1,6 @@
 #include "Connection.h"
 #include<fstream>
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
-	
 {
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
@@ -51,7 +50,11 @@ int Connection::getm_Inputs()
 {
 	return  0;
 }
-
+//bool IsInsideMe(int x, int y) 
+//{
+//	// TODO : Decide whether This Connection or not
+//
+//}
 void Connection::save(int y,int t,int u)
 {
 	ofstream the_added_connection;

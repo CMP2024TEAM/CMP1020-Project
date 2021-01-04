@@ -1,22 +1,19 @@
-#ifndef _DELETE_H
-#define _DELETE_H
+#ifndef _Move_H
+#define _Move_H
 
 #include "action.h"
 #include "..\Components\Component.h"
-#include "..\Components\Switch.h"
-#include "..\Components\LED.h"
-#include "..\Components\Gate.h"
 #include "..\Components\Connection.h"
-class Delete : public Action
+class Move : public Action
 {
 private:
 	//Parameters for rectangular area to be occupied by the gate
 	int Cx, Cy;	//Center point of the gate
-	int ID;
+	int Cx2, Cy2;
 	Component* C;
 public:
-	Delete(ApplicationManager* pApp);
-	virtual ~Delete(void);
+	Move(ApplicationManager* pApp);
+	virtual ~Move(void);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();

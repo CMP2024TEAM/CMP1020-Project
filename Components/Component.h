@@ -25,8 +25,9 @@ public:
 	virtual int getm_Inputs()=0;
 	virtual void save(int y) ;
 	GraphicsInfo GetLocation();
+	void SetLocation(GraphicsInfo);
 	string get_mlabel();
-	bool IsInsideMe(int, int);
+	virtual bool IsInsideMe(int, int);
 	Component();	
 	
 	//Destructor must be virtual

@@ -13,6 +13,10 @@ GraphicsInfo Component::GetLocation()
 {
 	return m_GfxInfo;
 }
+void Component::SetLocation(GraphicsInfo r_GfxInfo)
+{
+	m_GfxInfo = r_GfxInfo;
+}
 string Component::get_mlabel()
 {
 	return m_Label;
@@ -21,7 +25,7 @@ bool Component::IsInsideMe(int x, int y)
 {
 	if (m_GfxInfo.x1 < x && m_GfxInfo.x2 > x && m_GfxInfo.y1 < y && m_GfxInfo.y2 > y)
 	{
-		return true;
+	return true;
 	}
 	return false;
 }

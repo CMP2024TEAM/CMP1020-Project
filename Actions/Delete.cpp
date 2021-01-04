@@ -45,6 +45,11 @@ void Delete::Execute()
 	{
 		type = "LED";
 	}
+	Connection* conn = dynamic_cast<Connection *>(C);
+	if (conn != NULL)
+	{
+		type = "Connection";
+	}
 	Gate* g = dynamic_cast<Gate*>(C);
 	if (g != NULL)
 	{
@@ -60,7 +65,7 @@ void Delete::Execute()
 		OutputPin* O = s->getoutputpin();
 		pManager->DeleteAllConnnectionsWithThisOutputPin(O);
 	}
-	else
+	else if (type == "Gate")
 	{
 		OutputPin* O = g->getoutputpin();
 		pManager->DeleteAllConnnectionsWithThisOutputPin(O);

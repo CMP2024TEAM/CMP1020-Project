@@ -221,9 +221,6 @@
     <ClCompile Include="Actions\Add_Switch.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\GetClickedComponent.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\Arrows.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -253,6 +250,9 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\cut.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddLabel.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -438,9 +438,6 @@
     <ClInclude Include="Actions\Add_Switch.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\GetClickedComponent.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\Arrows.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -461,6 +458,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Move.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddLabel.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

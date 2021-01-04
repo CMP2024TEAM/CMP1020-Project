@@ -2,7 +2,8 @@
 
 Component::Component(const GraphicsInfo &r_GfxInfo)
 {
-	m_GfxInfo = r_GfxInfo;	
+	m_GfxInfo = r_GfxInfo;
+	m_Label = "";
 }
 
 void Component::save()
@@ -29,6 +30,10 @@ string Component::get_mlabel()
 {
 	return m_Label;
 }
+void Component::SetLabel(string r_label)
+{
+	m_Label = r_label;
+}
 bool Component::IsInsideMe(int x, int y)
 {
 	if (m_GfxInfo.x1 < x && m_GfxInfo.x2 > x && m_GfxInfo.y1 < y && m_GfxInfo.y2 > y)
@@ -41,7 +46,15 @@ Component::Component()
 {}
 
 void Component::Draw(Output* pOut, bool selected)
-{}
+{
+	if (m_Label != "") 
+	{
+		GraphicsInfo GI;
+		GI.x1 = m_GfxInfo.x1 + 5;
+		GI.y1 = m_GfxInfo.y2;
+		pOut->Print(m_Label, GI);
+	}
+}
 
 Component::~Component()
 {}

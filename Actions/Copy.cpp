@@ -15,7 +15,6 @@ void Copy::Execute()
 	pManager->CheckWhichComponent(x, y, the_object);
 	pManager->set_clipboard(the_object);
 
-
 }
 
 void Copy::Undo()

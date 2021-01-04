@@ -13,6 +13,7 @@
 #include"..\Components\XNOR2.h"
 #include"..\Components\XOR2.h"
 #include"..\Components\XOR3.h"
+#include "Delete.h"
 void cut::Execute()
 {
 	ReadActionParameters();
@@ -109,7 +110,8 @@ void cut::Execute()
 		the = new Switch(*f);
 		pManager->set_clipboard(the);
 	}
-	pManager->DeleteComponent(the_object);
+	Action* act = new Delete(pManager);
+	act->Execute();
 }
 
 void cut::Undo()

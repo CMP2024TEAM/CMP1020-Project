@@ -28,6 +28,7 @@ public:
 	GraphicsInfo GetLocation();
 	void set_Location(GraphicsInfo the_new);
 	
+	void SetLabel(string);
 	void SetLocation(GraphicsInfo);
 	string get_mlabel();
 	bool IsInsideMe(int, int);

@@ -11,7 +11,6 @@
 #include "Actions/AddNORgate3.h"
 #include "Actions/AddXORgate3.h"
 #include "Actions/StartStopSimulation.h"
-#include "Actions/GetClickedComponent.h"
 #include "Actions/Arrows.h"
 #include "Actions/AddConnection.h"
 #include "Actions/AddLED.h"
@@ -21,6 +20,7 @@
 #include"Actions/Copy.h"
 #include"Actions/Cut.h"
 #include"Actions/Move.h"
+#include"Actions/AddLabel.h"
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -41,7 +41,7 @@ ApplicationManager::ApplicationManager()
 }
 void ApplicationManager::set_clipboard(Component* object)
 {
-        Clipboard =object;
+	Clipboard =object;
 }
 Component* ApplicationManager::get_clipboard()
 {
@@ -116,13 +116,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Delete(this);
 		break;
 	case Page_One:
-	{pAct = new Arrows(this, Page_One);
-	break;
-	}
+		pAct = new Arrows(this, Page_One);
+		break;
 	case Page_Two:
-	{	pAct = new Arrows(this, Page_Two);
-	break;
-	}
+		pAct = new Arrows(this, Page_Two);
+		break;
 	case ADD_CONNECTION:
 		pAct = new AddConnection(this);
 		break;
@@ -134,6 +132,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//	break;
 	case MOVE:
 		pAct = new Move(this);
+		break;
+	case ADD_Label:
+		pAct = new AddLabel(this);
 		break;
 	case UNDO:
 		this->Undo();
@@ -147,17 +148,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		this->Redo();
 		break;
 	case COPY:
-	{pAct = new Copy(this);
-	break; }
-	
+		pAct = new Copy(this);
+		break;
 	case PASTE:
-	{pAct = new Past(this);
-	break; }
+		pAct = new Past(this);
+		break; 
 	case CUT:
-	{pAct = new cut(this);
-	break; }
+		pAct = new cut(this);
+		break;
 	case EDIT:
-
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -196,17 +196,6 @@ Input* ApplicationManager::GetInput()
 Output* ApplicationManager::GetOutput()
 {
 	return OutputInterface;
-}
-////////////////////////////////////////////////////////////////////
-void ApplicationManager::GetComponentList(Component**& p, int& c)
-{
-	if (CompCount == 0)
-	{
-		p = NULL;
-		c = CompCount;
-	}
-	p = CompList;
-	c = CompCount;
 }
 ////////////////////////////////////////////////////////////////////
 //Delete Component

@@ -109,6 +109,7 @@ void Connection::Draw(Output* pOut, bool selected)
 	GInfo.y1 = Cy1 - 0.5;
 	m_GfxInfo = GInfo;
 	pOut->DrawConnection(m_GfxInfo, selected);
+	Component::Draw(pOut, selected);
 }
 
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1

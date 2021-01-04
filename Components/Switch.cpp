@@ -34,6 +34,7 @@ void Switch::Draw(Output* pOut,bool selected)
 		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
 	if (SrcPin.getStatus() == HIGH)
 		pOut->DrawSWITCHON(m_GfxInfo, selected);
+	Component::Draw(pOut, selected);
 }
 
 void Switch::save()

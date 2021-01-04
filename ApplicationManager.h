@@ -44,8 +44,7 @@ public:
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
-	void GetComponentList(Component** &, int&);
-	
+
 	void DeleteComponent(Component* pComp);
 	bool CheckWhichComponent(int, int, Component*&);
 	void SetSelectedComponent(Component*);

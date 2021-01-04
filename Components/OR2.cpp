@@ -21,6 +21,7 @@ void OR2::Operate()
 void OR2::Draw(Output* pOut,bool selected)
 {
 	pOut->DrawOR2(m_GfxInfo, selected);
+	Component::Draw(pOut, selected);
 }
 void OR2::save()
 {

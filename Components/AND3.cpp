@@ -61,14 +61,14 @@ int AND3::getm_Inputs()
 	return  m_Inputs;
 }
 
-void AND3::save(int y)
+void AND3::save()
 {
 	double cx, cy;
 	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
 	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
 	ofstream the_added_component;
 	the_added_component.open("file format.txt",ios::app);
-	the_added_component << endl << "AND3  " <<"     "<<y<< "     " <<get_mlabel()<<"     "<< cx << "     " << cy << endl;
+	the_added_component << endl << "AND3  " <<"     "<<id<< "     " <<get_mlabel()<<"     "<< cx << "     " << cy << endl;
 	the_added_component.close();
 	//Gate::save(y);
 }

@@ -15,12 +15,12 @@ void Save::save_gates(Component** y, int t)
 		Connection* p = dynamic_cast<Connection*>(y[i]);
 		if (p == NULL)
 		{
-			y[i]->save(i+1);
+			y[i]->save();
 		}
 		else
 			the_num_connections++;
 	}
-	the_added_component.close();
+	/*the_added_component.close();
 	array_connections = new Component * [the_num_connections];
 	the_gates = new Component * [t - the_num_connections];
 	int j = 0; int w = 0;
@@ -52,12 +52,13 @@ void Save::save_gates(Component** y, int t)
 				{
 					if (((Connection*)array_connections[i])->getDestPin() == the_gate->getinputpin(g))
 					{
-						the_des[j] = the_gates[k];
+
+						the_des[i] = the_gates[k];
 					}
 					else
 					{
 						if (((Connection*)array_connections[i])->getSourcePin() == the_gate->getoutputpin())
-							the_source[j] = the_gates[k];
+							the_source[i] = the_gates[k];
 					}
 				}
 			}
@@ -97,8 +98,10 @@ void Save::save_gates(Component** y, int t)
 	for (int i = 0; i < j; i++)
 	{
 		((Connection*)array_connections[i])->save(k[i], p[i], 1);
-	}
+	}*/
+
 }
+
 
 
 

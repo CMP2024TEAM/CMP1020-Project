@@ -21,13 +21,15 @@ private:
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
 	Save* the_saver;
+	Component* Clipboard;
 	Component* Selected_Comp;
 public:
 
 
 public:	
 	ApplicationManager(); //constructor
-
+	void set_clipboard(Component* object);
+	Component* get_clipboard();
 	//Reads the required action from the user and returns the corresponding action type
 	ActionType GetUserAction();
 	
@@ -52,7 +54,7 @@ public:
 	void Undo();
 	void Redo();
 	int get_compcount();
-	
+	void save();
 
 	//destructor
 	~ApplicationManager();

@@ -53,9 +53,6 @@ void AddConnection::Execute()
 	Cx2 = (GInfo.x1 + GInfo.x2) / 2;
 	Cy2 = (GInfo.y1 + GInfo.y2) / 2;
 	//Calculate the rectangle Corners
-	int Len = UI.AND2_Width;
-	int Wdth = UI.AND2_Height;
-
 	int n, j;
 	//if (isp2Gate)
 	n = p2->getm_Inputs();
@@ -73,19 +70,19 @@ void AddConnection::Execute()
 	{
 		if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))// pin 1
 		{
-			GInfo.y1 = Cy2 - 5;
+			GInfo.y2 = Cy2 - 5;
 			j = 1;
 		}
 		else if ((Cx22 < Cx2) && (Cy22 < Cy2 + 4))// pin 2
 		{
 
-			GInfo.y1 = Cy2;
+			GInfo.y2 = Cy2;
 			j = 2;
 		}
 		else if ((Cx22 < Cx2))// pin 3
 		{
 
-			GInfo.y1 = Cy2 + 4;
+			GInfo.y2 = Cy2 + 4;
 			j = 3;
 		}
 	}
@@ -93,24 +90,25 @@ void AddConnection::Execute()
 	{
 		if ((Cx22 < Cx2) && (Cy22 < Cy2)) //pin 1
 		{
-			GInfo.y1 = Cy2 - 4.5;
+			GInfo.y2 = Cy2 - 4.5;
 			j = 1;
 		}
 		else if ((Cx22 < Cx2) && (Cy22 > Cy2)) // pin 2
 		{
-			GInfo.y1 = Cy2 + 4.5;
+			GInfo.y2 = Cy2 + 4.5;
 			j = 2;
 		}
 	}
 	if (n == 1)
 	{
-		GInfo.y1 = Cy2;
+		GInfo.y2 = Cy2;
 		j = 1;
 	}
 	if (n == 0)
 	{
-		GInfo.y1 = Cy2 + 25;
+		GInfo.y2 = Cy2 + 25;
 		Cx2 += 10;
+		j = 1;
 	}
 	Gate* gate2 = dynamic_cast<Gate*>(p2);
 	if (gate2 != NULL)
@@ -124,14 +122,13 @@ void AddConnection::Execute()
 	}
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
-	GInfo.y2 = Cy1-0.5;
-	int yyy = GInfo.y1;
-	GInfo.y1 = Cy1 - 0.5;
-	GInfo.y2 = yyy;
+	GInfo.y1 = Cy1-0.5;
 	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
 	if (SrcPin->ConnectTo(pA))
 	{
 		pManager->AddComponent(pA);
+		pA->setDestCmpnt(p2, n /*number of inputs*/,j /*pin number*/);
+		pA->setSourceCmpnt(p1);
 	}
 	else
 	{
@@ -141,10 +138,7 @@ void AddConnection::Execute()
 	}
 }
 
-void AddConnection::save()
-{
 
-}
 void AddConnection::Undo()
 {}
 

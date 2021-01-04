@@ -36,14 +36,14 @@ void Switch::Draw(Output* pOut,bool selected)
 		pOut->DrawSWITCHON(m_GfxInfo, selected);
 }
 
-void Switch::save(int y)
+void Switch::save()
 {
 	double Cx, Cy;
 	Cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
 	Cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
 	ofstream the_added_component;
 	the_added_component.open("file format.txt",ios::app);
-	the_added_component << endl << "switch"  << "     " << y << "     " << get_mlabel() << "     " << Cx << "     " << Cy << "     " << endl;
+	the_added_component << endl << "switch"  << "     " << id << "     " << get_mlabel() << "     " << Cx << "     " << Cy << "     " << endl;
 	the_added_component.close();
 }
 

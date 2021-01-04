@@ -25,8 +25,9 @@ public:
 	virtual int getm_Inputs();
 	InputPin* getinputpin(int n);
 	OutputPin* getoutputpin();
-	 virtual void save(int y);
-
+	 virtual void save();
+	
+	 
 };
 
 #endif

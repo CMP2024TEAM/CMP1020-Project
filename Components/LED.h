@@ -15,7 +15,7 @@ public:
 	void Draw(Output* pOut,bool selected);
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
-	void save(int y);
+	void save();
 	InputPin* getinputpin();
 };
 #endif

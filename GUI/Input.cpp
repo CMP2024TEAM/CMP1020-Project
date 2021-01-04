@@ -61,7 +61,7 @@ ActionType Input::GetUserAction(int Page) const
 	{
 		y -= 80;
 		int ClickedItemOrder = -1;
-		for (int i = 0; i <= 7; i++) {
+		for (int i = 0; i <= 8; i++) {
 			if (y > (i * 45 + 40 * i) && y < (i * 45 + 40 * (i + 1))) {
 				ClickedItemOrder = i;
 				break;
@@ -70,7 +70,7 @@ ActionType Input::GetUserAction(int Page) const
 		// Items on the right
 		if (x > 940)
 		{
-			ClickedItemOrder += 6;
+			ClickedItemOrder += 7;
 			switch (ClickedItemOrder)
 			{
 			case ITM_STOP: return DSN_MODE;
@@ -79,6 +79,7 @@ ActionType Input::GetUserAction(int Page) const
 			case ITM_Move: return MOVE;
 			case ITM_Label: return ADD_Label;
 			case ITM_Paste: return PASTE;
+			case ITM_Edit: return EDIT;
 			default: return COMMON_BAR;
 			}
 		}
@@ -93,6 +94,7 @@ ActionType Input::GetUserAction(int Page) const
 			case ITM_Select: return START_SELECT;
 			case ITM_Delete: return DEL;
 			case ITM_Copy:return COPY;
+			case ITM_Cut:return CUT;
 			default: return COMMON_BAR;
 			}
 		}

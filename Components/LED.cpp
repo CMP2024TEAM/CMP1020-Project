@@ -46,14 +46,14 @@ int LED::getm_Inputs()
 {
 	return  0;
 }
-void LED::save(int y)
+void LED::save()
 {
 	double cx, cy;
 	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
 	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "LED   " << "     " << y << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component << endl << "LED   " << "     " << id << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
 	the_added_component.close();
 }
 InputPin* LED::getinputpin()

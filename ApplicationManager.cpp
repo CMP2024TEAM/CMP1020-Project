@@ -18,6 +18,8 @@
 #include "Actions/Add_Switch.h"
 #include"Actions/Select.h"
 #include"Actions/Delete.h"
+#include"Actions/Copy.h"
+#include"Actions/Cut.h"
 #include"Actions/Move.h"
 #include<iostream>
 #include<fstream>
@@ -36,6 +38,14 @@ ApplicationManager::ApplicationManager()
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
 	Selected_Comp = NULL;
+}
+void ApplicationManager::set_clipboard(Component* object)
+{
+        Clipboard =object;
+}
+Component* ApplicationManager::get_clipboard()
+{
+	return Clipboard;
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
@@ -106,11 +116,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Delete(this);
 		break;
 	case Page_One:
-		pAct = new Arrows(this, Page_One);
-		break;
+	{pAct = new Arrows(this, Page_One);
+	break;
+	}
 	case Page_Two:
-		pAct = new Arrows(this, Page_Two);
-		break;
+	{	pAct = new Arrows(this, Page_Two);
+	break;
+	}
 	case ADD_CONNECTION:
 		pAct = new AddConnection(this);
 		break;
@@ -134,6 +146,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case REDO:
 		this->Redo();
 		break;
+	case COPY:
+	{pAct = new Copy(this);
+	break; }
+	
+	case PASTE:
+	{pAct = new Past(this);
+	break; }
+	case CUT:
+	{pAct = new cut(this);
+	break; }
+	case EDIT:
 
 	case EXIT:
 		///TODO: create ExitAction here
@@ -145,6 +168,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;
 		pAct = NULL;
 	}
+	
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -212,6 +236,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 			CompList[i] = CompList[CompCount - 1];
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
+			
 		}
 	}
 	UpdateInterface();
@@ -266,6 +291,14 @@ void ApplicationManager::Redo()
 int ApplicationManager::get_compcount()
 {
 	return CompCount;
+}
+
+void ApplicationManager::save()
+{
+	for (int i = 0; i < CompCount; i++)
+		if (CompList[i] != NULL)
+			CompList[i]->save();
+
 }
 
 

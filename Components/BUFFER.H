@@ -10,7 +10,7 @@ public:
 
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual int GetInputPinStatus(int n);	//returns status of Inputpin  if SWITCH, return -1
-	void save(int y);
+	void save();
 	virtual void setInputPinStatus(int n ,STATUS s);	//set status of Inputpin , to be used by connection class.
 	virtual int getm_Inputs();
 };

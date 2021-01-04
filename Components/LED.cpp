@@ -32,6 +32,7 @@ void LED::setInputPinStatus(int n, STATUS s)
 
 void LED::Draw(Output* pOut,bool selected)
 {
+	the_status = pOut;
 	if (the_output.getStatus() == 1)
 		pOut->DrawLEDON(m_GfxInfo,selected);
 	else

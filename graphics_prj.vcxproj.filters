@@ -252,6 +252,9 @@
     <ClCompile Include="Actions\cut.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\Operate.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\AddLabel.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -458,9 +461,6 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Move.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\AddLabel.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

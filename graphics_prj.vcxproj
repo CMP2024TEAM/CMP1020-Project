@@ -149,6 +149,7 @@
     <ClCompile Include="Actions\Delete.cpp" />
     <ClCompile Include="Actions\GetClickedComponent.cpp" />
     <ClCompile Include="Actions\Move.cpp" />
+    <ClCompile Include="Actions\Operate.cpp" />
     <ClCompile Include="Actions\Past.cpp" />
     <ClCompile Include="Actions\SAVE.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="Actions\cut.h" />
     <ClInclude Include="Actions\GetClickedComponent.h" />
     <ClInclude Include="Actions\Move.h" />
+    <ClInclude Include="Actions\Operate.h" />
     <ClInclude Include="Actions\Past.h" />
     <ClInclude Include="Actions\SAVE.h" />
     <ClInclude Include="Actions\Select.h" />

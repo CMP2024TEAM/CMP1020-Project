@@ -20,6 +20,7 @@ void NAND2::Operate()
 void NAND2::Draw(Output* pOut,bool selected)
 {
 	pOut->DrawNAND2(m_GfxInfo,selected);
+	Component::Draw(pOut, selected);
 }
 /////////////////GEToutpinstatus////////////////////////
 int NAND2::GetOutPinStatus()

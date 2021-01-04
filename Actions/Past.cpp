@@ -1,18 +1,18 @@
 #include "Past.h"
 #include "..\ApplicationManager.h"
-#include"..\Components\AND2.h"
-#include"..\Components\AND3.h"
-#include"..\Components\BUFFER.H"
-#include"..\Components\LED.h"
-#include"..\Components\NAND2.h"
-#include"..\Components\NOR2.h"
-#include"..\Components\NOR3.h"
-#include"..\Components\NOT.h"
-#include"..\Components\OR2.h"
-#include"..\Components\Switch.h"
-#include"..\Components\XNOR2.h"
-#include"..\Components\XOR2.h"
-#include"..\Components\XOR3.h"
+#include "..\Components\AND2.h"
+#include "..\Components\AND3.h"
+#include "..\Components\BUFFER.H"
+#include "..\Components\LED.h"
+#include "..\Components\NAND2.h"
+#include "..\Components\NOR2.h"
+#include "..\Components\NOR3.h"
+#include "..\Components\NOT.h"
+#include "..\Components\OR2.h"
+#include "..\Components\Switch.h"
+#include "..\Components\XNOR2.h"
+#include "..\Components\XOR2.h"
+#include "..\Components\XOR3.h"
 void Past::Execute()
 {
 	Output* pOut = pManager->GetOutput();
@@ -29,7 +29,6 @@ void Past::Execute()
 	AND2* the_saver = dynamic_cast<AND2*>(object);
 	if (the_saver != NULL)
 	{
-		
 		AND2* the;
 		the = new AND2( *the_saver);
 		the->set_Location(GInfo);
@@ -39,7 +38,6 @@ void Past::Execute()
 	AND3* t = dynamic_cast<AND3*>(object);
 	if (t != NULL)
 	{
-		
 		AND3* the;
 		the = new AND3(*t);
 		the->set_Location(GInfo);

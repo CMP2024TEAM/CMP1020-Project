@@ -131,6 +131,7 @@
     <ClCompile Include="Actions\AddANDgate3.cpp" />
     <ClCompile Include="Actions\AddBUFFERgate.cpp" />
     <ClCompile Include="Actions\AddConnection.cpp" />
+    <ClCompile Include="Actions\AddLabel.cpp" />
     <ClCompile Include="Actions\AddLED.cpp" />
     <ClCompile Include="Actions\AddNANDgate2.cpp" />
     <ClCompile Include="Actions\AddNORgate2.cpp" />
@@ -147,7 +148,6 @@
     <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\cut.cpp" />
     <ClCompile Include="Actions\Delete.cpp" />
-    <ClCompile Include="Actions\GetClickedComponent.cpp" />
     <ClCompile Include="Actions\Move.cpp" />
     <ClCompile Include="Actions\Operate.cpp" />
     <ClCompile Include="Actions\Past.cpp" />
@@ -220,6 +220,7 @@
     <ClInclude Include="Actions\AddANDgate3.h" />
     <ClInclude Include="Actions\AddBUFFERgate.h" />
     <ClInclude Include="Actions\AddConnection.h" />
+    <ClInclude Include="Actions\AddLabel.h" />
     <ClInclude Include="Actions\AddLED.h" />
     <ClInclude Include="Actions\AddNANDgate2.h" />
     <ClInclude Include="Actions\AddNORgate2.h" />
@@ -234,7 +235,6 @@
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
     <ClInclude Include="Actions\cut.h" />
-    <ClInclude Include="Actions\GetClickedComponent.h" />
     <ClInclude Include="Actions\Move.h" />
     <ClInclude Include="Actions\Operate.h" />
     <ClInclude Include="Actions\Past.h" />

@@ -22,6 +22,7 @@ void XOR2::Operate()
 void XOR2::Draw(Output* pOut,bool selected)
 {//Call output class and pass gate drawing info to it.
 	pOut->Draw_XOR2(m_GfxInfo, selected);
+	Component::Draw(pOut, selected);
 }
 
 void XOR2::save()

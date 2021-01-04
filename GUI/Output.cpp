@@ -67,7 +67,7 @@ void Output::Print(string msg , GraphicsInfo r_GfxInfo) const
 	int MsgY = r_GfxInfo.y1;
 
 	// Print the Message
-	pWind->SetFont(50, BOLD | ITALICIZED, BY_NAME, "Arial");
+	pWind->SetFont(15, BOLD | ITALICIZED, BY_NAME, "Arial");
 	pWind->SetPen(UI.DrawColor);
 	pWind->DrawString(MsgX, MsgY, msg);
 }

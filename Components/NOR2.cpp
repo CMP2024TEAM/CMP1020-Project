@@ -21,6 +21,7 @@ void NOR2::Operate()
 void NOR2::Draw(Output* pOut,bool selected)
 {
 	pOut->DrawNOR2(m_GfxInfo,selected);
+	Component::Draw(pOut, selected);
 }
 /////////////////GEToutpinstatus////////////////////////
 int NOR2::GetOutPinStatus()

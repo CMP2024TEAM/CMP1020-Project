@@ -37,12 +37,10 @@ int XNOR2::GetInputPinStatus(int n)
 
 void XNOR2::save()
 {
-	double cx, cy;
-	cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
-	cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "XNOR2 " << "     " << id << "     " << get_mlabel() << "     " << cx << "     " << cy << endl;
+	the_added_component << endl << "XNOR2 " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 }
 

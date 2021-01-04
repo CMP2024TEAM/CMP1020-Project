@@ -20,7 +20,6 @@ private:
 	Component* RemComp[MaxCompCount];   //List of recently removed Components
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
-	Save* the_saver;
 	Component* Clipboard;
 	Component* Selected_Comp;
 public:

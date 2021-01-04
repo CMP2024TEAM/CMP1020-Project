@@ -1,7 +1,9 @@
 #include "Component.h"
-
+int Component::Countofcomp = 0;
 Component::Component(const GraphicsInfo &r_GfxInfo)
 {
+	Countofcomp++;
+	id = Countofcomp;
 	m_GfxInfo = r_GfxInfo;
 	m_Label = "";
 }
@@ -56,6 +58,13 @@ void Component::Draw(Output* pOut, bool selected)
 	}
 }
 
+int Component::GetId()
+{
+	return id;
+}
+
 Component::~Component()
-{}
+{
+	Countofcomp--;
+}
 

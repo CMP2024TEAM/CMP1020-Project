@@ -39,12 +39,10 @@ void Switch::Draw(Output* pOut,bool selected)
 
 void Switch::save()
 {
-	double Cx, Cy;
-	Cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
-	Cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
+	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt",ios::app);
-	the_added_component << endl << "switch"  << "     " << id << "     " << get_mlabel() << "     " << Cx << "     " << Cy << "     " << endl;
+	the_added_component << endl << "switch"  << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
 	the_added_component.close();
 }
 

@@ -18,3 +18,5 @@ int Lable::getm_Inputs()
 {
 	return  -1;
 }
+
+

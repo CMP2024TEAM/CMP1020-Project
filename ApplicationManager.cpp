@@ -141,8 +141,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case SAVE:
 	{
-		the_saver->save_gates(CompList,CompCount);
-		OutputInterface->PrintMsg("The circuit is saved");
+		pAct = new Save(this);
+		break;
 	}
 	case REDO:
 		this->Redo();
@@ -284,9 +284,28 @@ int ApplicationManager::get_compcount()
 
 void ApplicationManager::save()
 {
+	Connection* theconnector;
+	int thenumofconnections = theconnector->GetTheNumberOfconnection();
+	ofstream the_added_component;
+	the_added_component.open("file format.txt,ios::app");
+	the_added_component << (CompCount - thenumofconnections);
 	for (int i = 0; i < CompCount; i++)
+	{
+		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
+		if(Theconnector==NULL)
 		if (CompList[i] != NULL)
 			CompList[i]->save();
+	}
+	the_added_component << endl << "the connections";
+	for (int i = 0; i < CompCount; i++)
+	{
+		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
+		if (Theconnector != NULL)
+			Theconnector->save();
+
+	}
+	the_added_component << endl << -1;
+
 
 }
 

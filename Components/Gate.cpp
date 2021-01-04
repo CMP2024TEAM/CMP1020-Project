@@ -28,11 +28,5 @@ OutputPin* Gate::getoutputpin()
 }
 void Gate::save()
 {
-	/*ofstream the_added_component;
-	double Cx, Cy;
-	//Cx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2.0;
-	//Cy = (m_GfxInfo.y1 + m_GfxInfo.y2) / 2.0;
-	the_added_component.open("file format.txt");
-	the_added_component<<y<<"     "<<get_mlabel()<<"     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
-	the_added_component.close();*/
+	
 }

@@ -1,11 +1,16 @@
 #include "Connection.h"
 #include<fstream>
-
+int Connection:: TheNumberOfconnection = 0;
 Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin) :Component(r_GfxInfo)
 
 {
+	TheNumberOfconnection++;
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
+}
+Connection::~Connection()
+{
+	TheNumberOfconnection--;
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -112,6 +117,11 @@ void Connection::Draw(Output* pOut, bool selected)
 	Component::Draw(pOut, selected);
 }
 
+int Connection::GetTheNumberOfconnection()
+{
+	return TheNumberOfconnection;
+}
+
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
 {
 	return DstPin->getStatus();
@@ -133,11 +143,17 @@ int Connection::getm_Inputs()
 	return  0;
 }
 
-void Connection::save(int y, int t, int u)
+void Connection::save()
 {
+	int ThePinNum;
+	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
+	{
+		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)));
+		ThePinNum = i;
+	}
 	ofstream the_added_connection;
 	the_added_connection.open("file format.txt", ios::app);
-	the_added_connection << endl << y << "     " << t << "     " << u << "     " << endl;
+	the_added_connection << endl << SrcCmpnt->GetId() << "     " << DstCmpnt->GetId() << "     " << ThePinNum << "     " << endl;
 }
 
 

@@ -159,8 +159,19 @@ void Past::ReadActionParameters()
 {
 	
 	Input* pIn = pManager->GetInput();
-	
-	pIn->GetPointClicked(x, y);
+	Output* pOut = pManager->GetOutput();
+	bool inside = false;
+	do
+	{
+
+
+		pIn->GetPointClicked(x, y);
+		if ((x > 25 && x < 875) && (y > (UI.ToolBarHeight + 25) && y < (UI.height - UI.StatusBarHeight - 25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area!");
+
+	} while (!inside);
 }
 
 Past::Past(ApplicationManager* pApp):Action(pApp)

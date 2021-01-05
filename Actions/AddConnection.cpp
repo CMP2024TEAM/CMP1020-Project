@@ -5,7 +5,7 @@
 
 AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
 {
-	
+
 }
 
 AddConnection::~AddConnection(void)
@@ -21,18 +21,67 @@ void AddConnection::ReadActionParameters()
 
 	//Print Action Message
 	pOut->PrintMsg("Connection: Click on an output Pin to add the Connection");
+	bool Outpin = false;
 	do
 	{
 		pIn->GetPointClicked(Cx11, Cy11);
 		pManager->CheckWhichComponent(Cx11, Cy11, p1);
-	} while (p1 == NULL);
+		LED* L = dynamic_cast<LED*>(p1);
+
+		if (p1 != NULL)
+			if (L == NULL)
+			{
+				if (Cx11 > (p1->GetLocation().x1 + p1->GetLocation().x2) / 2)
+					Outpin = true;
+				else
+				{
+					pOut->ClearStatusBar();
+					pOut->PrintMsg("Connection: You Can Only Click on an output Pin, Click Again!");
+				}
+			}
+			else
+			{
+				pOut->ClearStatusBar();
+				pOut->PrintMsg("Connection: You Can Only Click on an output Pin, Click Again!");
+			}
+
+	} while (p1 == NULL || !Outpin);
 	pOut->ClearStatusBar();
 	pOut->PrintMsg("Connection: Click on an input Pin to add the Connection");
+	bool Inpin = false;
 	do
 	{
+
 		pIn->GetPointClicked(Cx22, Cy22);
 		pManager->CheckWhichComponent(Cx22, Cy22, p2);
-	} while (p2 == NULL);
+		LED* L = dynamic_cast<LED*>(p2);
+		Switch* S = dynamic_cast<Switch*>(p2);
+		if (L != NULL)
+			if (Cy22 < (p2->GetLocation().y1 + p2->GetLocation().y2) / 2)
+			{
+				Inpin = true;
+				break;
+			}
+			else
+			{
+				pOut->ClearStatusBar();
+				pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+			}
+		if (S == NULL)
+			if (p2 != NULL)
+				if (Cx22 < (p2->GetLocation().x1 + p2->GetLocation().x2) / 2)
+					Inpin = true;
+				else
+				{
+					pOut->ClearStatusBar();
+					pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+				}
+			else
+			{
+				pOut->ClearStatusBar();
+				pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+			}
+	} while (p2 == NULL || !Inpin);
 
 	//Wait for User Input
 
@@ -122,12 +171,12 @@ void AddConnection::Execute()
 	}
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
-	GInfo.y1 = Cy1-0.5;
+	GInfo.y1 = Cy1 - 0.5;
 	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
 	if (SrcPin->ConnectTo(pA))
 	{
 		pManager->AddComponent(pA);
-		pA->setDestCmpnt(p2, n /*number of inputs*/,j /*pin number*/);
+		pA->setDestCmpnt(p2, n /*number of inputs*/, j /*pin number*/);
 		pA->setSourceCmpnt(p1);
 	}
 	else

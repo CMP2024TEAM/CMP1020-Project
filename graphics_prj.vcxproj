@@ -235,8 +235,10 @@
     <ClInclude Include="Actions\Add_LABLE.h" />
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
+    <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\cut.h" />
     <ClInclude Include="Actions\Edit.h" />
+    <ClInclude Include="Actions\Delete.h" />
     <ClInclude Include="Actions\Move.h" />
     <ClInclude Include="Actions\Operate.h" />
     <ClInclude Include="Actions\Past.h" />

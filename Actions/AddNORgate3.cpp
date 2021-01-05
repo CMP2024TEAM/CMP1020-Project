@@ -18,7 +18,18 @@ void AddNORgate3::ReadActionParameters()
 	pOut->PrintMsg("3-Input NOR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	bool inside = false;
+	do
+	{
+
+
+		pIn->GetPointClicked(Cx, Cy);
+		if ((Cx > 25 && Cx < 875) && (Cy > (UI.ToolBarHeight + 25) && Cy < (UI.height - UI.StatusBarHeight - 25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
+
+	} while (!inside);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();

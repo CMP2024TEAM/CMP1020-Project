@@ -31,9 +31,9 @@ void Switch::Draw(Output* pOut,bool selected)
 {
 	//Call output class and pass gate drawing info to it.
 	if (SrcPin.getStatus() == LOW)
-		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
-	if (SrcPin.getStatus() == HIGH)
 		pOut->DrawSWITCHON(m_GfxInfo, selected);
+	if (SrcPin.getStatus() == HIGH)
+		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
 	DrawLabel(pOut);
 }
 

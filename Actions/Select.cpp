@@ -5,25 +5,31 @@ Select::Select( ApplicationManager* pApp) :Action(pApp)
 }
 void Select::Execute()
 {
-	ReadActionParameters();
-	Component* SelComp;
-	pManager->CheckWhichComponent(Cx, Cy, SelComp);
-	pManager->SetSelectedComponent(SelComp);
+	if (UI.AppMode == DESIGN)
+	{
+		ReadActionParameters();
+		Component* SelComp;
+		pManager->CheckWhichComponent(Cx, Cy, SelComp);
+		pManager->SetSelectedComponent(SelComp);
+	}
 }
 void Select::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	
+	
+		//Print Action Message
+		pOut->PrintMsg("Click on Component to select it");
 
-	//Print Action Message
-	pOut->PrintMsg("Click on Component to select it");
+		//Wait for User Input
+		pIn->GetPointClicked(Cx, Cy);
 
-	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
-
-	//Clear Status Bar
-	pOut->ClearStatusBar();
+		//Clear Status Bar
+		pOut->ClearStatusBar();
+	
+	
 
 }
 void Select::Redo()

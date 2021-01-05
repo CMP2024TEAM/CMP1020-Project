@@ -233,7 +233,6 @@
     <ClCompile Include="Actions\Select.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Action.cpp" />
     <ClCompile Include="Actions\SAVE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -256,6 +255,9 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\AddLabel.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Action.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -456,11 +458,25 @@
     <ClInclude Include="Actions\SAVE.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\Past.h" />
     <ClInclude Include="Actions\cut.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Move.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddLabel.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Copy.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Delete.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Operate.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\Past.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

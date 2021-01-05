@@ -135,7 +135,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Move(this,Selected_Comp);
 		break;
 	case ADD_Label:
-		pAct = new AddLabel(this);
+		pAct = new AddLabel(this,Selected_Comp);
 		break;
 	case UNDO:
 		this->Undo();

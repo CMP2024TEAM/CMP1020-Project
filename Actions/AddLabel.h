@@ -10,7 +10,7 @@ private:
 	int Cx, Cy;	
 	Component* C;
 public:
-	AddLabel(ApplicationManager* pApp);
+	AddLabel(ApplicationManager* pApp,Component*);
 	virtual ~AddLabel(void);
 
 	//Reads parameters required for action to execute

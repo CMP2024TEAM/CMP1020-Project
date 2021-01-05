@@ -1,8 +1,8 @@
 #include "AddLabel.h"
 #include "..\ApplicationManager.h"
-AddLabel::AddLabel(ApplicationManager* pApp) :Action(pApp)
+AddLabel::AddLabel(ApplicationManager* pApp,Component*SelComp) :Action(pApp)
 {
-	C = NULL;
+	C = SelComp;
 }
 
 AddLabel::~AddLabel(void)
@@ -14,7 +14,7 @@ void AddLabel::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	do
+	while (C == NULL)
 	{
 		//Print Action Message
 		pOut->PrintMsg("Click on a component to add a label to it");
@@ -27,7 +27,7 @@ void AddLabel::ReadActionParameters()
 
 		//Clear Status Bar
 		pOut->ClearStatusBar();
-	} while (C == NULL);
+	}
 }
 
 void AddLabel::Execute()

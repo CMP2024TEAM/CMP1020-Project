@@ -59,6 +59,8 @@ ActionType Input::GetUserAction(int Page) const
 	// User Click on the common toolbar 
 	if (x > 900 && y > UI.ToolBarHeight)
 	{
+		if (y > (8 * 81)&&y<UI.StatusBarHeight)
+			return EDITCONNECTION;
 		y -= 80;
 		int ClickedItemOrder = -1;
 		for (int i = 0; i <= 8; i++) {

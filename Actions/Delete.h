@@ -15,7 +15,7 @@ private:
 	int ID;
 	Component* C;
 public:
-	Delete(ApplicationManager* pApp);
+	Delete(ApplicationManager* pApp,Component*);
 	virtual ~Delete(void);
 
 	//Reads parameters required for action to execute

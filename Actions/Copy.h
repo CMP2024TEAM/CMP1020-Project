@@ -13,6 +13,6 @@ public:
     void Undo();
     void Redo();
     void ReadActionParameters();
-    Copy(ApplicationManager* pApp);
+    Copy(ApplicationManager* pApp,Component*);
 };
 

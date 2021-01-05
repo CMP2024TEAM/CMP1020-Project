@@ -1,8 +1,8 @@
 #include "Move.h"
 #include "..\ApplicationManager.h"
-Move::Move(ApplicationManager* pApp) :Action(pApp)
+Move::Move(ApplicationManager* pApp,Component*SelComp) :Action(pApp)
 {
-	C = NULL;
+	C = SelComp;
 }
 
 Move::~Move(void)
@@ -14,7 +14,7 @@ void Move::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	do
+	while (C == NULL)
 	{
 		//Print Action Message
 		pOut->PrintMsg("Click on a component to move it");
@@ -33,7 +33,7 @@ void Move::ReadActionParameters()
 		{
 			C = NULL;
 		}
-	} while (C == NULL);
+	} 
 	//Print Action Message
 	pOut->PrintMsg("Click on The New Location of The Selected Component");
 	//Wait for User Input

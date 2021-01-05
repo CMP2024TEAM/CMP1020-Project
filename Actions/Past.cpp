@@ -175,5 +175,5 @@ void Past::ReadActionParameters()
 }
 
 Past::Past(ApplicationManager* pApp):Action(pApp)
-{
+{	
 }

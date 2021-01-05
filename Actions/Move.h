@@ -12,7 +12,7 @@ private:
 	int Cx2, Cy2;
 	Component* C;
 public:
-	Move(ApplicationManager* pApp);
+	Move(ApplicationManager* pApp,Component*);
 	virtual ~Move(void);
 
 	//Reads parameters required for action to execute

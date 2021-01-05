@@ -1,8 +1,8 @@
 #include "Delete.h"
 #include "..\ApplicationManager.h"
-Delete::Delete(ApplicationManager* pApp) :Action(pApp)
+Delete::Delete(ApplicationManager* pApp,Component* SelComp) :Action(pApp)
 {
-	C = NULL;
+	C = SelComp;
 }
 
 Delete::~Delete(void)
@@ -14,7 +14,7 @@ void Delete::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	do
+while(C==NULL)
 	{
 		//Print Action Message
 		pOut->PrintMsg("Click on a component to delete it");
@@ -27,7 +27,7 @@ void Delete::ReadActionParameters()
 
 		//Clear Status Bar
 		pOut->ClearStatusBar();
-	} while (C == NULL);
+	} 
 }
 
 void Delete::Execute()

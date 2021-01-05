@@ -1,8 +1,8 @@
 #include "Edit.h"
 #include "..\ApplicationManager.h"
-Edit::Edit(ApplicationManager* pApp) :Action(pApp)
+Edit::Edit(ApplicationManager* pApp,Component* SelComp) :Action(pApp)
 {
-	C = NULL;
+	C = SelComp;
 }
 
 Edit::~Edit(void)

@@ -12,6 +12,6 @@ public:
     void Undo();
     void Redo();
     void ReadActionParameters();
-    cut(ApplicationManager* pApp);
+    cut(ApplicationManager* pApp,Component*);
 };
 

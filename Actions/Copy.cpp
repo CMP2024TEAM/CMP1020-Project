@@ -11,8 +11,11 @@ void Copy::ReadActionParameters()
 }
 void Copy::Execute()
 {
-	ReadActionParameters();
-	pManager->CheckWhichComponent(x, y, the_object);
+	if (the_object == NULL)
+	{
+		ReadActionParameters();
+		pManager->CheckWhichComponent(x, y, the_object);
+	}
 	pManager->set_clipboard(the_object);
 
 }
@@ -27,6 +30,7 @@ void Copy::Redo()
 
 
 
-Copy::Copy(ApplicationManager* pApp):Action(pApp)
+Copy::Copy(ApplicationManager* pApp,Component* Selcomp):Action(pApp)
 {
+	the_object = Selcomp;
 }

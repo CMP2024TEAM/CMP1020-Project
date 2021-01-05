@@ -114,7 +114,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new StartStopSimulation(this, SIM_MODE);
 		break;
 	case DEL:
-		pAct = new Delete(this);
+		pAct = new Delete(this,Selected_Comp);
 		break;
 	case Page_One:
 		pAct = new Arrows(this, Page_One);
@@ -128,11 +128,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new Select(this);
 		break;
-	//case START_SELECT:
-	//	OutputInterface->PrintMsg("Start Select");
-	//	break;
+	case START_SELECT:
+		OutputInterface->PrintMsg("Start Select");
+		return;
 	case MOVE:
-		pAct = new Move(this);
+		pAct = new Move(this,Selected_Comp);
 		break;
 	case ADD_Label:
 		pAct = new AddLabel(this);
@@ -147,16 +147,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		this->Redo();
 		break;
 	case COPY:
-		pAct = new Copy(this);
+		pAct = new Copy(this,Selected_Comp);
 		break;
 	case PASTE:
 		pAct = new Past(this);
 		break; 
 	case CUT:
-		pAct = new cut(this);
+		pAct = new cut(this,Selected_Comp);
 		break;
 	case EDIT:
-		pAct = new Edit(this);
+		pAct = new Edit(this,Selected_Comp);
 		break;
 	case EXIT:
 		///TODO: create ExitAction here
@@ -319,12 +319,10 @@ bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 			return true;
 		}
 	}
-	/*
-	if (Click Is On Start Select)
+	if (x<940&&x>900&&y<380&&y>340)
 	{
 		return false;
 	}
-	*/
 	c = NULL;
 	return true;
 }

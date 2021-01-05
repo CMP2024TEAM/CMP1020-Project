@@ -16,8 +16,11 @@
 #include "Delete.h"
 void cut::Execute()
 {
+	if (the_object == NULL)
+	{
 	ReadActionParameters();
 	pManager->CheckWhichComponent(x, y, the_object);
+    }
 	
 	AND2* the_saver = dynamic_cast<AND2*>(the_object);
 	if (the_saver != NULL)
@@ -110,7 +113,7 @@ void cut::Execute()
 		the = new Switch(*f);
 		pManager->set_clipboard(the);
 	}
-	Action* act = new Delete(pManager);
+	Action* act = new Delete(pManager,the_object);
 	act->Execute();
 }
 
@@ -130,6 +133,7 @@ void cut::ReadActionParameters()
 	pIn->GetPointClicked(x, y);
 }
 
-cut::cut(ApplicationManager* pApp):Action(pApp)
+cut::cut(ApplicationManager* pApp,Component* SelComp):Action(pApp)
 {
+	the_object = SelComp;
 }

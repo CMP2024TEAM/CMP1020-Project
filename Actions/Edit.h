@@ -10,7 +10,7 @@ private:
 	int Cx, Cy;
 	Component* C;
 public:
-	Edit(ApplicationManager* pApp);
+	Edit(ApplicationManager* pApp,Component*);
 	virtual ~Edit(void);
 
 	//Reads parameters required for action to execute

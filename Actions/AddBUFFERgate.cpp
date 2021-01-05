@@ -2,7 +2,7 @@
 #include "..\ApplicationManager.h"
 AddBUFFERgate::AddBUFFERgate(ApplicationManager* pApp) :Action(pApp)
 {
-	
+	Cancel = 0;
 }
 
 AddBUFFERgate::~AddBUFFERgate(void)
@@ -28,7 +28,12 @@ void AddBUFFERgate::ReadActionParameters()
 			inside = true;
 		else
 			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
-
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 	} while (!inside);
 
 	//Clear Status Bar
@@ -38,7 +43,8 @@ void AddBUFFERgate::ReadActionParameters()
 void AddBUFFERgate::Execute()
 {//Get Center point of the Gate
 	ReadActionParameters();
-
+	if (Cancel == 1)
+		return;
 	//Calculate the rectangle Corners
 	int Len = UI.BUFFER_Width;
 	int Wdth = UI.BUFFER_Height;

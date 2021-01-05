@@ -6,6 +6,12 @@ void Copy::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 	pOut->PrintMsg("click on the component that you want to copy it ");
 	pIn->GetPointClicked(x, y);
+	if (pManager->CheckWhichComponent(x,y) == 0)
+	{
+		Cancel = 1;
+		pOut->ClearStatusBar();
+		return;
+	}
 	pOut->ClearStatusBar();
 	
 }
@@ -14,6 +20,8 @@ void Copy::Execute()
 	if (the_object == NULL)
 	{
 		ReadActionParameters();
+		if (Cancel == 1)
+			return;
 		pManager->CheckWhichComponent(x, y, the_object);
 	}
 	pManager->set_clipboard(the_object);
@@ -33,4 +41,5 @@ void Copy::Redo()
 Copy::Copy(ApplicationManager* pApp,Component* Selcomp):Action(pApp)
 {
 	the_object = Selcomp;
+	Cancel = 0;
 }

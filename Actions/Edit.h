@@ -9,6 +9,7 @@ class Edit : public Action
 private:
 	int Cx, Cy;
 	Component* C;
+	bool Cancel;
 public:
 	Edit(ApplicationManager* pApp,Component*);
 	virtual ~Edit(void);

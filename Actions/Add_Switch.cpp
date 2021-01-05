@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 Add_Switch::Add_Switch(ApplicationManager* pApp) :Action(pApp)
 {
+	Cancel = 0;
 }
 
 Add_Switch::~Add_Switch(void)
@@ -28,7 +29,12 @@ void Add_Switch::ReadActionParameters()
 			inside = true;
 		else
 			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
-
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 	} while (!inside);
 
 	//Clear Status Bar
@@ -39,7 +45,8 @@ void Add_Switch::ReadActionParameters()
 void Add_Switch::Execute()
 {//Get Center point of the switch
 	ReadActionParameters();
-
+	if (Cancel == 1)
+		return;
 	//Calculate the rectangle Corners
 	int Len = UI.Swtich_Width;
 	int Wdth = UI.Swtich_Height;

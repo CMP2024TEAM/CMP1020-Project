@@ -14,6 +14,7 @@ private:
 	int Cx, Cy;	//Center point of the gate
 	int ID;
 	Component* C;
+	bool Cancel;
 public:
 	Delete(ApplicationManager* pApp,Component*);
 	virtual ~Delete(void);

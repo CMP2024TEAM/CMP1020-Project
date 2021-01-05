@@ -139,7 +139,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		}
 	case START_SELECT:
 		OutputInterface->PrintMsg("Start Select");
-		return;
+		break;
 	case MOVE:
 		pAct = new Move(this, Selected_Comp);
 		break;
@@ -325,7 +325,12 @@ void ApplicationManager::save()
 	the_added_component << endl << -1;
 
 }
-
+bool ApplicationManager::CheckWhichComponent(int x, int y)
+{
+	if (x < 940 && x>900 && y < 380 && y>340)
+		return false;
+	return true;
+}
 
 bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 {

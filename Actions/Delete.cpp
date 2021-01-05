@@ -3,6 +3,7 @@
 Delete::Delete(ApplicationManager* pApp,Component* SelComp) :Action(pApp)
 {
 	C = SelComp;
+	Cancel = 0;
 }
 
 Delete::~Delete(void)
@@ -23,7 +24,12 @@ while(C==NULL)
 		pIn->GetPointClicked(Cx, Cy);
 
 		//Ask Application manager if click if on component
-		pManager->CheckWhichComponent(Cx, Cy, C);
+		if (pManager->CheckWhichComponent(Cx, Cy, C) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 
 		//Clear Status Bar
 		pOut->ClearStatusBar();
@@ -34,6 +40,8 @@ void Delete::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	string type;
 	Switch* s = dynamic_cast<Switch*>(C);
 	if (s != NULL)

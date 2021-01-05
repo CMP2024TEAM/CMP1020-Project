@@ -9,6 +9,7 @@ class AddLabel : public Action
 private:
 	int Cx, Cy;	
 	Component* C;
+	bool Cancel;
 public:
 	AddLabel(ApplicationManager* pApp,Component*);
 	virtual ~AddLabel(void);

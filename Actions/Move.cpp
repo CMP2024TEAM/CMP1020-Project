@@ -3,6 +3,7 @@
 Move::Move(ApplicationManager* pApp,Component*SelComp) :Action(pApp)
 {
 	C = SelComp;
+	Cancel = 0;
 }
 
 Move::~Move(void)
@@ -21,6 +22,12 @@ void Move::ReadActionParameters()
 
 		//Wait for User Input
 		pIn->GetPointClicked(Cx, Cy);
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 
 		//Ask Application manager if click if on component
 		pManager->CheckWhichComponent(Cx, Cy, C);
@@ -55,6 +62,8 @@ void Move::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	GraphicsInfo GInfo;
 	GInfo.x1 = Cx2 - 50 / 2;
 	GInfo.x2 = Cx2 + 50 / 2;

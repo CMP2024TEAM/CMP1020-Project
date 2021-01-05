@@ -8,6 +8,7 @@ private:
 	//Parameters for rectangular area to be occupied by the switch9
 	int Cx, Cy;	//Center point of the swtich
 	int x1, y1, x2, y2;	//Two corners of the rectangluar area
+	bool Cancel;
 public:
 	AddSwitch(ApplicationManager* pApp);
 	virtual ~AddSwitch(void);

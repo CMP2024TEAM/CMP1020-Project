@@ -19,6 +19,8 @@ void cut::Execute()
 	if (the_object == NULL)
 	{
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	pManager->CheckWhichComponent(x, y, the_object);
     }
 	
@@ -136,4 +138,5 @@ void cut::ReadActionParameters()
 cut::cut(ApplicationManager* pApp,Component* SelComp):Action(pApp)
 {
 	the_object = SelComp;
+	Cancel = 0;
 }

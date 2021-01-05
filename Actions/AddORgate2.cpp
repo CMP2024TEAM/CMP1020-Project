@@ -2,6 +2,7 @@
 #include"..\ApplicationManager.h"
 AddORgate2::AddORgate2(ApplicationManager* pApp) :Action(pApp)
 {
+	Cancel = 0;
 }
 
 AddORgate2::~AddORgate2(void)
@@ -24,6 +25,12 @@ void AddORgate2::ReadActionParameters()
 
 
 		pIn->GetPointClicked(Cx, Cy);
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 		if ((Cx > 25 && Cx < 875) && (Cy > (UI.ToolBarHeight + 25) && Cy < (UI.height - UI.StatusBarHeight - 25)))
 			inside = true;
 		else
@@ -40,7 +47,8 @@ void AddORgate2::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	if (Cancel == 1)
+		return;
 	//Calculate the rectangle Corners
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;

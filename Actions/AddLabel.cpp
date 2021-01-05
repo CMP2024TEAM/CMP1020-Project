@@ -3,6 +3,7 @@
 AddLabel::AddLabel(ApplicationManager* pApp,Component*SelComp) :Action(pApp)
 {
 	C = SelComp;
+	Cancel = 0;
 }
 
 AddLabel::~AddLabel(void)
@@ -23,8 +24,12 @@ void AddLabel::ReadActionParameters()
 		pIn->GetPointClicked(Cx, Cy);
 
 		//Ask Application manager if click if on component
-		pManager->CheckWhichComponent(Cx, Cy, C);
-
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 		//Clear Status Bar
 		pOut->ClearStatusBar();
 	}
@@ -33,6 +38,8 @@ void AddLabel::ReadActionParameters()
 void AddLabel::Execute()
 {
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	string s;

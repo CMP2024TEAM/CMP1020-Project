@@ -5,7 +5,7 @@
 
 AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
 {
-
+	Cancel = 0;
 }
 
 AddConnection::~AddConnection(void)
@@ -25,7 +25,12 @@ void AddConnection::ReadActionParameters()
 	do
 	{
 		pIn->GetPointClicked(Cx11, Cy11);
-		pManager->CheckWhichComponent(Cx11, Cy11, p1);
+		if (pManager->CheckWhichComponent(Cx11, Cy11,p1) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 		LED* L = dynamic_cast<LED*>(p1);
 
 		if (p1 != NULL)
@@ -53,7 +58,12 @@ void AddConnection::ReadActionParameters()
 	{
 
 		pIn->GetPointClicked(Cx22, Cy22);
-		pManager->CheckWhichComponent(Cx22, Cy22, p2);
+		if (pManager->CheckWhichComponent(Cx22, Cy22,p2) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 		LED* L = dynamic_cast<LED*>(p2);
 		Switch* S = dynamic_cast<Switch*>(p2);
 		if (L != NULL)
@@ -92,9 +102,12 @@ void AddConnection::ReadActionParameters()
 
 void AddConnection::Execute()
 {
+
 	GraphicsInfo GInfo;
 	//Get Center point of the Gate
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	GInfo = p1->GetLocation();//get gfxinfo
 	Cx1 = (GInfo.x1 + GInfo.x2) / 2;
 	Cy1 = (GInfo.y1 + GInfo.y2) / 2;

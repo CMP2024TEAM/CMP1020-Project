@@ -21,6 +21,7 @@
 #include"Actions/Cut.h"
 #include"Actions/Move.h"
 #include"Actions/AddLabel.h"
+#include"Actions/Edit.h"
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -140,10 +141,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		this->Undo();
 		break;
 	case SAVE:
-	{
 		pAct = new Save(this);
 		break;
-	}
 	case REDO:
 		this->Redo();
 		break;
@@ -157,6 +156,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new cut(this);
 		break;
 	case EDIT:
+		pAct = new Edit(this);
 		break;
 	case EXIT:
 		///TODO: create ExitAction here
@@ -305,7 +305,6 @@ void ApplicationManager::save()
 
 	}
 	the_added_component << endl << -1;
-
 
 }
 

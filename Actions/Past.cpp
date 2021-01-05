@@ -17,7 +17,7 @@ void Past::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Component* object=pManager->get_clipboard();
-	pOut->PrintMsg("click to any point to add the component");
+	pOut->PrintMsg("click on any point to add the component");
 	ReadActionParameters();
 	if (Cancel == 1)
 		return;

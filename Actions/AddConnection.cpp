@@ -175,7 +175,7 @@ void AddConnection::Execute()
 	Gate* gate2 = dynamic_cast<Gate*>(p2);
 	if (gate2 != NULL)
 	{
-		DstPin = gate2->getinputpin(j);
+		DstPin = gate2->getinputpin(j-1);
 	}
 	LED* Led = dynamic_cast<LED*>(p2);
 	if (Led != NULL)

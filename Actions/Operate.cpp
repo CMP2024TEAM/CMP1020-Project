@@ -25,8 +25,6 @@ void Operate::Execute()// not to be virtual
 	Component** p = new Component * [n];
 	do
 	{
-
-
 		for (int i = 0; i < n; i++)
 		{
 			co[i]->Operate();

@@ -1,16 +1,15 @@
-#include "Move.h"
+#include "EditConnection.h"
 #include "..\ApplicationManager.h"
-Move::Move(ApplicationManager* pApp,Component*SelComp) :Action(pApp)
+EditConnection::EditConnection(ApplicationManager* pApp, Component* SelComp) :Action(pApp)
 {
 	C = SelComp;
-	Cancel = 0;
 }
 
-Move::~Move(void)
+EditConnection::~EditConnection(void)
 {
 }
 
-void Move::ReadActionParameters()
+void EditConnection::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
@@ -22,12 +21,6 @@ void Move::ReadActionParameters()
 
 		//Wait for User Input
 		pIn->GetPointClicked(Cx, Cy);
-		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
-		{
-			Cancel = 1;
-			pOut->ClearStatusBar();
-			return;
-		}
 
 		//Ask Application manager if click if on component
 		pManager->CheckWhichComponent(Cx, Cy, C);
@@ -40,15 +33,17 @@ void Move::ReadActionParameters()
 		{
 			C = NULL;
 		}
-	} 
+	}
 	//Print Action Message
 	pOut->PrintMsg("Click on The New Location of The Selected Component");
 	//Wait for User Input
 	bool inside = false;
 	do
 	{
+
+
 		pIn->GetPointClicked(Cx2, Cy2);
-		if ((Cx2 > 25 && Cx2 < 875) && (Cy2 > (UI.ToolBarHeight+25) && Cy2 < (UI.height - UI.StatusBarHeight-25)))
+		if ((Cx2 > 25 && Cx2 < 875) && (Cy2 > (UI.ToolBarHeight + 25) && Cy2 < (UI.height - UI.StatusBarHeight - 25)))
 			inside = true;
 		else
 			pOut->PrintMsg("You Can Only Draw Inside Drawing Area!");
@@ -58,12 +53,10 @@ void Move::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void Move::Execute()
+void EditConnection::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-	if (Cancel == 1)
-		return;
 	GraphicsInfo GInfo;
 	GInfo.x1 = Cx2 - 50 / 2;
 	GInfo.x2 = Cx2 + 50 / 2;
@@ -72,9 +65,10 @@ void Move::Execute()
 	C->SetLocation(GInfo);
 }
 
-void Move::Undo()
+void EditConnection::Undo()
 {}
 
-void Move::Redo()
+void EditConnection::Redo()
 {}
+
 

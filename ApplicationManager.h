@@ -6,7 +6,9 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
-#include"Actions\Save.h"
+#include "Actions\Save.h"
+#include ".\Components\OutputPin.h"
+#include ".\Components\InputPin.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {

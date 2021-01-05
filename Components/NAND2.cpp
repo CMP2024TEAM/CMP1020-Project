@@ -14,7 +14,10 @@ NAND2::NAND2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 /// //////////////Operate////////////////////////////
 void NAND2::Operate()
 {
-	//m_OutputPin = GetInputPinStatus(1) && GetInputPinStatus(2);
+	if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH)
+		m_OutputPin.setStatus(LOW);
+	else
+		m_OutputPin.setStatus(HIGH);
 }
 /////////////////Draw Function////////////////////////
 void NAND2::Draw(Output* pOut,bool selected)

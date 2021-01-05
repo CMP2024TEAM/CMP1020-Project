@@ -36,10 +36,19 @@ void Move::ReadActionParameters()
 	} while (C == NULL);
 	//Print Action Message
 	pOut->PrintMsg("Click on The New Location of The Selected Component");
-
 	//Wait for User Input
-	pIn->GetPointClicked(Cx2, Cy2);
+	bool inside = false;
+	do
+	{
 
+
+		pIn->GetPointClicked(Cx2, Cy2);
+		if ((Cx2 > 25 && Cx2 < 875) && (Cy2 > (UI.ToolBarHeight+25) && Cy2 < (UI.height - UI.StatusBarHeight-25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area!");
+
+	} while (!inside);
 	//Clear Status Bar
 	pOut->ClearStatusBar();
 }

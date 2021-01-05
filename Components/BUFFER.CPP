@@ -22,7 +22,7 @@ void BUFFER::Operate()
 void BUFFER::Draw(Output* pOut,bool selected)
 {
 	pOut->Draw_BUFFER(m_GfxInfo,selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
 
 int BUFFER::GetOutPinStatus()

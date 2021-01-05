@@ -34,7 +34,7 @@ void Switch::Draw(Output* pOut,bool selected)
 		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
 	if (SrcPin.getStatus() == HIGH)
 		pOut->DrawSWITCHON(m_GfxInfo, selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
 
 void Switch::save()
@@ -51,7 +51,16 @@ int Switch::GetOutPinStatus()
 {
 	return SrcPin.getStatus();
 }
-
+void Switch::DrawLabel(Output* pOut)
+{
+	if (this->GetLabel() != "")
+	{
+		GraphicsInfo GI;
+		GI.x1 = m_GfxInfo.x1 + 5;
+		GI.y1 = m_GfxInfo.y2 - 5;
+		pOut->Print(this->GetLabel(), GI);
+	}
+}
 
 //returns status of Inputpin #n
 int Switch::GetInputPinStatus(int n )

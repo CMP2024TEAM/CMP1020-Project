@@ -114,9 +114,18 @@ void Connection::Draw(Output* pOut, bool selected)
 	GInfo.y1 = Cy1 - 0.5;
 	m_GfxInfo = GInfo;
 	pOut->DrawConnection(m_GfxInfo, selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
-
+void Connection::DrawLabel(Output* pOut)
+{
+	if (this->GetLabel() != "")
+	{
+		GraphicsInfo GI;
+		GI.x1 = ((m_GfxInfo.x1 + m_GfxInfo.x2) / 2) + 5;
+		GI.y1 = m_GfxInfo.y2;
+		pOut->Print(this->GetLabel(), GI);
+	}
+}
 int Connection::GetTheNumberOfconnection()
 {
 	return TheNumberOfconnection;

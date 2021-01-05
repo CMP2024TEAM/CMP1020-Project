@@ -34,7 +34,7 @@ void AND3::Draw(Output* pOut,bool selected)
 {
 	//Call output class and pass gate drawing info to it.
 	pOut->DrawAND3(m_GfxInfo, selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
 
 //returns status of outputpin

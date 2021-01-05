@@ -22,7 +22,7 @@ void XNOR2::Operate()
 void XNOR2::Draw(Output* pOut,bool selected)
 {//Call output class and pass gate drawing info to it.
 	pOut->Draw_XNOR2(m_GfxInfo, selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
 
 int XNOR2::GetOutPinStatus()

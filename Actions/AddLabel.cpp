@@ -36,6 +36,7 @@ void AddLabel::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	string s;
+	pOut->PrintMsg("Enter Label");
 	s = pIn->GetSrting(pOut);
 	C->SetLabel(s);
 }

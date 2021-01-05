@@ -40,8 +40,6 @@ void Move::ReadActionParameters()
 	bool inside = false;
 	do
 	{
-
-
 		pIn->GetPointClicked(Cx2, Cy2);
 		if ((Cx2 > 25 && Cx2 < 875) && (Cy2 > (UI.ToolBarHeight+25) && Cy2 < (UI.height - UI.StatusBarHeight-25)))
 			inside = true;

@@ -17,7 +17,7 @@ void Past::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Component* object=pManager->get_clipboard();
-	pOut->PrintMsg("click to any point to add the component");
+	pOut->PrintMsg("click on any point to add the component");
 	ReadActionParameters();
 	GraphicsInfo GInfo; //Gfx info to be used to construct the AND2 gate
 	int len = 50;

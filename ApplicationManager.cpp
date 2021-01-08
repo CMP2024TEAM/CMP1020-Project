@@ -22,6 +22,7 @@
 #include"Actions/Move.h"
 #include"Actions/AddLabel.h"
 #include"Actions/Edit.h"
+#include"Actions/EditConnection.h"
 #include<iostream>
 #include<fstream>
 #include"Actions/Operate.h"
@@ -166,6 +167,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case EDIT:
 		pAct = new Edit(this, Selected_Comp);
+		break;
+	case EDITCONNECTION:
+		pAct = new EditConnection(this, Selected_Comp);
 		break;
 	case EXIT:
 		///TODO: create ExitAction here

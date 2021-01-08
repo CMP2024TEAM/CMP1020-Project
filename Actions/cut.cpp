@@ -18,10 +18,10 @@ void cut::Execute()
 {
 	if (the_object == NULL)
 	{
-	ReadActionParameters();
-	if (Cancel == 1)
-		return;
-	pManager->CheckWhichComponent(x, y, the_object);
+		ReadActionParameters();
+		if (Cancel == 1)
+			return;
+		pManager->CheckWhichComponent(x, y, the_object);
     }
 	
 	AND2* the_saver = dynamic_cast<AND2*>(the_object);

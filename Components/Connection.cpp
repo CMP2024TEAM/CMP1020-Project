@@ -11,6 +11,8 @@ Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputP
 Connection::~Connection()
 {
 	TheNumberOfconnection--;
+	SrcPin->DisconnectConnection(this);
+	
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {

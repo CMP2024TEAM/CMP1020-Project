@@ -66,22 +66,36 @@ void Delete::Execute()
 	if (type == "LED")
 	{
 		InputPin* P = l->getinputpin();
-		pManager->DeleteAllConnnectionsWithThisInputPin(P);
+		pManager->DeleteComponent((Component*)P->GetConnection());
 	}
 	else if (type == "Switch")
 	{
 		OutputPin* O = s->getoutputpin();
-		pManager->DeleteAllConnnectionsWithThisOutputPin(O);
+		Connection** Connections = O->getConnections();
+		for (int i = 0;i <= O->getNumConnections();i++)
+		{
+			if (Connections[i]!=NULL)
+			{
+				pManager->DeleteComponent((Component*)Connections[i]);
+			}
+		}
 	}
 	else if (type == "Gate")
 	{
 		OutputPin* O = g->getoutputpin();
-		pManager->DeleteAllConnnectionsWithThisOutputPin(O);
+		Connection** Connections = O->getConnections();
+		for (int i = 0;i <= O->getNumConnections();i++)
+		{
+			if (Connections[i] != NULL)
+			{
+				pManager->DeleteComponent((Component*)Connections[i]);
+			}
+		}
 		int inputcount = g->getm_Inputs();
-		for (int j = 1;j <= inputcount;j++)
+		for (int j = 0;j < inputcount;j++)
 		{
 			InputPin* P = g->getinputpin(j);
-			pManager->DeleteAllConnnectionsWithThisInputPin(P);
+			pManager->DeleteComponent((Component*)P->GetConnection());
 		}
 	}
 	pManager->DeleteComponent(C);

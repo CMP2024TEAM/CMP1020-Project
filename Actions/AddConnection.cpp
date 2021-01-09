@@ -191,6 +191,7 @@ void AddConnection::Execute()
 		pManager->AddComponent(pA);
 		pA->setDestCmpnt(p2, n /*number of inputs*/, j /*pin number*/);
 		pA->setSourceCmpnt(p1);
+		DstPin->SetConnection(pA);
 	}
 	else
 	{

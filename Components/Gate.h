@@ -26,7 +26,7 @@ public:
 	InputPin* getinputpin(int n);
 	OutputPin* getoutputpin();
 	 virtual void save();
-	
+	 virtual void load(int x, int y, string label, int u);
 	 
 };
 

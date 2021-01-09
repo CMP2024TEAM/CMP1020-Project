@@ -21,6 +21,8 @@
 #include"Actions/Cut.h"
 #include"Actions/Move.h"
 #include"Actions/AddLabel.h"
+#include"Actions/load.h"
+#include<string>
 #include"Actions/Edit.h"
 #include"Actions/EditConnection.h"
 #include<iostream>
@@ -153,6 +155,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE:
 		pAct = new Save(this);
 		break;
+	}
 	case REDO:
 		this->Redo();
 		break;
@@ -306,11 +309,22 @@ int ApplicationManager::get_compcount()
 
 void ApplicationManager::save()
 {
-	Connection* theconnector;
-	int thenumofconnections = theconnector->GetTheNumberOfconnection();
+	int thenumofconnections = 0;
+	for (int i = 0; i < CompCount; i++)
+	{
+		Connection* theconnector = dynamic_cast<Connection*>(CompList[i]);
+		if (theconnector != NULL)
+		{
+			thenumofconnections = theconnector->GetTheNumberOfconnection();
+			break;
+		}
+
+	}
+	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
-	the_added_component.open("file format.txt,ios::app");
-	the_added_component << (CompCount - thenumofconnections);
+	the_added_component.open("file format.txt",ios::app);
+	the_added_component << TheNumberOfcomponents << endl ;
+	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
@@ -318,7 +332,9 @@ void ApplicationManager::save()
 			if (CompList[i] != NULL)
 				CompList[i]->save();
 	}
+	the_added_component.open("file format.txt", ios::app);
 	the_added_component << endl << "the connections";
+	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
@@ -326,7 +342,13 @@ void ApplicationManager::save()
 			Theconnector->save();
 
 	}
+	the_added_component.open("file format.txt", ios::app);
 	the_added_component << endl << -1;
+	the_added_component.close();
+
+
+}
+
 
 }
 bool ApplicationManager::CheckWhichComponent(int x, int y)

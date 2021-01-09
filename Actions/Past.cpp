@@ -33,6 +33,7 @@ void Past::Execute()
 	{
 		AND2* the;
 		the = new AND2( *the_saver);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut);
@@ -42,6 +43,7 @@ void Past::Execute()
 	{
 		AND3* the;
 		the = new AND3(*t);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut);
@@ -51,6 +53,7 @@ void Past::Execute()
 	{
 		BUFFER* the;
 		the = new BUFFER(*h);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut);
@@ -60,6 +63,7 @@ void Past::Execute()
 	{
 		LED* the;
 		the = new LED(*g);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut,true);
@@ -69,6 +73,7 @@ void Past::Execute()
 	{
 		NAND2* the;
 		the = new NAND2(*q);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -78,6 +83,7 @@ void Past::Execute()
 	{
 		NOR2* the;
 		the = new NOR2(*w);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -87,6 +93,7 @@ void Past::Execute()
 	{
 		NOR3* the;
 		the = new NOR3(*a);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -96,6 +103,7 @@ void Past::Execute()
 	{
 		OR2* the;
 		the = new OR2(*e);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -105,6 +113,7 @@ void Past::Execute()
 	{
 		NOT* the;
 		the = new NOT(*d);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -114,6 +123,7 @@ void Past::Execute()
 	{
 		XNOR2* the;
 		the = new XNOR2(*s);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -123,6 +133,7 @@ void Past::Execute()
 	{
 		XOR2* the;
 		the = new XOR2(*k);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -132,6 +143,7 @@ void Past::Execute()
 	{
 		XOR3* the;
 		the = new XOR3(*j);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);
@@ -141,6 +153,7 @@ void Past::Execute()
 	{
 		Switch* the;
 		the = new Switch(*f);
+		the->SetId(the->GetId());
 		the->set_Location(GInfo);
 		pManager->AddComponent(the);
 		the->Draw(pOut, true);

@@ -30,3 +30,7 @@ void Gate::save()
 {
 	
 }
+ void Gate::load(int x, int y, string label, int u)
+{
+	
+}

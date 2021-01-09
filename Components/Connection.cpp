@@ -133,6 +133,10 @@ int Connection::GetTheNumberOfconnection()
 	return TheNumberOfconnection;
 }
 
+void Connection::load(int x, int y, string label, int u)
+{
+}
+
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
 {
 	return DstPin->getStatus();
@@ -156,7 +160,7 @@ int Connection::getm_Inputs()
 
 void Connection::save()
 {
-	int ThePinNum;
+	int ThePinNum=0;
 	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
 	{
 		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)));
@@ -164,7 +168,7 @@ void Connection::save()
 	}
 	ofstream the_added_connection;
 	the_added_connection.open("file format.txt", ios::app);
-	the_added_connection << endl << SrcCmpnt->GetId() << "     " << DstCmpnt->GetId() << "     " << ThePinNum << "     " << endl;
+	the_added_connection << SrcCmpnt->getid() << "     " << DstCmpnt->getid() << "     " << ThePinNum << "     " << endl;
 }
 
 

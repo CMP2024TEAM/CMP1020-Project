@@ -41,7 +41,7 @@ void BUFFER::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "BUFFER" << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component << "BUFFER" << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 }
 
@@ -54,4 +54,12 @@ void BUFFER::setInputPinStatus(int n ,STATUS s)
 int BUFFER::getm_Inputs()
 {
 	return  m_Inputs;
+}
+
+void BUFFER::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }

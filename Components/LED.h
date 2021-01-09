@@ -16,6 +16,7 @@ public:
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
 	void save();
+	void load(int x, int y, string label, int u);
 	InputPin* getinputpin();
 };
 #endif

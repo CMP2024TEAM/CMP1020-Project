@@ -252,44 +252,44 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 	}
 	UpdateInterface();
 }
-void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
-{
-	for (int i = 0; i < CompCount; i++)
-	{
-		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-		if (conn != NULL)
-		{
-			if (conn->getDestPin() == P)
-			{
-				delete CompList[i];
-				CompList[i] = NULL;
-				CompList[i] = CompList[CompCount - 1];
-				CompList[CompCount - 1] = NULL;
-				CompCount--;
-				i--;
-			}
-		}
-	}
-}
-void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P)
-{
-	for (int i = 0; i < CompCount; i++)
-	{
-		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-		if (conn != NULL)
-		{
-			if (conn->getSourcePin() == P)
-			{
-				delete CompList[i];
-				CompList[i] = NULL;
-				CompList[i] = CompList[CompCount - 1];
-				CompList[CompCount - 1] = NULL;
-				CompCount--;
-				i--;
-			}
-		}
-	}
-}
+//void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
+//{
+//	for (int i = 0; i < CompCount; i++)
+//	{
+//		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+//		if (conn != NULL)
+//		{
+//			if (conn->getDestPin() == P)
+//			{
+//				delete CompList[i];
+//				CompList[i] = NULL;
+//				CompList[i] = CompList[CompCount - 1];
+//				CompList[CompCount - 1] = NULL;
+//				CompCount--;
+//				i--;
+//			}
+//		}
+//	}
+//}
+//void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P)
+//{
+//	for (int i = 0; i < CompCount; i++)
+//	{
+//		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+//		if (conn != NULL)
+//		{
+//			if (conn->getSourcePin() == P)
+//			{
+//				delete CompList[i];
+//				CompList[i] = NULL;
+//				CompList[i] = CompList[CompCount - 1];
+//				CompList[CompCount - 1] = NULL;
+//				CompCount--;
+//				i--;
+//			}
+//		}
+//	}
+//}
 void ApplicationManager::Undo()
 {
 	this->DeleteComponent(CompList[CompCount - 1]);

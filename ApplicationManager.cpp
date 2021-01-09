@@ -155,7 +155,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE:
 		pAct = new Save(this);
 		break;
-	}
+	
 	case REDO:
 		this->Redo();
 		break;
@@ -350,7 +350,7 @@ void ApplicationManager::save()
 }
 
 
-}
+
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)

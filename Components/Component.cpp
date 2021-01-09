@@ -56,7 +56,11 @@ bool Component::IsInsideMe(int x, int y)
 Component::Component()
 {}
 
+
+void Component::Draw(Output* pOut, bool selected)
+{
 }
+
 void Component::DrawLabel(Output* pOut)
 {
 	if (m_Label != "") 

@@ -148,6 +148,7 @@
     <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\cut.cpp" />
     <ClCompile Include="Actions\Delete.cpp" />
+    <ClCompile Include="Actions\load.cpp" />
     <ClCompile Include="Actions\Move.cpp" />
     <ClCompile Include="Actions\Operate.cpp" />
     <ClCompile Include="Actions\Past.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\cut.h" />
     <ClInclude Include="Actions\Delete.h" />
+    <ClInclude Include="Actions\load.h" />
     <ClInclude Include="Actions\Move.h" />
     <ClInclude Include="Actions\Operate.h" />
     <ClInclude Include="Actions\Past.h" />

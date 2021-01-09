@@ -55,8 +55,16 @@ void NOR3::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "NOR3  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component << "NOR3  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
+}
+
+void NOR3::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }
 
 //Set status of an input pin ot HIGH or LOW

@@ -1,5 +1,7 @@
-2
+3
+XNOR2      1     hjgyutfygfyguggyfrdretyuu     556     244
+XOR2       2          316     230
+XNOR2      3     yufty7     410     345
 
-AND3       -842150451          485     341
-
-AND3       -842150451          485     341
+the connections
+-1

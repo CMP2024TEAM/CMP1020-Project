@@ -5,7 +5,7 @@ class Past :
     public Action
 {
     int x, y;
-  
+    bool Cancel ;
 public:
     
     void Execute();

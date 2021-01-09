@@ -1,18 +1,18 @@
-#ifndef _ADD_LABEL_H
-#define _ADD_LABEL_H
+#ifndef _EDIT_H
+#define _EDIT_H
 
 #include "action.h"
 #include "..\Components\Component.h"
 #include "..\Components\Connection.h"
-class AddLabel : public Action
+class Edit : public Action
 {
 private:
-	int Cx, Cy;	
+	int Cx, Cy;
 	Component* C;
 	bool Cancel;
 public:
-	AddLabel(ApplicationManager* pApp,Component*);
-	virtual ~AddLabel(void);
+	Edit(ApplicationManager* pApp,Component*);
+	virtual ~Edit(void);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();

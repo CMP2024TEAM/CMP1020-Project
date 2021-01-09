@@ -15,13 +15,16 @@ NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 /// //////////////Operate////////////////////////////
 void NOR2::Operate()
 {
-	m_OutputPin = !(GetInputPinStatus(0) || GetInputPinStatus(1));
+	if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == LOW)
+		m_OutputPin.setStatus(HIGH);
+	else
+		m_OutputPin.setStatus(LOW);
 }
 /////////////////Draw Function////////////////////////
 void NOR2::Draw(Output* pOut,bool selected)
 {
 	pOut->DrawNOR2(m_GfxInfo,selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
 /////////////////GEToutpinstatus////////////////////////
 int NOR2::GetOutPinStatus()

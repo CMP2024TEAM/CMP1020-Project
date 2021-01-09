@@ -3,6 +3,7 @@
 
 AddANDgate3::AddANDgate3(ApplicationManager* pApp) :Action(pApp)
 {
+	Cancel = 0;
 }
 
 AddANDgate3::~AddANDgate3(void)
@@ -19,7 +20,23 @@ void AddANDgate3::ReadActionParameters()
 	pOut->PrintMsg("3-Input AND Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	bool inside = false;
+	do
+	{
+
+
+		pIn->GetPointClicked(Cx, Cy);
+		if ((Cx > 25 && Cx < 875) && (Cy > (UI.ToolBarHeight + 25) && Cy < (UI.height - UI.StatusBarHeight - 25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
+	} while (!inside);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -30,7 +47,8 @@ void AddANDgate3::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
-
+	if (Cancel == 1)
+		return;
 	//Calculate the rectangle Corners
 	int Len = UI.AND2_Width;
 	int Wdth = UI.AND2_Height;

@@ -10,7 +10,7 @@ public:
 	Switch(const GraphicsInfo& r_GfxInfo);
 	virtual void Operate();	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut,bool selected);//for each component to Draw itself
-
+	void DrawLabel(Output* pOut);
 	void save();
 	void load(int x, int y, string label, int u);
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1

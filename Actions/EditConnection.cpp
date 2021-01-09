@@ -1,31 +1,43 @@
-#include "AddConnection.h"
+#include "EditConnection.h"
 #include "..\ApplicationManager.h"
-#include "..\Components\Switch.h"
-#include "..\Components\LED.h"
-
-AddConnection::AddConnection(ApplicationManager* pApp) :Action(pApp)
+EditConnection::EditConnection(ApplicationManager* pApp, Component* SelComp) :Action(pApp)
 {
-	Cancel = 0;
+	C = SelComp;
 }
 
-AddConnection::~AddConnection(void)
+EditConnection::~EditConnection(void)
 {
-
 }
 
-void AddConnection::ReadActionParameters()
+void EditConnection::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	int Cx, Cy;
+	while (C == NULL)
+	{
+		//Print Action Message
+		pOut->PrintMsg("Click on a connection to edit it");
 
-	//Print Action Message
-	pOut->PrintMsg("Connection: Click on an output Pin to add the Connection");
+		//Wait for User Input
+		pIn->GetPointClicked(Cx, Cy);
+
+		//Ask Application manager if click if on component
+		pManager->CheckWhichComponent(Cx, Cy, C);
+
+		//Clear Status Bar
+		pOut->ClearStatusBar();
+
+		Connection* conn = dynamic_cast<Connection*>(C);
+		C = conn;
+	}
+	pOut->PrintMsg("Connection: Click on the new output Pin to the Connection");
 	bool Outpin = false;
 	do
 	{
 		pIn->GetPointClicked(Cx11, Cy11);
-		if (pManager->CheckWhichComponent(Cx11, Cy11,p1) == 0)
+		if (pManager->CheckWhichComponent(Cx11, Cy11, p1) == 0)
 		{
 			Cancel = 1;
 			pOut->ClearStatusBar();
@@ -52,13 +64,13 @@ void AddConnection::ReadActionParameters()
 
 	} while (p1 == NULL || !Outpin);
 	pOut->ClearStatusBar();
-	pOut->PrintMsg("Connection: Click on an input Pin to add the Connection");
+	pOut->PrintMsg("Connection: Click on the new input Pin to the Connection");
 	bool Inpin = false;
 	do
 	{
 
 		pIn->GetPointClicked(Cx22, Cy22);
-		if (pManager->CheckWhichComponent(Cx22, Cy22,p2) == 0)
+		if (pManager->CheckWhichComponent(Cx22, Cy22, p2) == 0)
 		{
 			Cancel = 1;
 			pOut->ClearStatusBar();
@@ -97,12 +109,10 @@ void AddConnection::ReadActionParameters()
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
-
 }
 
-void AddConnection::Execute()
+void EditConnection::Execute()
 {
-
 	GraphicsInfo GInfo;
 	//Get Center point of the Gate
 	ReadActionParameters();
@@ -175,7 +185,7 @@ void AddConnection::Execute()
 	Gate* gate2 = dynamic_cast<Gate*>(p2);
 	if (gate2 != NULL)
 	{
-		DstPin = gate2->getinputpin(j-1);
+		DstPin = gate2->getinputpin(j - 1);
 	}
 	LED* Led = dynamic_cast<LED*>(p2);
 	if (Led != NULL)
@@ -188,6 +198,7 @@ void AddConnection::Execute()
 	Connection* pA = new Connection(GInfo, SrcPin, DstPin);
 	if (SrcPin->ConnectTo(pA))
 	{
+		pManager->DeleteComponent(C);
 		pManager->AddComponent(pA);
 		pA->setDestCmpnt(p2, n /*number of inputs*/, j /*pin number*/);
 		pA->setSourceCmpnt(p1);
@@ -200,10 +211,10 @@ void AddConnection::Execute()
 	}
 }
 
-
-void AddConnection::Undo()
+void EditConnection::Undo()
 {}
 
-void AddConnection::Redo()
+void EditConnection::Redo()
 {}
+
 

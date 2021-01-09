@@ -37,7 +37,7 @@ void LED::Draw(Output* pOut,bool selected)
 		pOut->DrawLEDON(m_GfxInfo,selected);
 	else
 		pOut->DrawLEDOFF(m_GfxInfo,selected);
-	Component::Draw(pOut, selected);
+	DrawLabel(pOut);
 }
 
 int LED::GetOutPinStatus()

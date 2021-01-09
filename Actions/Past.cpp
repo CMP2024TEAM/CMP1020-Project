@@ -17,8 +17,10 @@ void Past::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Component* object=pManager->get_clipboard();
-	pOut->PrintMsg("click to any point to add the component");
+	pOut->PrintMsg("click on any point to add the component");
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	GraphicsInfo GInfo; //Gfx info to be used to construct the AND2 gate
 	int len = 50;
 	int width = 50;
@@ -172,10 +174,28 @@ void Past::ReadActionParameters()
 {
 	
 	Input* pIn = pManager->GetInput();
-	
-	pIn->GetPointClicked(x, y);
+	Output* pOut = pManager->GetOutput();
+	bool inside = false;
+	do
+	{
+
+
+		pIn->GetPointClicked(x, y);
+		if (pManager->CheckWhichComponent(x, y) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
+		if ((x > 25 && x < 875) && (y > (UI.ToolBarHeight + 25) && y < (UI.height - UI.StatusBarHeight - 25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area!");
+
+	} while (!inside);
 }
 
 Past::Past(ApplicationManager* pApp):Action(pApp)
-{
+{	
+	Cancel = 0;
 }

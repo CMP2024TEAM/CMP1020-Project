@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 AddXORgate2::AddXORgate2(ApplicationManager* pApp) :Action(pApp)
 {
+	Cancel = 0;
 }
 
 AddXORgate2::~AddXORgate2(void)
@@ -17,8 +18,24 @@ void AddXORgate2::ReadActionParameters()
 	pOut->PrintMsg("2-Input XOR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	bool inside = false;
+	do
+	{
 
+
+		pIn->GetPointClicked(Cx, Cy);
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
+		if ((Cx > 25 && Cx < 875) && (Cy > (UI.ToolBarHeight + 25) && Cy < (UI.height - UI.StatusBarHeight - 25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
+
+	} while (!inside);
 	//Clear Status Bar
 	pOut->ClearStatusBar();
 }
@@ -26,7 +43,8 @@ void AddXORgate2::ReadActionParameters()
 void AddXORgate2::Execute()
 {//Get Center point of the Gate
 	ReadActionParameters();
-
+	if (Cancel == 1)
+		return;
 	//Calculate the rectangle Corners
 	int Len = UI.XOR2_Width;
 	int Wdth = UI.XOR2_Height;

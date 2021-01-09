@@ -11,8 +11,9 @@ private:
 	int Cx, Cy;	//Center point of the gate
 	int Cx2, Cy2;
 	Component* C;
+	bool Cancel;
 public:
-	Move(ApplicationManager* pApp);
+	Move(ApplicationManager* pApp,Component*);
 	virtual ~Move(void);
 
 	//Reads parameters required for action to execute

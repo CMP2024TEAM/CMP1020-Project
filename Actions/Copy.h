@@ -8,11 +8,12 @@ class Copy :
 {protected:
     Component* the_object;
     int x, y;
+    bool Cancel;
 public:
     void Execute();
     void Undo();
     void Redo();
     void ReadActionParameters();
-    Copy(ApplicationManager* pApp);
+    Copy(ApplicationManager* pApp,Component*);
 };
 

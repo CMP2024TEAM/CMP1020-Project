@@ -1,8 +1,9 @@
 #include "Delete.h"
 #include "..\ApplicationManager.h"
-Delete::Delete(ApplicationManager* pApp) :Action(pApp)
+Delete::Delete(ApplicationManager* pApp,Component* SelComp) :Action(pApp)
 {
-	C = NULL;
+	C = SelComp;
+	Cancel = 0;
 }
 
 Delete::~Delete(void)
@@ -14,7 +15,7 @@ void Delete::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	do
+	while(C==NULL)
 	{
 		//Print Action Message
 		pOut->PrintMsg("Click on a component to delete it");
@@ -23,17 +24,24 @@ void Delete::ReadActionParameters()
 		pIn->GetPointClicked(Cx, Cy);
 
 		//Ask Application manager if click if on component
-		pManager->CheckWhichComponent(Cx, Cy, C);
+		if (pManager->CheckWhichComponent(Cx, Cy, C) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 
 		//Clear Status Bar
 		pOut->ClearStatusBar();
-	} while (C == NULL);
+	} 
 }
 
 void Delete::Execute()
 {
 	//Get Center point of the Gate
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	string type;
 	Switch* s = dynamic_cast<Switch*>(C);
 	if (s != NULL)

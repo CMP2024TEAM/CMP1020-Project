@@ -3,6 +3,7 @@
 
 AddLED::AddLED(ApplicationManager* pApp) :Action(pApp)
 {
+	Cancel = 0;
 }
 
 AddLED::~AddLED(void)
@@ -18,7 +19,25 @@ void AddLED::ReadActionParameters()
 	pOut->PrintMsg("the led: Click to add the led");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	bool inside = false;
+	do
+	{
+
+
+		pIn->GetPointClicked(Cx, Cy);
+		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
+		if ((Cx > 25 && Cx < 875) && (Cy > (UI.ToolBarHeight + 25) && Cy < (UI.height - UI.StatusBarHeight - 25)))
+			inside = true;
+		else
+			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
+
+	} while (!inside);
+
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -27,7 +46,8 @@ void AddLED::ReadActionParameters()
 void AddLED::Execute()
 {//Get Center point of the led
 	ReadActionParameters();
-
+	if (Cancel == 1)
+		return;
 	//Calculate the rectangle Corners
 	int Len = UI.LED_Width;
 	int Wdth = UI.LED_Height;

@@ -8,6 +8,14 @@ Component::Component(const GraphicsInfo &r_GfxInfo)
 	m_GfxInfo = r_GfxInfo;
 	m_Label = "";
 }
+
+void Component::save()
+{
+}
+string Component::GetLabel()
+{
+	return m_Label;
+}
 GraphicsInfo Component::GetLocation()
 {
 	return m_GfxInfo;
@@ -46,13 +54,10 @@ bool Component::IsInsideMe(int x, int y)
 	return false;
 }
 Component::Component()
-{
-	Countofcomp++;
-	id = 0;
-	id = Countofcomp;
-}
+{}
 
-void Component::Draw(Output* pOut, bool selected)
+}
+void Component::DrawLabel(Output* pOut)
 {
 	if (m_Label != "") 
 	{

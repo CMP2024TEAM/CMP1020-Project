@@ -1,59 +1,39 @@
 #include "Operate.h"
-Operate::Operate(ApplicationManager* pApp, ActionType action) :Action(pApp)
+Operate::Operate(ApplicationManager* pApp) :Action(pApp)
 {
-	Execute(action);
+	
 }
 void Operate::ReadActionParameters()
 {
+	if (UI.AppMode == SIMULATION)
+	{
+		//Get a Pointer to the Input / Output Interfaces
+		Output* pOut = pManager->GetOutput();
+		Input* pIn = pManager->GetInput();
+
+
+		//Print Action Message
+		pOut->PrintMsg("Click on a Switch to Change it");
+
+		//Wait for User Input
+		pIn->GetPointClicked(Cx, Cy);
+
+		//Clear Status Bar
+		pOut->ClearStatusBar();
+	}
 	return;
 }
 
-//Execute action (code depends on action type)
-void Operate::Execute(ActionType action)
-{
-	return;
 
-}
 void Operate::Execute()// not to be virtual
 {
-	bool test = true;
-	int n;
-	Switch* sw;
-	Connection** co;
-	n = sw->getoutputpin()->getNumConnections();
-	co = sw->getoutputpin()->getConnections();
-	Component** p = new Component * [n];
-	do
-	{
-
-
-		for (int i = 0; i < n; i++)
-		{
-			co[i]->Operate();
-			p[i] = co[i]->getDestPin()->getComponent();
-
-		}
-		for (int i = 0; i < n; i++)
-		{
-			p[i]->Operate();
-			Gate* g = dynamic_cast<Gate*>(p[i]);
-
-			if (g == NULL)
-			{
-				test = 0; break;
-			}
-
-			co = g->getoutputpin()->getConnections();
-			n = g->getoutputpin()->getNumConnections();
-			for (int i = 0; i < n; i++)
-			{
-				co[i]->Operate();
-				p[i] = co[i]->getDestPin()->getComponent();
-
-			}
-		}
-	} while (test);
-
+	ReadActionParameters();
+	
+	pManager->CheckWhichComponent(Cx, Cy, sw);
+	sw = dynamic_cast<Switch*>(sw);
+	if (sw != NULL)
+		sw->Operate();
+	
 }
 //To undo this action (code depends on action type)
 void Operate::Undo()

@@ -59,9 +59,11 @@ ActionType Input::GetUserAction(int Page) const
 	// User Click on the common toolbar 
 	if (x > 900 && y > UI.ToolBarHeight)
 	{
+		if (y > (8 * 81)&&y<UI.StatusBarHeight)
+			return EDITCONNECTION;
 		y -= 80;
 		int ClickedItemOrder = -1;
-		for (int i = 0; i <= 8; i++) {
+		for (int i = 0; i <= 9; i++) {
 			if (y > (i * 45 + 40 * i) && y < (i * 45 + 40 * (i + 1))) {
 				ClickedItemOrder = i;
 				break;
@@ -70,7 +72,7 @@ ActionType Input::GetUserAction(int Page) const
 		// Items on the right
 		if (x > 940)
 		{
-			ClickedItemOrder += 7;
+			ClickedItemOrder += 8;
 			switch (ClickedItemOrder)
 			{
 			case ITM_STOP: return DSN_MODE;

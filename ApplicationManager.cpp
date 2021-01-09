@@ -23,8 +23,11 @@
 #include"Actions/AddLabel.h"
 #include"Actions/load.h"
 #include<string>
+#include"Actions/Edit.h"
+#include"Actions/EditConnection.h"
 #include<iostream>
 #include<fstream>
+#include"Actions/Operate.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -43,7 +46,7 @@ ApplicationManager::ApplicationManager()
 }
 void ApplicationManager::set_clipboard(Component* object)
 {
-	Clipboard =object;
+	Clipboard = object;
 }
 Component* ApplicationManager::get_clipboard()
 {
@@ -115,7 +118,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new StartStopSimulation(this, SIM_MODE);
 		break;
 	case DEL:
-		pAct = new Delete(this);
+		pAct = new Delete(this, Selected_Comp);
 		break;
 	case Page_One:
 		pAct = new Arrows(this, Page_One);
@@ -127,43 +130,49 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddConnection(this);
 		break;
 	case SELECT:
-		pAct = new Select(this);
+		if (UI.AppMode == DESIGN)
+		{
+			pAct = new Select(this);
+			break;
+		}
+		else if (UI.AppMode == SIMULATION)
+		{
+			pAct = new Operate(this);
+			break;
+		}
+	case START_SELECT:
+		OutputInterface->PrintMsg("Start Select");
 		break;
-	//case START_SELECT:
-	//	OutputInterface->PrintMsg("Start Select");
-	//	break;
 	case MOVE:
-		pAct = new Move(this);
+		pAct = new Move(this, Selected_Comp);
 		break;
 	case ADD_Label:
-		pAct = new AddLabel(this);
+		pAct = new AddLabel(this, Selected_Comp);
 		break;
 	case UNDO:
 		this->Undo();
 		break;
 	case SAVE:
-	{
 		pAct = new Save(this);
-		break;
-	}
-	case LOAD:
-	{
-		pAct = new load(this);
 		break;
 	}
 	case REDO:
 		this->Redo();
 		break;
 	case COPY:
-		pAct = new Copy(this);
+		pAct = new Copy(this, Selected_Comp);
 		break;
 	case PASTE:
 		pAct = new Past(this);
-		break; 
+		break;
 	case CUT:
-		pAct = new cut(this);
+		pAct = new cut(this, Selected_Comp);
 		break;
 	case EDIT:
+		pAct = new Edit(this, Selected_Comp);
+		break;
+	case EDITCONNECTION:
+		pAct = new EditConnection(this, Selected_Comp);
 		break;
 	case EXIT:
 		///TODO: create ExitAction here
@@ -175,7 +184,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;
 		pAct = NULL;
 	}
-	
+
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -185,12 +194,21 @@ void ApplicationManager::UpdateInterface()
 OutputInterface = new Output;*/
 	OutputInterface->ClearDrawingArea();
 	for (int i = 0; i < CompCount; i++)
-		{
-			bool selected = 0;
-			if (CompList[i] == Selected_Comp)
-				selected = 1;
-			CompList[i]->Draw(OutputInterface,selected);
-		}
+	{
+		bool selected = 0;
+		if (CompList[i] == Selected_Comp)
+			selected = 1;
+		CompList[i]->Draw(OutputInterface, selected);
+	}
+	//SIMULATION
+	if(UI.AppMode==SIMULATION)
+		for (int i = 0; i < CompCount; i++)
+			for (int i = 0; i < CompCount; i++)
+			{
+				Switch* sw = dynamic_cast<Switch*>(CompList[i]);
+				if (sw == NULL)
+					CompList[i]->Operate();
+			}
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -232,7 +250,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 			CompList[i] = CompList[CompCount - 1];
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
-			
+
 		}
 	}
 	UpdateInterface();
@@ -256,7 +274,7 @@ void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
 		}
 	}
 }
-void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P) 
+void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P)
 {
 	for (int i = 0; i < CompCount; i++)
 	{
@@ -310,9 +328,9 @@ void ApplicationManager::save()
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
-		if(Theconnector==NULL)
-		if (CompList[i] != NULL)
-			CompList[i]->save();
+		if (Theconnector == NULL)
+			if (CompList[i] != NULL)
+				CompList[i]->save();
 	}
 	the_added_component.open("file format.txt", ios::app);
 	the_added_component << endl << "the connections";
@@ -331,11 +349,14 @@ void ApplicationManager::save()
 
 }
 
-void ApplicationManager::Load()
-{
-	
-}
 
+}
+bool ApplicationManager::CheckWhichComponent(int x, int y)
+{
+	if (x < 940 && x>900 && y < 380 && y>340)
+		return false;
+	return true;
+}
 
 bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 {
@@ -347,12 +368,10 @@ bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 			return true;
 		}
 	}
-	/*
-	if (Click Is On Start Select)
+	if (x < 940 && x>900 && y < 380 && y>340)
 	{
 		return false;
 	}
-	*/
 	c = NULL;
 	return true;
 }

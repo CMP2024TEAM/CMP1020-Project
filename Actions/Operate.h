@@ -9,13 +9,16 @@
 class Operate :
     public Action
 {
-
-	Operate(ApplicationManager* pApp, ActionType action);
+private:
+	int Cx, Cy;
+	Component* sw;
+public:
+	Operate(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 
 	//Execute action (code depends on action type)
 	virtual void Execute();
-	void Execute(ActionType action);
+
 
 	//To undo this action (code depends on action type)
 	virtual void Undo();

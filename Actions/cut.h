@@ -7,11 +7,12 @@ class cut :
 protected:
     Component* the_object;
     int x, y;
+    bool Cancel;
 public:
     void Execute();
     void Undo();
     void Redo();
     void ReadActionParameters();
-    cut(ApplicationManager* pApp);
+    cut(ApplicationManager* pApp,Component*);
 };
 

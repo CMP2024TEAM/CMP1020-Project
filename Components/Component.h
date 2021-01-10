@@ -3,22 +3,6 @@
 
 #include "..\Defs.h"
 #include "..\GUI\Output.h"
-// enum TheNameOfTheComponents
-//{
-//	AND2=1 ,
-//	AND3=2 ,
-//	BUFFER=3 ,
-//	LED=4 ,
-//	NAND2=5,
-//	NOR2=6,
-//	NOR3=7,
-//	NOT=8,
-//	OR2=9,
-//	Switch=10,
-//	XNOR2=11,
-//	XOR2=12,
-//	XOR3=13
-//};
 //Base class for classes Gate, Switch, and LED.
 class Component
 {

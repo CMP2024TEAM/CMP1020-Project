@@ -31,6 +31,7 @@
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
+	Clipboard = NULL;
 	CompCount = 0;
 	RemCompCount = 0;
 	for (int i = 0; i < MaxCompCount; i++)
@@ -155,7 +156,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE:
 		pAct = new Save(this);
 		break;
-	}
+	case LOAD:
+		pAct = new load(this);
+		break;
 	case REDO:
 		this->Redo();
 		break;
@@ -333,7 +336,7 @@ void ApplicationManager::save()
 				CompList[i]->save();
 	}
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "the connections";
+	the_added_component << "the connections"<<endl;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
@@ -343,14 +346,12 @@ void ApplicationManager::save()
 
 	}
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << -1;
+	the_added_component << -1;
 	the_added_component.close();
-
-
 }
 
 
-}
+
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)

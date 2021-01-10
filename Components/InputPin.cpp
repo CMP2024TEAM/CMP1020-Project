@@ -1,5 +1,4 @@
 #include "InputPin.h"
-#include"Connection.h"
 InputPin::InputPin()
 {
 	Conn = NULL;

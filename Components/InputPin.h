@@ -3,7 +3,7 @@
 
 #include "Pin.h"
 class Component; //Forward class declaration
-
+class Connection;
 class InputPin: public Pin	//inherited from class Pin
 {
 	Component* pComp; //Component at which this pin is associated

@@ -21,6 +21,7 @@ public:
 	void DrawLabel(Output* pOut);
 	int GetTheNumberOfconnection();
 	void load(int x, int y, string label, int u);
+	void load(Component* thes, Component* theds,Output* outp,int, GraphicsInfo&);
 	void setSourcePin(OutputPin *pSrcPin);
 	void setSourceCmpnt(Component* pSrcCmpnt);
 	void setDestPin(InputPin *pDstPin);

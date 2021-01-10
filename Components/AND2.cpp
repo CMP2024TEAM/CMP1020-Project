@@ -14,10 +14,17 @@ void AND2::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
-	if ((m_InputPins[0].getStatus() == HIGH)&&( m_InputPins[1].getStatus() == HIGH))
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if ((m_InputPins[0].getStatus() == HIGH) && (m_InputPins[1].getStatus() == HIGH))
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+		NotAssignedGates--;
+	}
 }
 
 

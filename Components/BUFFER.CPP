@@ -9,13 +9,21 @@ BUFFER::BUFFER(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 }
 
 void BUFFER::Operate()
-{//caclulate the output status as the ANDing of the two input pins
+{
+	//caclulate the output status as the Buffer of the two input pins
 
 	//Add you code here
-	if (m_InputPins->getStatus() == HIGH)
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins->getStatus() != NOTASSIGNED))
+	{
+		if (m_InputPins->getStatus() == HIGH)
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 
 }
 

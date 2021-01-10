@@ -14,10 +14,17 @@ NAND2::NAND2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 /// //////////////Operate////////////////////////////
 void NAND2::Operate()
 {
-	if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH)
-		m_OutputPin.setStatus(LOW);
-	else
-		m_OutputPin.setStatus(HIGH);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH)
+			m_OutputPin.setStatus(LOW);
+		else
+			m_OutputPin.setStatus(HIGH);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 }
 /////////////////Draw Function////////////////////////
 void NAND2::Draw(Output* pOut,bool selected)

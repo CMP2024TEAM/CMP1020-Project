@@ -12,7 +12,7 @@ __declspec(selectany) //This line to prevent "redefinition error"
 
 struct UI_Info	//User Interface Info.
 {
-	MODE AppMode;		//Application Mode (design or simulation)
+	MODE AppMode=DESIGN;		//Application Mode (design or simulation)
 	
 	static const int	width = 1000, height = 750,	//Window width and height
 						wx = 15 , wy = 15,			//Window starting coordinates

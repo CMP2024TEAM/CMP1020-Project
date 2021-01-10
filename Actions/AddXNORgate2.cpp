@@ -4,6 +4,12 @@
 AddXNORgate2::AddXNORgate2(ApplicationManager* pApp) :Action(pApp)
 {
 	Cancel = 0;
+	x1 = 0;
+	y1 = 0;
+	x2 = 0;
+	y2 = 0;
+	Cx = 0;
+	Cy = 0;
 }
 
 AddXNORgate2::~AddXNORgate2(void)

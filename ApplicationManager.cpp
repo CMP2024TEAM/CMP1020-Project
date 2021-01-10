@@ -28,6 +28,7 @@
 #include<iostream>
 #include<fstream>
 #include"Actions/Operate.h"
+#include"Actions/TruthTable.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -44,6 +45,8 @@ ApplicationManager::ApplicationManager()
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
 	Selected_Comp = NULL;
+	NumSwitches = 0;
+	NumLeds = 0;
 }
 void ApplicationManager::set_clipboard(Component* object)
 {
@@ -141,6 +144,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new Operate(this);
 			break;
 		}
+	case Create_TruthTable:
+		if (UI.AppMode == DESIGN)
+			OutputInterface->PrintMsg("Activate The simulation Mode to create the truth table");
+		else if (UI.AppMode == SIMULATION)
+		{
+			pAct = new TruthTable(NumLeds, NumSwitches, ListOfSwitches, ListOfLeds,this);
+		}
+		break;
 	case START_SELECT:
 		OutputInterface->PrintMsg("Start Select");
 		break;
@@ -190,12 +201,31 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 }
 ////////////////////////////////////////////////////////////////////
+void ApplicationManager::AppOperate() 
+{
+	for (int i = 0; i < CompCount; i++)
+	{
 
+		for (int i = 0; i < CompCount; i++)
+		{
+			CompList[i]->Operate();
+		}
+	}
+}
 void ApplicationManager::UpdateInterface()
 {
 	/*delete OutputInterface;
 OutputInterface = new Output;*/
 	OutputInterface->ClearDrawingArea();
+//SIMULATION
+	if (UI.AppMode == SIMULATION)
+	{
+		AppOperate();
+		if ((LED::getNotAssignedLeds() != 0 || Gate::getNotAssignedGates() != 0))
+			OutputInterface->PrintMsg("Please Check your Connections!");
+
+	}
+	
 	for (int i = 0; i < CompCount; i++)
 	{
 		bool selected = 0;
@@ -203,15 +233,8 @@ OutputInterface = new Output;*/
 			selected = 1;
 		CompList[i]->Draw(OutputInterface, selected);
 	}
-	//SIMULATION
-	if(UI.AppMode==SIMULATION)
-		for (int i = 0; i < CompCount; i++)
-			for (int i = 0; i < CompCount; i++)
-			{
-				Switch* sw = dynamic_cast<Switch*>(CompList[i]);
-				if (sw == NULL)
-					CompList[i]->Operate();
-			}
+	
+
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -389,4 +412,14 @@ ApplicationManager::~ApplicationManager()
 	delete OutputInterface;
 	delete InputInterface;
 
+}
+void ApplicationManager::Addswitch(Switch* s)
+{
+	ListOfSwitches[NumSwitches] = s;
+	NumSwitches++;
+}
+void ApplicationManager::AddLeds(LED* l)
+{
+	ListOfLeds[NumLeds] = l;
+	NumLeds++;
 }

@@ -18,13 +18,20 @@ void XOR3::Operate()
 	Inputs[1] = GetInputPinStatus(2);
 	Inputs[2] = GetInputPinStatus(3);
 	int ones = Inputs[0] + Inputs[1] + Inputs[2];
-	if (ones % 2)
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED)&& (m_InputPins[3].getStatus() != NOTASSIGNED))
 	{
-		m_OutputPin.setStatus(HIGH);
-	}
-	else
-	{
-		m_OutputPin.setStatus(LOW);
+		if (ones % 2)
+		{
+			m_OutputPin.setStatus(HIGH);
+		}
+		else
+		{
+			m_OutputPin.setStatus(LOW);
+		}
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
 	}
 }
 

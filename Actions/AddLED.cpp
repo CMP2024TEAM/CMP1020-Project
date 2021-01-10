@@ -4,6 +4,12 @@
 AddLED::AddLED(ApplicationManager* pApp) :Action(pApp)
 {
 	Cancel = 0;
+	x1 = 0;
+	y1 = 0;
+	x2 = 0;
+	y2 = 0;
+	Cx = 0;
+	Cy = 0;
 }
 
 AddLED::~AddLED(void)
@@ -60,6 +66,7 @@ void AddLED::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	LED* pA = new LED(GInfo);
 	pManager->AddComponent(pA);
+	pManager->AddLeds(pA);
 }
 
 

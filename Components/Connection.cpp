@@ -1,6 +1,8 @@
 #include "Connection.h"
 #include<fstream>
-int Connection::TheNumberOfconnection = 0;
+#include"LED.h"
+#include"Switch.h"
+int Connection:: TheNumberOfconnection = 0;
 Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin) :Component(r_GfxInfo)
 
 {
@@ -137,6 +139,92 @@ void Connection::load(int x, int y, string label, int u)
 {
 }
 
+void Connection::load(Component* thes, Component* theds,Output* outp,int InputPinNumber, GraphicsInfo& GInfo)
+{
+	int Cx1, Cy1, Cx2, Cy2;	//Center point of the srcgate dstgate
+	int x1, y1, x2, y2;
+	SrcCmpnt = thes;
+	DstCmpnt = theds;
+    GInfo = thes->GetLocation();//get gfxinfo
+	Cx1 = (GInfo.x1 + GInfo.x2) / 2;
+	Cy1 = (GInfo.y1 + GInfo.y2) / 2;
+	GInfo = theds->GetLocation();//get gfxinfo
+	Cx2 = (GInfo.x1 + GInfo.x2) / 2;
+	Cy2 = (GInfo.y1 + GInfo.y2) / 2;
+	//Calculate the rectangle Corners
+	int k = InputPinNumber;
+	int n, j;
+	//if (isp2Gate)
+	n = theds->getm_Inputs();
+	Gate* gate1 = dynamic_cast<Gate*>(thes);
+	if (gate1 != NULL)
+	{
+		SrcPin = gate1->getoutputpin();
+	}
+	Switch* SWITCH = dynamic_cast<Switch*>(thes);
+	if (SWITCH != NULL)
+	{
+		SrcPin = SWITCH->getoutputpin();
+	}
+	if (n == 3)
+	{
+		if (InputPinNumber ==1)// pin 1
+		{
+			GInfo.y2 = Cy2 - 5;
+			j = 1;
+		}
+		else if (InputPinNumber == 2)// pin 2
+		{
+
+			GInfo.y2 = Cy2;
+			j = 2;
+		}
+		else if (InputPinNumber == 3)// pin 3
+		{
+
+			GInfo.y2 = Cy2 + 4;
+			j = 3;
+		}
+	}
+	if (n == 2)
+	{
+		if (InputPinNumber == 1) //pin 1
+		{
+			GInfo.y2 = Cy2 - 4.5;
+			j = 1;
+		}
+		else if (InputPinNumber == 2) // pin 2
+		{
+			GInfo.y2 = Cy2 + 4.5;
+			j = 2;
+		}
+	}
+	if (n == 1)
+	{
+		GInfo.y2 = Cy2;
+		j = 1;
+	}
+	if (n == 0)
+	{
+		GInfo.y2 = Cy2 + 25;
+		Cx2 += 10;
+		j = 1;
+	}
+	Gate* gate2 = dynamic_cast<Gate*>(theds);
+	if (gate2 != NULL)
+	{
+		DstPin = gate2->getinputpin(j - 1);
+	}
+	LED* Led = dynamic_cast<LED*>(theds);
+	if (Led != NULL)
+	{
+		DstPin = Led->getinputpin();
+	}
+	GInfo.x2 = Cx2 - 20;
+	GInfo.x1 = Cx1 + 20;
+	GInfo.y1 = Cy1 - 0.5;	
+}
+
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
 {
 	return DstPin->getStatus();
@@ -163,7 +251,7 @@ void Connection::save()
 	int ThePinNum = 0;
 	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
 	{
-		if (DstPin == (((Gate*)DstCmpnt)->getinputpin(i)));
+		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)));
 		ThePinNum = i;
 	}
 	ofstream the_added_connection;

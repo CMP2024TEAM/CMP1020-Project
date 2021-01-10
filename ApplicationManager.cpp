@@ -32,6 +32,7 @@
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
+	Clipboard = NULL;
 	CompCount = 0;
 	RemCompCount = 0;
 	for (int i = 0; i < MaxCompCount; i++)
@@ -166,7 +167,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE:
 		pAct = new Save(this);
 		break;
-	
+	case LOAD:
+		pAct = new load(this);
+		break;
 	case REDO:
 		this->Redo();
 		break;
@@ -249,33 +252,31 @@ Output* ApplicationManager::GetOutput()
 //Delete Component
 void ApplicationManager::DeleteComponent(Component* pComp)
 {
-	/*
+	
 	for (int j = 0; j < CompCount; j++)
 	{
 		if (pComp == CompList[j])
 		{
-			Component* Temp;
 			RemComp[RemCompCount++] = CompList[j];
 			CompList[j] = NULL;
-			Temp = CompList[j];
 			CompList[j] = CompList[CompCount - 1];
-			CompList[CompCount - 1] = Temp;
-			CompCount--;
-		}
-	}
-	*/
-	for (int i = 0; i < CompCount; i++)
-	{
-		if (pComp == CompList[i])
-		{
-			delete CompList[i];
-			CompList[i] = NULL;
-			CompList[i] = CompList[CompCount - 1];
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
-
 		}
 	}
+	
+	//for (int i = 0; i < CompCount; i++)
+	//{
+	//	if (pComp == CompList[i])
+	//	{
+	//		delete CompList[i];
+	//		CompList[i] = NULL;
+	//		CompList[i] = CompList[CompCount - 1];
+	//		CompList[CompCount - 1] = NULL;
+	//		CompCount--;
+
+	//	}
+	//}
 	UpdateInterface();
 }
 //void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
@@ -319,6 +320,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 void ApplicationManager::Undo()
 {
 	this->DeleteComponent(CompList[CompCount - 1]);
+
 }
 void ApplicationManager::Redo()
 {
@@ -356,7 +358,7 @@ void ApplicationManager::save()
 				CompList[i]->save();
 	}
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "the connections";
+	the_added_component << "the connections"<<endl;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
@@ -366,11 +368,10 @@ void ApplicationManager::save()
 
 	}
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << -1;
+	the_added_component << -1;
 	the_added_component.close();
-
-
 }
+
 
 
 

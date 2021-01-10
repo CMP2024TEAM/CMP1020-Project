@@ -53,7 +53,9 @@ void NAND2::save()
 void NAND2::load(int x, int y, string label, int u)
 {
 	m_GfxInfo.x1 = x;
+	m_GfxInfo.x2 = x + 50;
 	m_GfxInfo.y1 = y;
+	m_GfxInfo.y2 = y + 50;
 	Setmlabel(label);
 	id = u;
 }

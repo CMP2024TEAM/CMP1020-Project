@@ -65,6 +65,8 @@ public:
 	void AppOperate();
 	void Addswitch(Switch*);
 	void AddLeds(LED*);
+	
+
 	//destructor
 	~ApplicationManager();
 };

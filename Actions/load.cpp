@@ -15,6 +15,7 @@
 #include"..\Components\NOR2.h"
 #include"..\Components\NAND2.h"
 #include"..\Components\LED.h"
+#include"..\Components\Connection.h"
 load::load(ApplicationManager* pApp) :Action(pApp)
 {
 }
@@ -26,7 +27,7 @@ void load::ReadActionParameters()
 void load::Execute()
 {
 	int TheRealId, x, y;
-	string TheName ;
+	string TheName;
 	string the_label = "";
 	string label = "";
 	string id = "";
@@ -43,7 +44,7 @@ void load::Execute()
 	Component** TheLoadedComponent = new Component * [200];
 	for (int i = 0; i < thenumofcomp; i++)
 	{
-		
+
 		int j = 0;
 		for (; j < TheName.length(); j++)
 		{
@@ -126,20 +127,20 @@ void load::Execute()
 		if (the_label == "AND2")
 		{
 			TheLoadedComponent[i] = new AND2(r_GfxInfo, AND2_FANOUT);
-			TheLoadedComponent[i]->load(x,y,label,TheRealId);
-		
+			TheLoadedComponent[i]->load(x, y, label, TheRealId);
+
 		}
 		if (the_label == "AND3")
 		{
 			TheLoadedComponent[i] = new AND3(r_GfxInfo, AND2_FANOUT);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-			
+
 		}
 		if (the_label == "BUFFER")
 		{
 			TheLoadedComponent[i] = new BUFFER(r_GfxInfo, BUFFER_FANOUT);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-			
+
 		}
 		if (the_label == "LED")
 		{
@@ -151,25 +152,25 @@ void load::Execute()
 		{
 			TheLoadedComponent[i] = new NAND2(r_GfxInfo, AND2_FANOUT);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-			
+
 		}
 		if (the_label == "NOR2")
 		{
 			TheLoadedComponent[i] = new NOR2(r_GfxInfo, AND2_FANOUT);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-			
+
 		}
 		if (the_label == "NOR3")
 		{
 			TheLoadedComponent[i] = new NOR3(r_GfxInfo, AND2_FANOUT);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-			
+
 		}
 		if (the_label == "NOT")
 		{
 			TheLoadedComponent[i] = new NOT(r_GfxInfo, AND2_FANOUT);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-			
+
 		}
 		if (the_label == "OR2")
 		{
@@ -198,13 +199,124 @@ void load::Execute()
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
 		}
 		pManager->AddComponent(TheLoadedComponent[i]);
-		TheName="";
+		TheName = "";
 		the_label = "";
 		label = "";
 		id = "";
 		xin = "";
 		yin = "";
 		getline(the_added_component, TheName);
+	}
+	id = "";
+	xin = "";
+	yin = "";
+	if (TheName == "the connections")
+	{
+		getline(the_added_component, TheName);
+		while (!(TheName == "-1"))
+		{
+			int j = 0;
+
+			for (; j < TheName.length(); j++)
+			{
+				if (TheName[j] == ' ')
+				{
+					break;
+				}
+				xin += TheName[j];
+			}
+			j++;
+			int r = 0;
+			for (; j < TheName.length(); j++)
+			{
+				if (TheName[j] == ' ' && r < 5)
+				{
+					r++;
+					continue;
+				}
+				else break;
+			}
+			for (; j < TheName.length(); j++)
+			{
+				if (TheName[j] == ' ')
+				{
+					break;
+				}
+				yin += TheName[j];
+			}
+			j++;
+			r = 0;
+			for (; j < TheName.length(); j++)
+			{
+				if (TheName[j] == ' ' && r < 5)
+				{
+					r++;
+					continue;
+				}
+				else break;
+			}
+			for (; j < TheName.length(); j++)
+			{
+				if (TheName[j] == ' ')
+				{
+					break;
+				}
+				id += TheName[j];
+			}
+			x = stoi(xin);
+			y = stoi(yin);
+			TheRealId = stoi(id);
+			Component* thesource;
+			Component* thedissource;
+			for (int i = 0; i < thenumofcomp; i++)
+			{
+				if (x == TheLoadedComponent[i]->getid())
+					thesource = TheLoadedComponent[i];
+				if (y == TheLoadedComponent[i]->getid())
+					thedissource = TheLoadedComponent[i];
+			}
+			GraphicsInfo TheLocation;
+			Connection* theaddedconnection;
+			int n = thedissource->getm_Inputs();
+			Switch* TheaddedSwitch = dynamic_cast<Switch*>(thesource);
+			
+				if (TheaddedSwitch != NULL)
+				{
+					
+					LED* thedis = dynamic_cast<LED*>(thedissource);
+					if (thedis != NULL)
+						theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), (thedis)->getinputpin());
+					else
+					{
+						theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
+					}
+					((TheaddedSwitch)->getoutputpin()->ConnectTo(theaddedconnection));
+				}
+				else
+				{
+					LED* thedis = dynamic_cast<LED*>(thedissource);
+					if (thedis != NULL)
+						theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), (thedis)->getinputpin());
+					else
+						theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
+					(((Gate*)thesource)->getoutputpin()->ConnectTo(theaddedconnection));
+				}
+
+			
+			
+			
+			theaddedconnection->setDestCmpnt(thedissource, n /*number of inputs*/, TheRealId /*pin number*/);
+			theaddedconnection->setSourceCmpnt(thesource);
+
+
+			theaddedconnection->load(thesource, thedissource, pManager->GetOutput(), TheRealId, TheLocation);
+			pManager->AddComponent(theaddedconnection);
+			id = "";
+			xin = "";
+			yin = "";
+			getline(the_added_component, TheName);
+		}
+
 	}
 	the_added_component.close();
 }

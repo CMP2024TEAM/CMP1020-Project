@@ -146,7 +146,24 @@ int Connection::GetTheNumberOfconnection()
 void Connection::load(int x, int y, string label, int u)
 {
 }
-
+bool Connection::IsInsideMe(int x , int y)
+{
+	bool result = false;
+	int half = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2;
+	if (y <= m_GfxInfo.y1 + 5 && y >= m_GfxInfo.y1 - 5 && x >= m_GfxInfo.x1 && x<= half)
+	{
+		result = true;
+	}
+	if (y <= m_GfxInfo.y2 + 5 && y >= m_GfxInfo.y2 - 5 && x <= m_GfxInfo.x2 && x >= half)
+	{
+		result = true;
+	}
+	if (x <= half + 5 && x >= half - 5 && y <= m_GfxInfo.y2 && y >= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	return result;
+}
 void Connection::load(Component* thes, Component* theds,Output* outp,int InputPinNumber, GraphicsInfo& GInfo)
 {
 	int Cx1, Cy1, Cx2, Cy2;	//Center point of the srcgate dstgate

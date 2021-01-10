@@ -14,10 +14,17 @@ void NOT::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
-	if (m_InputPins->getStatus() == HIGH)
-		m_OutputPin.setStatus(LOW);
-	else
-		m_OutputPin.setStatus(HIGH);
+	if (m_InputPins->getStatus() != NOTASSIGNED)
+	{
+		if (m_InputPins->getStatus() == HIGH)
+			m_OutputPin.setStatus(LOW);
+		else
+			m_OutputPin.setStatus(HIGH);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 
 }
 
@@ -60,7 +67,9 @@ void NOT::save()
 void NOT::load(int x, int y, string label, int u)
 {
 	m_GfxInfo.x1 = x;
+	m_GfxInfo.x2 = x + 50;
 	m_GfxInfo.y1 = y;
+	m_GfxInfo.y2 = y + 50;
 	Setmlabel(label);
 	id = u;
 }

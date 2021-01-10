@@ -3,6 +3,12 @@
 AddSwitch::AddSwitch(ApplicationManager* pApp) :Action(pApp)
 {
 	Cancel = 0;
+	x1 = 0;
+	y1 = 0;
+	x2 = 0;
+	y2 = 0;
+	Cx = 0;
+	Cy = 0;
 }
 
 AddSwitch::~AddSwitch(void)
@@ -60,6 +66,7 @@ void AddSwitch::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	Switch* pA = new Switch(GInfo);
 	pManager->AddComponent(pA);
+	pManager->Addswitch(pA);
 }
 
 

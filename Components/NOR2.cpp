@@ -15,10 +15,17 @@ NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 /// //////////////Operate////////////////////////////
 void NOR2::Operate()
 {
-	if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == LOW)
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if (GetInputPinStatus(1) == LOW && GetInputPinStatus(2) == LOW)
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 }
 /////////////////Draw Function////////////////////////
 void NOR2::Draw(Output* pOut,bool selected)
@@ -47,7 +54,9 @@ void NOR2::save()
 void NOR2::load(int x, int y, string label, int u)
 {
 	m_GfxInfo.x1 = x;
+	m_GfxInfo.x2 = x + 50;
 	m_GfxInfo.y1 = y;
+	m_GfxInfo.y2 = y + 50;
 	Setmlabel(label);
 	id = u;
 }

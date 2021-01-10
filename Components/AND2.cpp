@@ -14,10 +14,17 @@ void AND2::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
-	if ((m_InputPins[0].getStatus() == HIGH)&&( m_InputPins[1].getStatus() == HIGH))
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if ((m_InputPins[0].getStatus() == HIGH) && (m_InputPins[1].getStatus() == HIGH))
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+		NotAssignedGates--;
+	}
 }
 
 
@@ -62,7 +69,9 @@ void AND2::save()
 void AND2::load(int x,int y, string label,int u)
 {
 	m_GfxInfo.x1 = x;
+	m_GfxInfo.x2 = x + 50;
 	m_GfxInfo.y1 = y;
+	m_GfxInfo.y2 = y + 50;
 	Setmlabel(label);
 	id = u;
 }

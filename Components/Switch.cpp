@@ -7,22 +7,15 @@ Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(5)
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
+	SrcPin.setStatus(LOW);
 }
 
 
 void Switch::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
-	//Click is Operate
-	if (SrcPin.getStatus() == LOW)
-		SrcPin.setStatus(HIGH);
-	else
-		SrcPin.setStatus(LOW);
-
-	return;
+	//empty to deacrse the appmanger functionality
 }
+
 
 
 // Function Draw
@@ -49,7 +42,9 @@ void Switch::save()
 void Switch::load(int x, int y, string label, int u)
 {
 	m_GfxInfo.x1 = x;
+	m_GfxInfo.x2 = x + 50;
 	m_GfxInfo.y1 = y;
+	m_GfxInfo.y2 = y + 50;
 	Setmlabel(label);
 	id = u;
 }
@@ -88,4 +83,20 @@ int Switch::getm_Inputs()
 OutputPin* Switch::getoutputpin()
 {
 	return (&SrcPin);
+}
+
+void Switch::ExecuteSwitch()
+{
+	//Add you code here
+	//Click is Execute
+	if (SrcPin.getStatus() == LOW)
+		SrcPin.setStatus(HIGH);
+	else
+		SrcPin.setStatus(LOW);
+	return;
+}
+
+void Switch::SetStatus(STATUS s)
+{
+	SrcPin.setStatus(s);
 }

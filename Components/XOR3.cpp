@@ -18,13 +18,20 @@ void XOR3::Operate()
 	Inputs[1] = GetInputPinStatus(2);
 	Inputs[2] = GetInputPinStatus(3);
 	int ones = Inputs[0] + Inputs[1] + Inputs[2];
-	if (ones % 2)
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED)&& (m_InputPins[3].getStatus() != NOTASSIGNED))
 	{
-		m_OutputPin.setStatus(HIGH);
-	}
-	else
-	{
-		m_OutputPin.setStatus(LOW);
+		if (ones % 2)
+		{
+			m_OutputPin.setStatus(HIGH);
+		}
+		else
+		{
+			m_OutputPin.setStatus(LOW);
+		}
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
 	}
 }
 
@@ -68,7 +75,9 @@ void XOR3::load(int x, int y, string label, int u)
 {
 	
 	m_GfxInfo.x1 = x;
+	m_GfxInfo.x2 = x + 50;
 	m_GfxInfo.y1 = y;
+	m_GfxInfo.y2 = y + 50;
 	Setmlabel(label);
 	id = u;
 }

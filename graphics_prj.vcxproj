@@ -157,6 +157,7 @@
     <ClCompile Include="Actions\SAVE.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="Actions\StartStopSimulation.cpp" />
+    <ClCompile Include="Actions\TruthTable.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="Actions\SAVE.h" />
     <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="Actions\StartStopSimulation.h" />
+    <ClInclude Include="Actions\TruthTable.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

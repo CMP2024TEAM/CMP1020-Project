@@ -29,83 +29,102 @@ void EditConnection::ReadActionParameters()
 		//Clear Status Bar
 		pOut->ClearStatusBar();
 
-		Connection* conn = dynamic_cast<Connection*>(C);
-		C = conn;
+		Conn = dynamic_cast<Connection*>(C);
+		C = Conn;
 	}
-	pOut->PrintMsg("Connection: Click on the new output Pin to the Connection");
-	bool Outpin = false;
-	do
-	{
-		pIn->GetPointClicked(Cx11, Cy11);
-		if (pManager->CheckWhichComponent(Cx11, Cy11, p1) == 0)
+	pOut->PrintMsg("Edit Connection: Enter 1 to Edit Input Pin or 2 to Edit Output Pin Then Press Enter Key");
+	string s;
+	pIn->GetSrting(pOut,s);
+	while (true) {
+		if (s == "1")
 		{
-			Cancel = 1;
 			pOut->ClearStatusBar();
-			return;
-		}
-		LED* L = dynamic_cast<LED*>(p1);
-
-		if (p1 != NULL)
-			if (L == NULL)
+			pOut->PrintMsg("Connection: Click on the new input Pin to the Connection");
+			bool Inpin = false;
+			do
 			{
-				if (Cx11 > (p1->GetLocation().x1 + p1->GetLocation().x2) / 2)
-					Outpin = true;
-				else
+				pIn->GetPointClicked(Cx22, Cy22);
+				if (pManager->CheckWhichComponent(Cx22, Cy22, p2) == 0)
 				{
+					Cancel = 1;
 					pOut->ClearStatusBar();
-					pOut->PrintMsg("Connection: You Can Only Click on an output Pin, Click Again!");
+					return;
 				}
-			}
-			else
-			{
-				pOut->ClearStatusBar();
-				pOut->PrintMsg("Connection: You Can Only Click on an output Pin, Click Again!");
-			}
-
-	} while (p1 == NULL || !Outpin);
-	pOut->ClearStatusBar();
-	pOut->PrintMsg("Connection: Click on the new input Pin to the Connection");
-	bool Inpin = false;
-	do
-	{
-
-		pIn->GetPointClicked(Cx22, Cy22);
-		if (pManager->CheckWhichComponent(Cx22, Cy22, p2) == 0)
+				LED* L = dynamic_cast<LED*>(p2);
+				Switch* S = dynamic_cast<Switch*>(p2);
+				if (L != NULL)
+					if (Cy22 < (p2->GetLocation().y1 + p2->GetLocation().y2) / 2)
+					{
+						Inpin = true;
+						break;
+					}
+					else
+					{
+						pOut->ClearStatusBar();
+						pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+					}
+				if (S == NULL)
+					if (p2 != NULL)
+						if (Cx22 < (p2->GetLocation().x1 + p2->GetLocation().x2) / 2)
+							Inpin = true;
+						else
+						{
+							pOut->ClearStatusBar();
+							pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+						}
+					else
+					{
+						pOut->ClearStatusBar();
+						pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+					}
+			} while (p2 == NULL || !Inpin);
+			type = 1;
+			break;
+		}
+		else if (s == "2")
 		{
-			Cancel = 1;
 			pOut->ClearStatusBar();
-			return;
-		}
-		LED* L = dynamic_cast<LED*>(p2);
-		Switch* S = dynamic_cast<Switch*>(p2);
-		if (L != NULL)
-			if (Cy22 < (p2->GetLocation().y1 + p2->GetLocation().y2) / 2)
+			pOut->PrintMsg("Connection: Click on the new output Pin to the Connection");
+			bool Outpin = false;
+			do
 			{
-				Inpin = true;
-				break;
-			}
-			else
-			{
-				pOut->ClearStatusBar();
-				pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
-			}
-		if (S == NULL)
-			if (p2 != NULL)
-				if (Cx22 < (p2->GetLocation().x1 + p2->GetLocation().x2) / 2)
-					Inpin = true;
-				else
+				pIn->GetPointClicked(Cx11, Cy11);
+				if (pManager->CheckWhichComponent(Cx11, Cy11, p1) == 0)
 				{
+					Cancel = 1;
 					pOut->ClearStatusBar();
-					pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
+					return;
 				}
-			else
-			{
-				pOut->ClearStatusBar();
-				pOut->PrintMsg("Connection: You Can Only Click on an Input Pin, Click Again!");
-			}
-	} while (p2 == NULL || !Inpin);
+				LED* L = dynamic_cast<LED*>(p1);
 
-	//Wait for User Input
+				if (p1 != NULL)
+					if (L == NULL)
+					{
+						if (Cx11 > (p1->GetLocation().x1 + p1->GetLocation().x2) / 2)
+							Outpin = true;
+						else
+						{
+							pOut->ClearStatusBar();
+							pOut->PrintMsg("Connection: You Can Only Click on an output Pin, Click Again!");
+						}
+					}
+					else
+					{
+						pOut->ClearStatusBar();
+						pOut->PrintMsg("Connection: You Can Only Click on an output Pin, Click Again!");
+					}
+
+			} while (p1 == NULL || !Outpin);
+			type = 2;
+			break;
+		}
+		else
+		{
+			pOut->PrintMsg("Edit Connection: Enter 1 to edit Input Pin or 2 to edit Output Pin");
+			s = "";
+			pIn->GetSrting(pOut, s);
+		}
+	}
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
@@ -125,6 +144,18 @@ void EditConnection::Execute()
 	Cx2 = (GInfo.x1 + GInfo.x2) / 2;
 	Cy2 = (GInfo.y1 + GInfo.y2) / 2;
 	//Calculate the rectangle Corners
+	if (type == 1)
+	{
+
+	}
+	else if (type == 2)
+	{
+
+	}
+	else
+	{
+
+	}
 	int n, j;
 	//if (isp2Gate)
 	n = p2->getm_Inputs();

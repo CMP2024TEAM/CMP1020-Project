@@ -155,7 +155,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE:
 		pAct = new Save(this);
 		break;
-	
 	case REDO:
 		this->Redo();
 		break;
@@ -318,7 +317,6 @@ void ApplicationManager::save()
 			thenumofconnections = theconnector->GetTheNumberOfconnection();
 			break;
 		}
-
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
@@ -345,11 +343,7 @@ void ApplicationManager::save()
 	the_added_component.open("file format.txt", ios::app);
 	the_added_component << endl << -1;
 	the_added_component.close();
-
-
 }
-
-
 
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {

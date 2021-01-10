@@ -12,7 +12,6 @@ Connection::~Connection()
 {
 	TheNumberOfconnection--;
 	SrcPin->DisconnectConnection(this);
-	
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -23,7 +22,6 @@ OutputPin* Connection::getSourcePin()
 {
 	return SrcPin;
 }
-
 
 void Connection::setDestPin(InputPin* pDstPin)
 {
@@ -44,6 +42,17 @@ void Connection::setDestCmpnt(Component* pDstCmpnt,int n,int j)
 	DstCmpnt = pDstCmpnt;
 	DstPinNum = j;
 	DstPins = n;
+}
+Component* Connection::GetSourceCmpnt()
+{
+	return SrcCmpnt;
+}
+
+Component* Connection::GetDestCmpnt(int & PinNumber , int & Pins)
+{
+	PinNumber = DstPinNum;
+	Pins = DstPins;
+	return DstCmpnt;
 }
 
 void Connection::Operate()
@@ -110,7 +119,6 @@ void Connection::Draw(Output* pOut, bool selected)
 		GInfo.y2 = Cy2 + 25;
 		Cx2 += 10;
 	}
-
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
 	GInfo.y1 = Cy1 - 0.5;

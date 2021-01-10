@@ -23,8 +23,10 @@ public:
 	void load(int x, int y, string label, int u);
 	void setSourcePin(OutputPin *pSrcPin);
 	void setSourceCmpnt(Component* pSrcCmpnt);
+	Component* GetSourceCmpnt();
 	void setDestPin(InputPin *pDstPin);
 	void setDestCmpnt(Component* pDstCmpnt,int n,int j);
+	Component* GetDestCmpnt(int& PinNumber, int& Pins);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual int getm_Inputs();

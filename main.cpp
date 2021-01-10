@@ -6,8 +6,6 @@
 
 int main()
 {
-	// بسم الله الرحمن الرحيم 
-	//السلام عليكم 
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;

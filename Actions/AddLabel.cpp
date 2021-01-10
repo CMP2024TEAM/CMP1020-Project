@@ -30,6 +30,8 @@ void AddLabel::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return;
 		}
+
+		pManager->CheckWhichComponent(Cx, Cy, C);
 		//Clear Status Bar
 		pOut->ClearStatusBar();
 	}

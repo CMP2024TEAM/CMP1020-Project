@@ -7,22 +7,15 @@ Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(5)
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
+	SrcPin.setStatus(LOW);
 }
 
 
 void Switch::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
-	//Click is Operate
-	if (SrcPin.getStatus() == LOW)
-		SrcPin.setStatus(HIGH);
-	else
-		SrcPin.setStatus(LOW);
-
-	return;
+	//empty to deacrse the appmanger functionality
 }
+
 
 
 // Function Draw
@@ -42,8 +35,16 @@ void Switch::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt",ios::app);
-	the_added_component << endl << "switch"  << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
+	the_added_component << "Switch"  << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
 	the_added_component.close();
+}
+
+void Switch::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }
 
 //returns status of outputpin
@@ -80,6 +81,18 @@ int Switch::getm_Inputs()
 OutputPin* Switch::getoutputpin()
 {
 	return (&SrcPin);
+}
+
+void Switch::ExecuteSwitch()
+{
+	//Add you code here
+	//Click is Execute
+	if (SrcPin.getStatus() == LOW)
+		SrcPin.setStatus(HIGH);
+	else
+		SrcPin.setStatus(LOW);
+	return;
+}
 }
 void Switch::SetStatus(STATUS s)
 {

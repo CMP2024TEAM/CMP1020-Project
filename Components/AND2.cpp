@@ -14,10 +14,17 @@ void AND2::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
-	if ((m_InputPins[0].getStatus() == HIGH)&&( m_InputPins[1].getStatus() == HIGH))
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if ((m_InputPins[0].getStatus() == HIGH) && (m_InputPins[1].getStatus() == HIGH))
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+		NotAssignedGates--;
+	}
 }
 
 
@@ -54,9 +61,17 @@ void AND2::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "AND3  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component << "AND2  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 	
+}
+
+void AND2::load(int x,int y, string label,int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }
 
 int AND2::getm_Inputs()

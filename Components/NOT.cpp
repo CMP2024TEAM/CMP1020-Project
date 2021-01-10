@@ -14,10 +14,17 @@ void NOT::Operate()
 	//caclulate the output status as the ANDing of the two input pins
 
 	//Add you code here
-	if (m_InputPins->getStatus() == HIGH)
-		m_OutputPin.setStatus(LOW);
-	else
-		m_OutputPin.setStatus(HIGH);
+	if (m_InputPins->getStatus() != NOTASSIGNED)
+	{
+		if (m_InputPins->getStatus() == HIGH)
+			m_OutputPin.setStatus(LOW);
+		else
+			m_OutputPin.setStatus(HIGH);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 
 }
 
@@ -54,8 +61,15 @@ void NOT::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "NOT   " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component << "NOT   " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
+}
+void NOT::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }
 int NOT:: getm_Inputs()
 {

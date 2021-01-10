@@ -17,13 +17,20 @@ void NOR3::Operate()
 	Inputs[0] = GetInputPinStatus(1);
 	Inputs[1] = GetInputPinStatus(2);
 	Inputs[2] = GetInputPinStatus(3);
-	if (!Inputs[0] && !Inputs[1] && !Inputs[2])
+	if ((Inputs[0] != NOTASSIGNED) && ((Inputs[1] != NOTASSIGNED)&& (Inputs[2] != NOTASSIGNED)))
 	{
-		m_OutputPin.setStatus(HIGH);
-	}
-	else
-	{
-		m_OutputPin.setStatus(LOW);
+		if (!Inputs[0] && !Inputs[1] && !Inputs[2])
+		{
+			m_OutputPin.setStatus(HIGH);
+		}
+		else
+		{
+			m_OutputPin.setStatus(LOW);
+		}
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
 	}
 }
 
@@ -55,8 +62,16 @@ void NOR3::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "NOR3  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component << "NOR3  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
+}
+
+void NOR3::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }
 
 //Set status of an input pin ot HIGH or LOW

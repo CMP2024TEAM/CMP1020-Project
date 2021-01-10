@@ -3,6 +3,7 @@ int Component::Countofcomp = 0;
 Component::Component(const GraphicsInfo &r_GfxInfo)
 {
 	Countofcomp++;
+	id = 0;
 	id = Countofcomp;
 	m_GfxInfo = r_GfxInfo;
 	m_Label = "";
@@ -31,6 +32,11 @@ void Component::set_Location(GraphicsInfo the_new)
 	m_GfxInfo.y2 = the_new.y2;
 }
 
+void Component::Setmlabel(string thereadingname)
+{
+	m_Label = thereadingname;
+}
+
 string Component::get_mlabel()
 {
 	return m_Label;
@@ -49,10 +55,12 @@ bool Component::IsInsideMe(int x, int y)
 }
 Component::Component()
 {}
-void Component::Draw(Output* pOut , bool selected)
-{
 
+
+void Component::Draw(Output* pOut, bool selected)
+{
 }
+
 void Component::DrawLabel(Output* pOut)
 {
 	if (m_Label != "") 
@@ -64,7 +72,17 @@ void Component::DrawLabel(Output* pOut)
 	}
 }
 
+void Component::SetId(int TheIdOFThecopy)
+{
+	id = TheIdOFThecopy;
+}
+
 int Component::GetId()
+{
+	return ++Countofcomp;
+}
+
+int Component::getid()
 {
 	return id;
 }

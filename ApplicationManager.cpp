@@ -21,7 +21,10 @@
 #include"Actions/Cut.h"
 #include"Actions/Move.h"
 #include"Actions/AddLabel.h"
+#include"Actions/load.h"
+#include<string>
 #include"Actions/Edit.h"
+#include"Actions/EditConnection.h"
 #include<iostream>
 #include<fstream>
 #include"Actions/Operate.h"
@@ -163,6 +166,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SAVE:
 		pAct = new Save(this);
 		break;
+	
 	case REDO:
 		this->Redo();
 		break;
@@ -178,6 +182,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EDIT:
 		pAct = new Edit(this, Selected_Comp);
 		break;
+	case EDITCONNECTION:
+		pAct = new EditConnection(this, Selected_Comp);
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -191,12 +198,31 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 }
 ////////////////////////////////////////////////////////////////////
+void ApplicationManager::AppOperate() 
+{
+	for (int i = 0; i < CompCount; i++)
+	{
 
+		for (int i = 0; i < CompCount; i++)
+		{
+			CompList[i]->Operate();
+		}
+	}
+}
 void ApplicationManager::UpdateInterface()
 {
 	/*delete OutputInterface;
 OutputInterface = new Output;*/
 	OutputInterface->ClearDrawingArea();
+//SIMULATION
+	if (UI.AppMode == SIMULATION)
+	{
+		AppOperate();
+		if ((LED::getNotAssignedLeds() != 0 || Gate::getNotAssignedGates() != 0))
+			OutputInterface->PrintMsg("Please Check your Connections!");
+
+	}
+	
 	for (int i = 0; i < CompCount; i++)
 	{
 		bool selected = 0;
@@ -204,15 +230,8 @@ OutputInterface = new Output;*/
 			selected = 1;
 		CompList[i]->Draw(OutputInterface, selected);
 	}
-	//SIMULATION
-	if(UI.AppMode==SIMULATION)
-		for (int i = 0; i < CompCount; i++)
-			for (int i = 0; i < CompCount; i++)
-			{
-				Switch* sw = dynamic_cast<Switch*>(CompList[i]);
-				if (sw == NULL)
-					CompList[i]->Operate();
-			}
+	
+
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -259,44 +278,44 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 	}
 	UpdateInterface();
 }
-void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
-{
-	for (int i = 0; i < CompCount; i++)
-	{
-		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-		if (conn != NULL)
-		{
-			if (conn->getDestPin() == P)
-			{
-				delete CompList[i];
-				CompList[i] = NULL;
-				CompList[i] = CompList[CompCount - 1];
-				CompList[CompCount - 1] = NULL;
-				CompCount--;
-				i--;
-			}
-		}
-	}
-}
-void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P)
-{
-	for (int i = 0; i < CompCount; i++)
-	{
-		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-		if (conn != NULL)
-		{
-			if (conn->getSourcePin() == P)
-			{
-				delete CompList[i];
-				CompList[i] = NULL;
-				CompList[i] = CompList[CompCount - 1];
-				CompList[CompCount - 1] = NULL;
-				CompCount--;
-				i--;
-			}
-		}
-	}
-}
+//void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
+//{
+//	for (int i = 0; i < CompCount; i++)
+//	{
+//		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+//		if (conn != NULL)
+//		{
+//			if (conn->getDestPin() == P)
+//			{
+//				delete CompList[i];
+//				CompList[i] = NULL;
+//				CompList[i] = CompList[CompCount - 1];
+//				CompList[CompCount - 1] = NULL;
+//				CompCount--;
+//				i--;
+//			}
+//		}
+//	}
+//}
+//void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P)
+//{
+//	for (int i = 0; i < CompCount; i++)
+//	{
+//		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
+//		if (conn != NULL)
+//		{
+//			if (conn->getSourcePin() == P)
+//			{
+//				delete CompList[i];
+//				CompList[i] = NULL;
+//				CompList[i] = CompList[CompCount - 1];
+//				CompList[CompCount - 1] = NULL;
+//				CompCount--;
+//				i--;
+//			}
+//		}
+//	}
+//}
 void ApplicationManager::Undo()
 {
 	this->DeleteComponent(CompList[CompCount - 1]);
@@ -313,11 +332,22 @@ int ApplicationManager::get_compcount()
 
 void ApplicationManager::save()
 {
-	Connection* theconnector;
-	int thenumofconnections = theconnector->GetTheNumberOfconnection();
+	int thenumofconnections = 0;
+	for (int i = 0; i < CompCount; i++)
+	{
+		Connection* theconnector = dynamic_cast<Connection*>(CompList[i]);
+		if (theconnector != NULL)
+		{
+			thenumofconnections = theconnector->GetTheNumberOfconnection();
+			break;
+		}
+
+	}
+	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
-	the_added_component.open("file format.txt,ios::app");
-	the_added_component << (CompCount - thenumofconnections);
+	the_added_component.open("file format.txt",ios::app);
+	the_added_component << TheNumberOfcomponents << endl ;
+	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
@@ -325,7 +355,9 @@ void ApplicationManager::save()
 			if (CompList[i] != NULL)
 				CompList[i]->save();
 	}
+	the_added_component.open("file format.txt", ios::app);
 	the_added_component << endl << "the connections";
+	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
@@ -333,9 +365,15 @@ void ApplicationManager::save()
 			Theconnector->save();
 
 	}
+	the_added_component.open("file format.txt", ios::app);
 	the_added_component << endl << -1;
+	the_added_component.close();
+
 
 }
+
+
+
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)

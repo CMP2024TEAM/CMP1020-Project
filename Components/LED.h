@@ -7,6 +7,8 @@ class LED :public Component
 {
 	InputPin the_output;  //the output pin from the gates 
 	Output* the_status; //that make me able to use the drawing functions 
+	static int NotAssigendLeds;
+	int AssignCheck;
 public:
 	LED(const GraphicsInfo& r_GfxInfo);
 	void Operate();
@@ -16,6 +18,9 @@ public:
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
 	void save();
+	void load(int x, int y, string label, int u);
 	InputPin* getinputpin();
+	int static getNotAssignedLeds();
+	~LED();
 };
 #endif

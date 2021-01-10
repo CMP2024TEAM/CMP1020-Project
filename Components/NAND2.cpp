@@ -14,10 +14,17 @@ NAND2::NAND2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 /// //////////////Operate////////////////////////////
 void NAND2::Operate()
 {
-	if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH)
-		m_OutputPin.setStatus(LOW);
-	else
-		m_OutputPin.setStatus(HIGH);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if (GetInputPinStatus(1) == HIGH && GetInputPinStatus(2) == HIGH)
+			m_OutputPin.setStatus(LOW);
+		else
+			m_OutputPin.setStatus(HIGH);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 }
 /////////////////Draw Function////////////////////////
 void NAND2::Draw(Output* pOut,bool selected)
@@ -40,8 +47,15 @@ void NAND2::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "NAND2 " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component<< "NAND2 " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
+}
+void NAND2::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }
 ///////////////setinputpinstatus////////////////////
 void NAND2::setInputPinStatus(int n, STATUS s)

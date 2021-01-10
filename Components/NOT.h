@@ -24,6 +24,7 @@ class NOT : public Gate
 
 		virtual void setInputPinStatus(int n,STATUS s);	//set status of Inputpin , to be used by connection class.
 		void save();
+		void load(int x, int y, string label, int u);
 		virtual int getm_Inputs();
 };
 

@@ -2,7 +2,7 @@
 
 Pin::Pin()
 {
-	m_Status = LOW;	//Default Status is LOW
+	m_Status = NOTASSIGNED;	//Default Status is NOTASSIGEND
 }
 
 void Pin::setStatus(STATUS r_Status)

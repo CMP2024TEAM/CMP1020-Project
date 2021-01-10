@@ -260,6 +260,9 @@
     <ClCompile Include="Actions\Action.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\load.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\Edit.cpp">
       <Filter>Actions</Filter>
     </ClCompile>

@@ -9,13 +9,21 @@ BUFFER::BUFFER(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 }
 
 void BUFFER::Operate()
-{//caclulate the output status as the ANDing of the two input pins
+{
+	//caclulate the output status as the Buffer of the two input pins
 
 	//Add you code here
-	if (m_InputPins->getStatus() == HIGH)
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins->getStatus() != NOTASSIGNED))
+	{
+		if (m_InputPins->getStatus() == HIGH)
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 
 }
 
@@ -41,7 +49,7 @@ void BUFFER::save()
 	
 	ofstream the_added_component;
 	the_added_component.open("file format.txt", ios::app);
-	the_added_component << endl << "BUFFER" << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
+	the_added_component << "BUFFER" << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 }
 
@@ -54,4 +62,12 @@ void BUFFER::setInputPinStatus(int n ,STATUS s)
 int BUFFER::getm_Inputs()
 {
 	return  m_Inputs;
+}
+
+void BUFFER::load(int x, int y, string label, int u)
+{
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	Setmlabel(label);
+	id = u;
 }

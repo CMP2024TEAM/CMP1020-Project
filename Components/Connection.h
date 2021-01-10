@@ -20,7 +20,7 @@ public:
 	virtual void Draw(Output* pOut,bool selected);	//for each component to Draw itself
 	void DrawLabel(Output* pOut);
 	int GetTheNumberOfconnection();
-	
+	void load(int x, int y, string label, int u);
 	void setSourcePin(OutputPin *pSrcPin);
 	void setSourceCmpnt(Component* pSrcCmpnt);
 	void setDestPin(InputPin *pDstPin);

@@ -229,33 +229,31 @@ Output* ApplicationManager::GetOutput()
 //Delete Component
 void ApplicationManager::DeleteComponent(Component* pComp)
 {
-	/*
+	
 	for (int j = 0; j < CompCount; j++)
 	{
 		if (pComp == CompList[j])
 		{
-			Component* Temp;
 			RemComp[RemCompCount++] = CompList[j];
 			CompList[j] = NULL;
-			Temp = CompList[j];
 			CompList[j] = CompList[CompCount - 1];
-			CompList[CompCount - 1] = Temp;
-			CompCount--;
-		}
-	}
-	*/
-	for (int i = 0; i < CompCount; i++)
-	{
-		if (pComp == CompList[i])
-		{
-			delete CompList[i];
-			CompList[i] = NULL;
-			CompList[i] = CompList[CompCount - 1];
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
-
 		}
 	}
+	
+	//for (int i = 0; i < CompCount; i++)
+	//{
+	//	if (pComp == CompList[i])
+	//	{
+	//		delete CompList[i];
+	//		CompList[i] = NULL;
+	//		CompList[i] = CompList[CompCount - 1];
+	//		CompList[CompCount - 1] = NULL;
+	//		CompCount--;
+
+	//	}
+	//}
 	UpdateInterface();
 }
 //void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
@@ -299,6 +297,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 void ApplicationManager::Undo()
 {
 	this->DeleteComponent(CompList[CompCount - 1]);
+
 }
 void ApplicationManager::Redo()
 {
@@ -352,7 +351,7 @@ void ApplicationManager::save()
 
 
 
-}
+
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)

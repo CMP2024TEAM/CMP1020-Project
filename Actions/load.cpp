@@ -276,10 +276,35 @@ void load::Execute()
 					thedissource = TheLoadedComponent[i];
 			}
 			GraphicsInfo TheLocation;
+			Connection* theaddedconnection;
 			int n = thedissource->getm_Inputs();
-			Connection* theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
-			(((Gate*)thesource)->getoutputpin()->ConnectTo(theaddedconnection));
+			Switch* TheaddedSwitch = dynamic_cast<Switch*>(thesource);
+			
+				if (TheaddedSwitch != NULL)
+				{
+					
+					LED* thedis = dynamic_cast<LED*>(thedissource);
+					if (thedis != NULL)
+						theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), (thedis)->getinputpin());
+					else
+					{
+						theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
+					}
+					((TheaddedSwitch)->getoutputpin()->ConnectTo(theaddedconnection));
+				}
+				else
+				{
+					LED* thedis = dynamic_cast<LED*>(thedissource);
+					if (thedis != NULL)
+						theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), (thedis)->getinputpin());
+					else
+						theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
+					(((Gate*)thesource)->getoutputpin()->ConnectTo(theaddedconnection));
+				}
 
+			
+			
+			
 			theaddedconnection->setDestCmpnt(thedissource, n /*number of inputs*/, TheRealId /*pin number*/);
 			theaddedconnection->setSourceCmpnt(thesource);
 

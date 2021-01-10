@@ -93,7 +93,7 @@ void Switch::ExecuteSwitch()
 		SrcPin.setStatus(LOW);
 	return;
 }
-}
+
 void Switch::SetStatus(STATUS s)
 {
 	SrcPin.setStatus(s);

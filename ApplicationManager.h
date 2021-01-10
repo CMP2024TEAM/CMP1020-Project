@@ -62,7 +62,9 @@ public:
 	void Redo();
 	int get_compcount();
 	void save();
-
+	void AppOperate();
+	void Addswitch(Switch*);
+	void AddLeds(LED*);
 	//destructor
 	~ApplicationManager();
 };

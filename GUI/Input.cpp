@@ -59,7 +59,7 @@ ActionType Input::GetUserAction(int Page) const
 	// User Click on the common toolbar 
 	if (x > 900 && y > UI.ToolBarHeight)
 	{
-		if (y > (8 * 81)&&y<UI.StatusBarHeight)
+		if (y > (8 * 81)&&y<UI.height-UI.StatusBarHeight)
 			return EDITCONNECTION;
 		y -= 80;
 		int ClickedItemOrder = -1;
@@ -173,6 +173,7 @@ ActionType Input::GetUserAction(int Page) const
 			switch (ClickedItemOrder)
 			{
 			case ITM_TRUTH: return Create_TruthTable;
+			case ITM_PROPING: return Circuit_Proping;
 
 			
 			case 11: return EXIT;

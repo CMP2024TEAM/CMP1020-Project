@@ -60,6 +60,7 @@ void AddLED::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	LED* pA = new LED(GInfo);
 	pManager->AddComponent(pA);
+	pManager->AddLeds(pA);
 }
 
 

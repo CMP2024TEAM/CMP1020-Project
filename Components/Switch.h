@@ -17,5 +17,6 @@ public:
 	virtual int getm_Inputs();
 	virtual void setInputPinStatus(int n, STATUS s=LOW);	//set status of Inputpin # n, to be used by connection class.
 	OutputPin* Switch::getoutputpin();
+	void SetStatus(STATUS);
 };
 

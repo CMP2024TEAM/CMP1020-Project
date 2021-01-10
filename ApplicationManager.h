@@ -9,6 +9,8 @@
 #include "Actions\Save.h"
 #include ".\Components\OutputPin.h"
 #include ".\Components\InputPin.h"
+#include"Components/Switch.h"
+#include"Components/LED.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -24,6 +26,10 @@ private:
 	Input* InputInterface; //pointer to the Input Clase Interface
 	Component* Clipboard;
 	Component* Selected_Comp;
+	Switch* ListOfSwitches[200];
+	LED* ListOfLeds[200];
+	int NumSwitches;
+	int NumLeds;
 public:
 
 
@@ -56,7 +62,8 @@ public:
 	void Redo();
 	int get_compcount();
 	void save();
-
+	void Addswitch(Switch*);
+	void AddLeds(LED*);
 	//destructor
 	~ApplicationManager();
 };

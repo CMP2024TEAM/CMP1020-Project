@@ -42,7 +42,7 @@ void LED::Draw(Output* pOut,bool selected)
 
 int LED::GetOutPinStatus()
 {
-	return 0;
+	return the_output.getStatus();
 }
 int LED::getm_Inputs()
 {

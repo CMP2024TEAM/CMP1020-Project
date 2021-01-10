@@ -81,3 +81,7 @@ OutputPin* Switch::getoutputpin()
 {
 	return (&SrcPin);
 }
+void Switch::SetStatus(STATUS s)
+{
+	SrcPin.setStatus(s);
+}

@@ -60,6 +60,7 @@ void AddSwitch::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	Switch* pA = new Switch(GInfo);
 	pManager->AddComponent(pA);
+	pManager->Addswitch(pA);
 }
 
 

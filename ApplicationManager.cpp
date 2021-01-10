@@ -29,6 +29,7 @@
 #include<fstream>
 #include"Actions/Operate.h"
 #include"Actions/TruthTable.h"
+#include"Actions/CircuitProping.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -187,6 +188,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case EDITCONNECTION:
 		pAct = new EditConnection(this, Selected_Comp);
+		break;
+	case Circuit_Proping:
+		pAct = new CircuitProping(this);
 		break;
 	case EXIT:
 		///TODO: create ExitAction here

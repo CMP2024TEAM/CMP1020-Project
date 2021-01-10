@@ -14,6 +14,7 @@ Connection::~Connection()
 {
 	TheNumberOfconnection--;
 	SrcPin->DisconnectConnection(this);
+	DstPin->SetConnection(NULL);
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -158,6 +159,12 @@ bool Connection::IsInsideMe(int x , int y)
 	{
 		result = true;
 	}
+	if(m_GfxInfo.y2< m_GfxInfo.y1)
+	if (x <= half + 5 && x >= half - 5 && y >= m_GfxInfo.y2 && y <= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	if (m_GfxInfo.y2 > m_GfxInfo.y1)
 	if (x <= half + 5 && x >= half - 5 && y <= m_GfxInfo.y2 && y >= m_GfxInfo.y1)
 	{
 		result = true;

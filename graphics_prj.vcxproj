@@ -145,6 +145,7 @@
     <ClCompile Include="Actions\Add_LABLE.cpp" />
     <ClCompile Include="Actions\Add_Switch.cpp" />
     <ClCompile Include="Actions\Arrows.cpp" />
+    <ClCompile Include="Actions\CircuitProping.cpp" />
     <ClCompile Include="Actions\Copy.cpp" />
     <ClCompile Include="Actions\cut.cpp" />
     <ClCompile Include="Actions\Delete.cpp" />
@@ -238,6 +239,7 @@
     <ClInclude Include="Actions\Add_LABLE.h" />
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
+    <ClInclude Include="Actions\CircuitProping.h" />
     <ClInclude Include="Actions\Copy.h" />
     <ClInclude Include="Actions\cut.h" />
     <ClInclude Include="Actions\Edit.h" />

@@ -187,7 +187,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 }
 ////////////////////////////////////////////////////////////////////
+void ApplicationManager::AppOperate() 
+{
+	for (int i = 0; i < CompCount; i++)
+	{
 
+		for (int i = 0; i < CompCount; i++)
+		{
+			CompList[i]->Operate();
+		}
+	}
+}
 void ApplicationManager::UpdateInterface()
 {
 	/*delete OutputInterface;
@@ -196,14 +206,7 @@ OutputInterface = new Output;*/
 //SIMULATION
 	if (UI.AppMode == SIMULATION)
 	{
-		for (int i = 0; i < CompCount; i++)
-		{
-
-			for (int i = 0; i < CompCount; i++)
-			{
-				CompList[i]->Operate();
-			}
-		}
+		AppOperate();
 		if ((LED::getNotAssignedLeds() != 0 || Gate::getNotAssignedGates() != 0))
 			OutputInterface->PrintMsg("Please Check your Connections!");
 

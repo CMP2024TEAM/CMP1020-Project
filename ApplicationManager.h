@@ -55,7 +55,7 @@ public:
 	int get_compcount();
 	void save();
 	void Load();
-
+	void AppOperate();
 	//destructor
 	~ApplicationManager();
 };

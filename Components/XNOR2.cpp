@@ -13,10 +13,17 @@ void XNOR2::Operate()
 	int input[2];
 	input[0] = GetInputPinStatus(1);
 	input[1] = GetInputPinStatus(2);
-	if (input[0] == input[1])
-		m_OutputPin.setStatus(HIGH);
-	else
-		m_OutputPin.setStatus(LOW);
+	if ((m_InputPins[0].getStatus() != NOTASSIGNED) && (m_InputPins[1].getStatus() != NOTASSIGNED))
+	{
+		if (input[0] == input[1])
+			m_OutputPin.setStatus(HIGH);
+		else
+			m_OutputPin.setStatus(LOW);
+		AssignCheck++;
+		//Decreases NotAssigned Gates
+		if (AssignCheck == 1)
+			NotAssignedGates--;
+	}
 }
 
 void XNOR2::Draw(Output* pOut,bool selected)

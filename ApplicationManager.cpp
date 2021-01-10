@@ -193,6 +193,22 @@ void ApplicationManager::UpdateInterface()
 	/*delete OutputInterface;
 OutputInterface = new Output;*/
 	OutputInterface->ClearDrawingArea();
+//SIMULATION
+	if (UI.AppMode == SIMULATION)
+	{
+		for (int i = 0; i < CompCount; i++)
+		{
+
+			for (int i = 0; i < CompCount; i++)
+			{
+				CompList[i]->Operate();
+			}
+		}
+		if ((LED::getNotAssignedLeds() != 0 || Gate::getNotAssignedGates() != 0))
+			OutputInterface->PrintMsg("Please Check your Connections!");
+
+	}
+	
 	for (int i = 0; i < CompCount; i++)
 	{
 		bool selected = 0;
@@ -200,15 +216,8 @@ OutputInterface = new Output;*/
 			selected = 1;
 		CompList[i]->Draw(OutputInterface, selected);
 	}
-	//SIMULATION
-	if(UI.AppMode==SIMULATION)
-		for (int i = 0; i < CompCount; i++)
-			for (int i = 0; i < CompCount; i++)
-			{
-				Switch* sw = dynamic_cast<Switch*>(CompList[i]);
-				if (sw == NULL)
-					CompList[i]->Operate();
-			}
+	
+
 }
 
 ////////////////////////////////////////////////////////////////////

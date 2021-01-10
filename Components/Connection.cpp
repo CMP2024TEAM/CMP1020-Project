@@ -1,6 +1,6 @@
 #include "Connection.h"
 #include<fstream>
-int Connection:: TheNumberOfconnection = 0;
+int Connection::TheNumberOfconnection = 0;
 Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin) :Component(r_GfxInfo)
 
 {
@@ -12,7 +12,7 @@ Connection::~Connection()
 {
 	TheNumberOfconnection--;
 	SrcPin->DisconnectConnection(this);
-	
+
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -39,7 +39,7 @@ void Connection::setSourceCmpnt(Component* pSrcCmpnt)
 	SrcCmpnt = pSrcCmpnt;
 }
 
-void Connection::setDestCmpnt(Component* pDstCmpnt,int n,int j)
+void Connection::setDestCmpnt(Component* pDstCmpnt, int n, int j)
 {
 	DstCmpnt = pDstCmpnt;
 	DstPinNum = j;
@@ -49,7 +49,7 @@ void Connection::setDestCmpnt(Component* pDstCmpnt,int n,int j)
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
-	DstPin->setStatus((STATUS)SrcPin->getStatus());
+		DstPin->setStatus((STATUS)SrcPin->getStatus());
 }
 
 void Connection::Draw(Output* pOut, bool selected)
@@ -73,32 +73,32 @@ void Connection::Draw(Output* pOut, bool selected)
 		if (DstPinNum == 1)// pin 1
 		{
 			GInfo.y2 = Cy2 - 5;
-			
+
 		}
 		else if (DstPinNum == 2)// pin 2
 		{
 
 			GInfo.y2 = Cy2;
-			
+
 		}
 		else if (DstPinNum == 3)// pin 3
 		{
 
 			GInfo.y2 = Cy2 + 4;
-			
+
 		}
 	}
 	if (DstPins == 2)
 	{
-		if (DstPinNum ==  1) //pin 1
+		if (DstPinNum == 1) //pin 1
 		{
 			GInfo.y2 = Cy2 - 4.5;
-			
+
 		}
-		else if (DstPinNum==2) // pin 2
+		else if (DstPinNum == 2) // pin 2
 		{
 			GInfo.y2 = Cy2 + 4.5;
-			
+
 		}
 	}
 	if (DstPins == 1)
@@ -160,10 +160,10 @@ int Connection::getm_Inputs()
 
 void Connection::save()
 {
-	int ThePinNum=0;
+	int ThePinNum = 0;
 	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
 	{
-		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)));
+		if (DstPin == (((Gate*)DstCmpnt)->getinputpin(i)));
 		ThePinNum = i;
 	}
 	ofstream the_added_connection;

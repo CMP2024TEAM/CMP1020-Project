@@ -4,6 +4,7 @@
 //Parameters:
 //r_Inputs: no. of gate's input pins
 //r_FanOut: Fan out of the gate's output pin
+int Gate::NotAssignedGates = 0;
 Gate::Gate(int r_Inputs, int r_FanOut):m_OutputPin(r_FanOut)
 {
 	//Allocate number of input pins (equals r_Inputs)
@@ -13,6 +14,9 @@ Gate::Gate(int r_Inputs, int r_FanOut):m_OutputPin(r_FanOut)
 	//Associate all input pins to this gate
 	for(int i=0; i<m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
+	//increases NotAssigned Gates
+	NotAssignedGates++;
+	AssignCheck = 0;
 }
 int Gate::getm_Inputs()
 {
@@ -34,3 +38,14 @@ void Gate::save()
 {
 	
 }
+
+ int Gate::getNotAssignedGates()
+ {
+	 return NotAssignedGates;
+ }
+
+ Gate::~Gate()
+ {
+	 //Decreases NotAssigned Gates
+	 NotAssignedGates--;
+ }

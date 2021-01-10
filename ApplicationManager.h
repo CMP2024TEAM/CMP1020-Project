@@ -7,8 +7,6 @@
 #include "Actions\Action.h"
 #include "Components\Component.h"
 #include "Actions\Save.h"
-#include ".\Components\OutputPin.h"
-#include ".\Components\InputPin.h"
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -50,8 +48,8 @@ public:
 	bool CheckWhichComponent(int, int, Component*&);
 	bool CheckWhichComponent(int, int);
 	void SetSelectedComponent(Component*);
-	void DeleteAllConnnectionsWithThisInputPin(InputPin* P);
-	void DeleteAllConnnectionsWithThisOutputPin(OutputPin* P);
+	//void DeleteAllConnnectionsWithThisInputPin(InputPin* P);
+	//void DeleteAllConnnectionsWithThisOutputPin(OutputPin* P);
 	void Undo();
 	void Redo();
 	int get_compcount();

@@ -24,11 +24,15 @@ public:
 	void load(Component* thes, Component* theds,Output* outp,int, GraphicsInfo&);
 	void setSourcePin(OutputPin *pSrcPin);
 	void setSourceCmpnt(Component* pSrcCmpnt);
+	Component* GetSourceCmpnt();
 	void setDestPin(InputPin *pDstPin);
 	void setDestCmpnt(Component* pDstCmpnt,int n,int j);
+	Component* GetDestCmpnt(int& PinNumber, int& Pins);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual int getm_Inputs();
+	void save();
+	virtual bool IsInsideMe(int, int);
 	void save(string& thenameofthecirciut);
 
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1

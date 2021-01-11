@@ -11,7 +11,7 @@ void Input::GetPointClicked(int& x, int& y)
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string Input::GetSrting(Output* pOut)
+string Input::GetSrting(Output* pOut,string s1)
 {
 	///TODO: Implement this Function
 	//Read a complete string from the user until the user presses "ENTER".
@@ -19,10 +19,14 @@ string Input::GetSrting(Output* pOut)
 	//"BACKSPACE" should be also supported
 	//User should see what he is typing at the status bar
 	char ch;
-	string s = "";
+	string s = s1;
 	//pWind->GetKeyPress(escape);
 	while (true)
 	{
+		if (s != "")
+		{
+			pOut->PrintMsg("You Entered : " + s);
+		}
 		pWind->WaitKeyPress(ch);
 		if (ch == '\r')
 		{
@@ -39,10 +43,10 @@ string Input::GetSrting(Output* pOut)
 		{
 			return "";
 		}
-		else {
+		else 
+		{
 			s += ch;
 		}
-		pOut->PrintMsg("You Entered : " + s);
 	}
 	return s;
 }
@@ -59,7 +63,7 @@ ActionType Input::GetUserAction(int Page) const
 	// User Click on the common toolbar 
 	if (x > 900 && y > UI.ToolBarHeight)
 	{
-		if (y > (8 * 81)&&y<UI.StatusBarHeight)
+		if (y > (8 * 81)&&y<UI.height-UI.StatusBarHeight)
 			return EDITCONNECTION;
 		y -= 80;
 		int ClickedItemOrder = -1;
@@ -82,6 +86,7 @@ ActionType Input::GetUserAction(int Page) const
 			case ITM_Label: return ADD_Label;
 			case ITM_Paste: return PASTE;
 			case ITM_Edit: return EDIT;
+			case ITM_EditConnection + 8: return EDITCONNECTION;
 			default: return COMMON_BAR;
 			}
 		}
@@ -95,8 +100,9 @@ ActionType Input::GetUserAction(int Page) const
 			case ITM_Save: return SAVE;
 			case ITM_Select: return START_SELECT;
 			case ITM_Delete: return DEL;
-			case ITM_Copy:return COPY;
-			case ITM_Cut:return CUT;
+			case ITM_Copy: return COPY;
+			case ITM_Cut: return CUT;
+			case ITM_EditConnection: return EDITCONNECTION;
 			default: return COMMON_BAR;
 			}
 		}
@@ -173,6 +179,7 @@ ActionType Input::GetUserAction(int Page) const
 			switch (ClickedItemOrder)
 			{
 			case ITM_TRUTH: return Create_TruthTable;
+			case ITM_PROPING: return Circuit_Proping;
 
 			
 			case 11: return EXIT;

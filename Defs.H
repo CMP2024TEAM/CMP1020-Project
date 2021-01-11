@@ -25,6 +25,8 @@ enum ActionType
 	EDIT_Label,			//Edit Label of a Component, a Connection
 
 	Create_TruthTable,	//Create Truth Table of the Circuit
+	Circuit_Proping,	//Circuit Proping tool
+
 
 	Change_Switch,		//Change Switch Status in Simulation Mode
 	SELECT,		//Select a Component, a Connection
@@ -106,6 +108,7 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 	//Note: Items are ordered here as they appear in menu
 				//Simulate menu item
 	ITM_TRUTH,	//Truth table menu item
+	ITM_PROPING,//Probing item
 	
 	//TODO:Add more items names here
 	

@@ -29,6 +29,7 @@
 #include<fstream>
 #include"Actions/Operate.h"
 #include"Actions/TruthTable.h"
+#include"Actions/CircuitProping.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -188,6 +189,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EDITCONNECTION:
 		pAct = new EditConnection(this, Selected_Comp);
 		break;
+	case Circuit_Proping:
+		pAct = new CircuitProping(this);
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -343,7 +347,6 @@ void ApplicationManager::save(string& thenameofthecirciut)
 			thenumofconnections = theconnector->GetTheNumberOfconnection();
 			break;
 		}
-
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
@@ -370,10 +373,9 @@ void ApplicationManager::save(string& thenameofthecirciut)
 	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << -1;
 	the_added_component.close();
+
+
 }
-
-
-
 
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {
@@ -395,6 +397,7 @@ bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 	if (x < 940 && x>900 && y < 380 && y>340)
 	{
 		return false;
+
 	}
 	c = NULL;
 	return true;

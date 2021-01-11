@@ -115,7 +115,7 @@ void AddConnection::Execute()
 	Cx2 = (GInfo.x1 + GInfo.x2) / 2;
 	Cy2 = (GInfo.y1 + GInfo.y2) / 2;
 	//Calculate the rectangle Corners
-	int n, j;
+	int n, j= 1;
 	//if (isp2Gate)
 	n = p2->getm_Inputs();
 	Gate* gate1 = dynamic_cast<Gate*>(p1);

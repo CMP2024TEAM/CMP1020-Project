@@ -2,7 +2,7 @@
 #include<fstream>
 #include"LED.h"
 #include"Switch.h"
-int Connection:: TheNumberOfconnection = 0;
+int Connection::TheNumberOfconnection = 0;
 Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin) :Component(r_GfxInfo)
 
 {
@@ -14,7 +14,7 @@ Connection::~Connection()
 {
 	TheNumberOfconnection--;
 	SrcPin->DisconnectConnection(this);
-
+	DstPin->SetConnection(NULL);
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -25,7 +25,6 @@ OutputPin* Connection::getSourcePin()
 {
 	return SrcPin;
 }
-
 
 void Connection::setDestPin(InputPin* pDstPin)
 {
@@ -47,11 +46,22 @@ void Connection::setDestCmpnt(Component* pDstCmpnt, int n, int j)
 	DstPinNum = j;
 	DstPins = n;
 }
+Component* Connection::GetSourceCmpnt()
+{
+	return SrcCmpnt;
+}
+
+Component* Connection::GetDestCmpnt(int & PinNumber , int & Pins)
+{
+	PinNumber = DstPinNum;
+	Pins = DstPins;
+	return DstCmpnt;
+}
 
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
-		DstPin->setStatus((STATUS)SrcPin->getStatus());
+	DstPin->setStatus((STATUS)SrcPin->getStatus());
 }
 
 void Connection::Draw(Output* pOut, bool selected)
@@ -112,7 +122,6 @@ void Connection::Draw(Output* pOut, bool selected)
 		GInfo.y2 = Cy2 + 25;
 		Cx2 += 10;
 	}
-
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
 	GInfo.y1 = Cy1 - 0.5;
@@ -138,14 +147,37 @@ int Connection::GetTheNumberOfconnection()
 void Connection::load(int x, int y, string label, int u)
 {
 }
-
+bool Connection::IsInsideMe(int x , int y)
+{
+	bool result = false;
+	int half = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2;
+	if (y <= m_GfxInfo.y1 + 5 && y >= m_GfxInfo.y1 - 5 && x >= m_GfxInfo.x1 && x<= half)
+	{
+		result = true;
+	}
+	if (y <= m_GfxInfo.y2 + 5 && y >= m_GfxInfo.y2 - 5 && x <= m_GfxInfo.x2 && x >= half)
+	{
+		result = true;
+	}
+	if(m_GfxInfo.y2< m_GfxInfo.y1)
+	if (x <= half + 5 && x >= half - 5 && y >= m_GfxInfo.y2 && y <= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	if (m_GfxInfo.y2 > m_GfxInfo.y1)
+	if (x <= half + 5 && x >= half - 5 && y <= m_GfxInfo.y2 && y >= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	return result;
+}
 void Connection::load(Component* thes, Component* theds,Output* outp,int InputPinNumber, GraphicsInfo& GInfo)
 {
 	int Cx1, Cy1, Cx2, Cy2;	//Center point of the srcgate dstgate
 	int x1, y1, x2, y2;
 	SrcCmpnt = thes;
 	DstCmpnt = theds;
-    GInfo = thes->GetLocation();//get gfxinfo
+	GInfo = thes->GetLocation();//get gfxinfo
 	Cx1 = (GInfo.x1 + GInfo.x2) / 2;
 	Cy1 = (GInfo.y1 + GInfo.y2) / 2;
 	GInfo = theds->GetLocation();//get gfxinfo
@@ -168,7 +200,7 @@ void Connection::load(Component* thes, Component* theds,Output* outp,int InputPi
 	}
 	if (n == 3)
 	{
-		if (InputPinNumber ==1)// pin 1
+		if (InputPinNumber == 1)// pin 1
 		{
 			GInfo.y2 = Cy2 - 5;
 			j = 1;
@@ -222,7 +254,7 @@ void Connection::load(Component* thes, Component* theds,Output* outp,int InputPi
 	}
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
-	GInfo.y1 = Cy1 - 0.5;	
+	GInfo.y1 = Cy1 - 0.5;
 }
 
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1

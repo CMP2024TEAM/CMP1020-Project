@@ -8,6 +8,7 @@ Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(5)
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 	SrcPin.setStatus(LOW);
+	this->SetLabel("Switch");
 }
 
 

@@ -10,6 +10,7 @@ LED::LED(const GraphicsInfo& r_GfxInfo)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 	NotAssigendLeds++;
 	AssignCheck = 0;
+	this->SetLabel("Led");
 }
 
 void LED::Operate()

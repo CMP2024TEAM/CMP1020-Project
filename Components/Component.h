@@ -34,7 +34,7 @@ public:
 	void SetLabel(string);
 	void SetLocation(GraphicsInfo);
 	string get_mlabel();
-	bool IsInsideMe(int, int);
+	virtual bool IsInsideMe(int, int);
 	Component();	
 	
 	//Destructor must be virtual

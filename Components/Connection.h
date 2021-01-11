@@ -24,13 +24,15 @@ public:
 	void load(Component* thes, Component* theds,Output* outp,int, GraphicsInfo&);
 	void setSourcePin(OutputPin *pSrcPin);
 	void setSourceCmpnt(Component* pSrcCmpnt);
+	Component* GetSourceCmpnt();
 	void setDestPin(InputPin *pDstPin);
 	void setDestCmpnt(Component* pDstCmpnt,int n,int j);
+	Component* GetDestCmpnt(int& PinNumber, int& Pins);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual int getm_Inputs();
 	void save();
-
+	virtual bool IsInsideMe(int, int);
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	virtual int GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 

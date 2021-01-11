@@ -14,7 +14,7 @@ Connection::~Connection()
 {
 	TheNumberOfconnection--;
 	SrcPin->DisconnectConnection(this);
-
+	DstPin->SetConnection(NULL);
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -25,7 +25,6 @@ OutputPin* Connection::getSourcePin()
 {
 	return SrcPin;
 }
-
 
 void Connection::setDestPin(InputPin* pDstPin)
 {
@@ -46,6 +45,17 @@ void Connection::setDestCmpnt(Component* pDstCmpnt, int n, int j)
 	DstCmpnt = pDstCmpnt;
 	DstPinNum = j;
 	DstPins = n;
+}
+Component* Connection::GetSourceCmpnt()
+{
+	return SrcCmpnt;
+}
+
+Component* Connection::GetDestCmpnt(int & PinNumber , int & Pins)
+{
+	PinNumber = DstPinNum;
+	Pins = DstPins;
+	return DstCmpnt;
 }
 
 void Connection::Operate()
@@ -112,7 +122,6 @@ void Connection::Draw(Output* pOut, bool selected)
 		GInfo.y2 = Cy2 + 25;
 		Cx2 += 10;
 	}
-
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
 	GInfo.y1 = Cy1 - 0.5;
@@ -138,8 +147,31 @@ int Connection::GetTheNumberOfconnection()
 void Connection::load(int x, int y, string label, int u)
 {
 }
-
-void Connection::load(Component* thes, Component* theds, Output* outp, int InputPinNumber, GraphicsInfo& GInfo)
+bool Connection::IsInsideMe(int x , int y)
+{
+	bool result = false;
+	int half = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2;
+	if (y <= m_GfxInfo.y1 + 5 && y >= m_GfxInfo.y1 - 5 && x >= m_GfxInfo.x1 && x<= half)
+	{
+		result = true;
+	}
+	if (y <= m_GfxInfo.y2 + 5 && y >= m_GfxInfo.y2 - 5 && x <= m_GfxInfo.x2 && x >= half)
+	{
+		result = true;
+	}
+	if(m_GfxInfo.y2< m_GfxInfo.y1)
+	if (x <= half + 5 && x >= half - 5 && y >= m_GfxInfo.y2 && y <= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	if (m_GfxInfo.y2 > m_GfxInfo.y1)
+	if (x <= half + 5 && x >= half - 5 && y <= m_GfxInfo.y2 && y >= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	return result;
+}
+void Connection::load(Component* thes, Component* theds,Output* outp,int InputPinNumber, GraphicsInfo& GInfo)
 {
 	int Cx1, Cy1, Cx2, Cy2;	//Center point of the srcgate dstgate
 	int x1, y1, x2, y2;

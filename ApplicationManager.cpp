@@ -29,6 +29,7 @@
 #include<fstream>
 #include"Actions/Operate.h"
 #include"Actions/TruthTable.h"
+#include"Actions/CircuitProping.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -188,6 +189,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EDITCONNECTION:
 		pAct = new EditConnection(this, Selected_Comp);
 		break;
+	case Circuit_Proping:
+		pAct = new CircuitProping(this);
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -343,7 +347,6 @@ void ApplicationManager::save()
 			thenumofconnections = theconnector->GetTheNumberOfconnection();
 			break;
 		}
-
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
@@ -370,10 +373,9 @@ void ApplicationManager::save()
 	the_added_component.open("file format.txt", ios::app);
 	the_added_component << -1;
 	the_added_component.close();
+
+
 }
-
-
-
 
 bool ApplicationManager::CheckWhichComponent(int x, int y)
 {

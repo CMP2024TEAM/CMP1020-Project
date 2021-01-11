@@ -3,7 +3,7 @@
 Edit::Edit(ApplicationManager* pApp,Component* SelComp) :Action(pApp)
 {
 	C = SelComp;
-	C = 0;
+	Cancel = 0;
 }
 
 Edit::~Edit(void)
@@ -22,6 +22,7 @@ void Edit::ReadActionParameters()
 
 		//Wait for User Input
 		pIn->GetPointClicked(Cx, Cy);
+
 		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
 		{
 			Cancel = 1;
@@ -44,9 +45,9 @@ void Edit::Execute()
 		return;
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	string s;
+	string s = C->GetLabel();
 	pOut->PrintMsg("Enter New Label");
-	s = pIn->GetSrting(pOut);
+	s = pIn->GetSrting(pOut , s);
 	C->SetLabel(s);
 }
 

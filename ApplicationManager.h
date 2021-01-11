@@ -65,6 +65,7 @@ public:
 	void AppOperate();
 	void Addswitch(Switch*);
 	void AddLeds(LED*);
+	void DeleteAll();
 	
 
 	//destructor

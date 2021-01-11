@@ -44,7 +44,9 @@ enum ActionType
 
 	CUT,		//CUT to clipboard
 	EDIT,		//Edit lable or connection
+
 	EDITCONNECTION,//Edit connection
+	DELETEALL,		//Clear all drawing area
 
 	START_SELECT,
 	DSN_MODE,	//Switch to Design mode
@@ -134,6 +136,7 @@ enum toolbarmenu
 	ITM_Label,      //label item in menu
 	ITM_Paste,		//Paste item in menu
 	ITM_Edit,		//Edit item in menu
+	ITM_DeleteAll,	//Delete all item in menu
 	
 
     ITM_TB_CNT

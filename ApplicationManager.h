@@ -54,7 +54,7 @@ public:
 
 	void DeleteComponent(Component* pComp);
 	bool CheckWhichComponent(int, int, Component*&);
-	bool CheckWhichComponent(int, int);
+	bool CheckCancel(int, int);
 	void SetSelectedComponent(Component*);
 	//void DeleteAllConnnectionsWithThisInputPin(InputPin* P);
 	//void DeleteAllConnnectionsWithThisOutputPin(OutputPin* P);

@@ -2,6 +2,7 @@
 CircuitProping::CircuitProping(ApplicationManager* pApp) :Action(pApp)
 {
 	PropStatus = NOTASSIGNED;
+	Cancel = 0;
 }
 void CircuitProping::ReadActionParameters()
 {
@@ -19,6 +20,12 @@ void CircuitProping::ReadActionParameters()
 		pIn->GetPointClicked(Cx11, Cy11);
 
 		pManager->CheckWhichComponent(Cx11, Cy11, Comp);
+		if (pManager->CheckCancel(Cx11, Cy11) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 		if (Comp == NULL)
 		{
 			pOut->PrintMsg("Circuit Probing Tool: Please Select A Valid Pin!");
@@ -33,8 +40,11 @@ void CircuitProping::ReadActionParameters()
 
 void CircuitProping::Execute()// not to be virtual
 {
+	
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
+	if (Cancel == 1)
+		return;
 	//Deticting the pin
 	GraphicsInfo MInfo = Comp->GetLocation();
 	int Cx2 = MInfo.x1;

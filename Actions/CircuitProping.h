@@ -12,6 +12,7 @@ private:
 	int Cx11, Cy11;
 	Component* Comp;
 	STATUS PropStatus;
+	bool Cancel;
 public:
 	CircuitProping(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

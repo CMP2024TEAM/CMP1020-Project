@@ -377,7 +377,7 @@ void ApplicationManager::save()
 
 }
 
-bool ApplicationManager::CheckWhichComponent(int x, int y)
+bool ApplicationManager::CheckCancel(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)
 		return false;

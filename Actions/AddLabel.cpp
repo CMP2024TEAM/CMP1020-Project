@@ -24,7 +24,7 @@ void AddLabel::ReadActionParameters()
 		pIn->GetPointClicked(Cx, Cy);
 
 		//Ask Application manager if click if on component
-		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		if (pManager->CheckCancel(Cx, Cy) == 0)
 		{
 			Cancel = 1;
 			pOut->ClearStatusBar();

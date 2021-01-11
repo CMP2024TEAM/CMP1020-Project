@@ -397,6 +397,7 @@ bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 	if (x < 940 && x>900 && y < 380 && y>340)
 	{
 		return false;
+
 	}
 	c = NULL;
 	return true;

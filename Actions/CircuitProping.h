@@ -13,6 +13,7 @@ private:
 	Component* Comp;
 	STATUS PropStatus;
 	bool Cancel;
+	int counter ;
 public:
 	CircuitProping(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

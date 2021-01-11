@@ -332,7 +332,7 @@ int ApplicationManager::get_compcount()
 	return CompCount;
 }
 
-void ApplicationManager::save()
+void ApplicationManager::save(string& thenameofthecirciut)
 {
 	int thenumofconnections = 0;
 	for (int i = 0; i < CompCount; i++)
@@ -347,7 +347,7 @@ void ApplicationManager::save()
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
-	the_added_component.open("file format.txt",ios::app);
+	the_added_component.open(thenameofthecirciut,ios::app);
 	the_added_component << TheNumberOfcomponents << endl ;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
@@ -355,19 +355,19 @@ void ApplicationManager::save()
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
 		if (Theconnector == NULL)
 			if (CompList[i] != NULL)
-				CompList[i]->save();
+				CompList[i]->save(thenameofthecirciut);
 	}
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << "the connections"<<endl;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
 		if (Theconnector != NULL)
-			Theconnector->save();
+			Theconnector->save(thenameofthecirciut);
 
 	}
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << -1;
 	the_added_component.close();
 }

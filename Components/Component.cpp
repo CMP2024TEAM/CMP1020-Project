@@ -9,9 +9,7 @@ Component::Component(const GraphicsInfo &r_GfxInfo)
 	m_Label = "";
 }
 
-void Component::save()
-{
-}
+
 string Component::GetLabel()
 {
 	return m_Label;

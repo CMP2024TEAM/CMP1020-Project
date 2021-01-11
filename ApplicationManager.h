@@ -61,7 +61,7 @@ public:
 	void Undo();
 	void Redo();
 	int get_compcount();
-	void save();
+	void save(string& thenameofthecirciut);
 	void AppOperate();
 	void Addswitch(Switch*);
 	void AddLeds(LED*);

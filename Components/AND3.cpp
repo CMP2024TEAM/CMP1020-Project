@@ -68,11 +68,11 @@ int AND3::getm_Inputs()
 	return  m_Inputs;
 }
 
-void AND3::save()
+void AND3::save(string& thenameofthecirciut)
 {
 
 	ofstream the_added_component;
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open( thenameofthecirciut, ios::app);
 	the_added_component << "AND3  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 	//Gate::save(y);

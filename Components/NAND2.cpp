@@ -42,11 +42,11 @@ int NAND2::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();
 }
-void NAND2::save()
+void NAND2::save(string& thenameofthecirciut)
 {
 	
 	ofstream the_added_component;
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component<< "NAND2 " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 }

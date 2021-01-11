@@ -1,0 +1,14 @@
+6
+XOR2       1          511     275
+NOR2       2          270     319
+Switch     4          140     198     
+Switch     5          132     288     
+Switch     6          123     365     
+LED        10          625     276
+the connections
+2     1     2     
+4     1     1     
+5     2     1     
+6     2     2     
+1     10     0     
+-1

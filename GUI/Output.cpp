@@ -157,7 +157,7 @@ void Output::CreateSimulationToolBar() const
 	string SimulationItemImages[ITM_SIM_CNT];
 	
 	SimulationItemImages[ITM_TRUTH] = "images\\Simulation\\frequency.jpg";
-	SimulationItemImages[ITM_PROPING] = "images\\Simulation\\frequency.jpg";
+	SimulationItemImages[ITM_PROPING] = "images\\Simulation\\Probing.jpg";
 	
 	
 	for (int i = 0; i < ITM_SIM_CNT; i++)
@@ -193,6 +193,7 @@ void Output::CreateCommonToolBar() const
 	TOOLBAR[ITM_Cut] = "images\\Menu\\Menu_Cut.jpg";
 	TOOLBAR[ITM_Edit] = "images\\Menu\\Menu_Edit.jpg";
 	TOOLBAR[ITM_EditConnection] = "images\\Menu\\Menu_EditConnection.jpg";
+	TOOLBAR[ITM_DeleteAll] = "images\\Menu\\Menu_DeleteAll.jpg";
 	pWind->SetPen(RED, 3);
 	for (int i = 0; i < 7; i++)
 	{
@@ -203,12 +204,12 @@ void Output::CreateCommonToolBar() const
 			pWind->DrawLine(900, (i + 1) * (85) +50, 1000, (i + 1) * (85) +50);
 		
 	}
-	pWind->DrawImage(TOOLBAR[7], 900, (7 + 1) * (81), UI.ToolItemWidth , UI.ToolBarHeight / 2);
-	for (int i = 8; i < ITM_TB_CNT; i++)
+	pWind->DrawImage(TOOLBAR[7], 900, (7 + 1) * (81), UI.ToolItemWidth/2 , UI.ToolBarHeight / 2);
+	for (int i = 8; i < ITM_TB_CNT-1; i++)
 	{
 		pWind->DrawImage(TOOLBAR[i], 940, (i - 7) * (85), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	}
-
+	pWind->DrawImage(TOOLBAR[15], 940, (7 + 1) * (81), UI.ToolItemWidth / 2, UI.ToolBarHeight / 2);
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(900, UI.ToolBarHeight, 900, 700);
 	//pWind->DrawLine(900+UI.ToolItemWidth/2, UI.ToolBarHeight, 900 + UI.ToolItemWidth / 2, 700);

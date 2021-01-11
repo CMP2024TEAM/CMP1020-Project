@@ -32,11 +32,11 @@ void XOR2::Draw(Output* pOut, bool selected)
 	DrawLabel(pOut);
 }
 
-void XOR2::save()
+void XOR2::save(string& thenameofthecirciut)
 {
 
 	ofstream the_added_component;
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << "XOR2  " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 }

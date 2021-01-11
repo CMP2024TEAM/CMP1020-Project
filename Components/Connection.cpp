@@ -278,16 +278,16 @@ int Connection::getm_Inputs()
 	return  0;
 }
 
-void Connection::save()
+void Connection::save(string& thenameofthecirciut)
 {
 	int ThePinNum = 0;
 	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
 	{
-		if (DstPin == (((Gate*)DstCmpnt)->getinputpin(i)))
-			ThePinNum = i+1;
+		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)))
+		ThePinNum = i+1;
 	}
 	ofstream the_added_connection;
-	the_added_connection.open("file format.txt", ios::app);
+	the_added_connection.open(thenameofthecirciut, ios::app);
 	the_added_connection << SrcCmpnt->getid() << "     " << DstCmpnt->getid() << "     " << ThePinNum << "     " << endl;
 }
 

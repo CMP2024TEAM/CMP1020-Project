@@ -56,11 +56,11 @@ void NOT::setInputPinStatus( int n,STATUS s)
 {
 	m_InputPins->setStatus(s);
 }
-void NOT::save()
+void NOT::save(string& thenameofthecirciut)
 {
 	
 	ofstream the_added_component;
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << "NOT   " << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << endl;
 	the_added_component.close();
 }

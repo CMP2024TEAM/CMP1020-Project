@@ -26,7 +26,7 @@ public:
 	string GetLabel();
 	virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
 	virtual int getm_Inputs()=0;
-	virtual void save()=0 ;
+	virtual void save(string& thenameofthecirciut)=0 ;
 	virtual void load(int x, int y, string label, int u)=0;
 	GraphicsInfo GetLocation();
 	void set_Location(GraphicsInfo the_new);

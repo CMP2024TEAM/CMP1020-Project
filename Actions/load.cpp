@@ -34,9 +34,21 @@ void load::Execute()
 	string xin = "";
 	string yin = "";
 	Output* pOut = pManager->GetOutput();
-	pOut->PrintMsg("the circiut is loaded");
 	ifstream the_added_component;
-	the_added_component.open("file format.txt");
+	string thecircuit, thefile, s;
+	Input* thegetter = pManager->GetInput();
+	pOut->PrintMsg("Enter the name of the circiut that you want to load it");
+	thecircuit = thegetter->GetSrting(pOut);
+	s = ".txt";
+	thefile = thecircuit + s;
+	the_added_component.open(thefile);
+	if (!the_added_component.is_open())
+	{
+		pOut->PrintMsg("the circuit is not found please click on the load and enter the correct name");
+
+
+	}
+	pOut->PrintMsg("the circiut is loaded");
 	int thenumofcomp;
 	the_added_component >> thenumofcomp;
 	getline(the_added_component, TheName);

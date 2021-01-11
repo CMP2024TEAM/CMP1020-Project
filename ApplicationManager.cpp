@@ -192,6 +192,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case Circuit_Proping:
 		pAct = new CircuitProping(this);
 		break;
+	case DELETEALL:
+		DeleteAll();
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -336,7 +339,7 @@ int ApplicationManager::get_compcount()
 	return CompCount;
 }
 
-void ApplicationManager::save()
+void ApplicationManager::save(string& thenameofthecirciut)
 {
 	int thenumofconnections = 0;
 	for (int i = 0; i < CompCount; i++)
@@ -350,7 +353,7 @@ void ApplicationManager::save()
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
-	the_added_component.open("file format.txt",ios::app);
+	the_added_component.open(thenameofthecirciut,ios::app);
 	the_added_component << TheNumberOfcomponents << endl ;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
@@ -358,19 +361,19 @@ void ApplicationManager::save()
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
 		if (Theconnector == NULL)
 			if (CompList[i] != NULL)
-				CompList[i]->save();
+				CompList[i]->save(thenameofthecirciut);
 	}
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << "the connections"<<endl;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
 		if (Theconnector != NULL)
-			Theconnector->save();
+			Theconnector->save(thenameofthecirciut);
 
 	}
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << -1;
 	the_added_component.close();
 
@@ -408,8 +411,7 @@ void ApplicationManager::SetSelectedComponent(Component* comp)
 }
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < CompCount; i++)
-		delete CompList[i];
+	DeleteAll();
 	for (int i = 0; i < RemCompCount; i++)
 		delete RemComp[i];
 	delete OutputInterface;
@@ -425,4 +427,12 @@ void ApplicationManager::AddLeds(LED* l)
 {
 	ListOfLeds[NumLeds] = l;
 	NumLeds++;
+}
+
+void ApplicationManager::DeleteAll()
+{
+	OutputInterface->PrintMsg("Deleted All Components Sucssesfully!");
+	for (int i = 0; i < CompCount; i++)
+		delete CompList[i];
+	CompCount = 0;
 }

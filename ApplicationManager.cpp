@@ -192,6 +192,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case Circuit_Proping:
 		pAct = new CircuitProping(this);
 		break;
+	case DELETEALL:
+		DeleteAll();
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -377,7 +380,7 @@ void ApplicationManager::save(string& thenameofthecirciut)
 
 }
 
-bool ApplicationManager::CheckWhichComponent(int x, int y)
+bool ApplicationManager::CheckCancel(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)
 		return false;
@@ -408,8 +411,7 @@ void ApplicationManager::SetSelectedComponent(Component* comp)
 }
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < CompCount; i++)
-		delete CompList[i];
+	DeleteAll();
 	for (int i = 0; i < RemCompCount; i++)
 		delete RemComp[i];
 	delete OutputInterface;
@@ -425,4 +427,12 @@ void ApplicationManager::AddLeds(LED* l)
 {
 	ListOfLeds[NumLeds] = l;
 	NumLeds++;
+}
+
+void ApplicationManager::DeleteAll()
+{
+	OutputInterface->PrintMsg("Deleted All Components Sucssesfully!");
+	for (int i = 0; i < CompCount; i++)
+		delete CompList[i];
+	CompCount = 0;
 }

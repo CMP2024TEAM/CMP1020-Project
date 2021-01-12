@@ -6,7 +6,7 @@ void Copy::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 	pOut->PrintMsg("click on the component that you want to copy it ");
 	pIn->GetPointClicked(x, y);
-	if (pManager->CheckWhichComponent(x,y) == 0)
+	if (pManager->CheckCancel(x,y) == 0)
 	{
 		Cancel = 1;
 		pOut->ClearStatusBar();

@@ -174,7 +174,7 @@ void Past::ReadActionParameters()
 
 
 		pIn->GetPointClicked(x, y);
-		if (pManager->CheckWhichComponent(x, y) == 0)
+		if (pManager->CheckCancel(x, y) == 0)
 		{
 			Cancel = 1;
 			pOut->ClearStatusBar();

@@ -31,7 +31,7 @@ void AddLED::ReadActionParameters()
 
 
 		pIn->GetPointClicked(Cx, Cy);
-		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		if (pManager->CheckCancel(Cx, Cy) == 0)
 		{
 			Cancel = 1;
 			pOut->ClearStatusBar();

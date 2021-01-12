@@ -157,7 +157,8 @@ void load::Execute()
 		{
 			TheLoadedComponent[i] = new LED(r_GfxInfo);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
-
+			LED* ld = dynamic_cast<LED*>(TheLoadedComponent[i]);
+			pManager->AddLeds(ld);
 		}
 		if (the_label == "NAND2")
 		{
@@ -193,6 +194,8 @@ void load::Execute()
 		{
 			TheLoadedComponent[i] = new Switch(r_GfxInfo);
 			TheLoadedComponent[i]->load(x, y, label, TheRealId);
+			Switch* sw = dynamic_cast<Switch*>(TheLoadedComponent[i]);
+			pManager->Addswitch(sw);
 		}
 		if (the_label == "XNOR2")
 		{

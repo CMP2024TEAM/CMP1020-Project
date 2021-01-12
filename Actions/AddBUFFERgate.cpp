@@ -34,7 +34,7 @@ void AddBUFFERgate::ReadActionParameters()
 			inside = true;
 		else
 			pOut->PrintMsg("You Can Only Draw Inside Drawing Area! Click Again ");
-		if (pManager->CheckWhichComponent(Cx, Cy) == 0)
+		if (pManager->CheckCancel(Cx, Cy) == 0)
 		{
 			Cancel = 1;
 			pOut->ClearStatusBar();

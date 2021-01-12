@@ -36,7 +36,12 @@ void EditConnection::ReadActionParameters()
 
 		//Ask Application manager if click if on component
 		pManager->CheckWhichComponent(Cx, Cy, C);
-
+		if (pManager->CheckCancel(Cx, Cy) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
 		//Clear Status Bar
 		pOut->ClearStatusBar();
 

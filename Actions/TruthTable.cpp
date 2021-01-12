@@ -23,9 +23,9 @@ TruthTable::~TruthTable()
 		delete Table[i];
 	for (int i = 0; i < int(pow(2, Switches)); i++)
 		delete Results[i];
-	delete Results;
-	delete Table;
-	delete tWind;
+	delete[] Results;
+	delete[]Table;
+	delete[]tWind;
 }
 void TruthTable::FillTheTable()
 {

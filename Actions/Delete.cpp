@@ -99,6 +99,7 @@ void Delete::Execute()
 		}
 	}
 	pManager->DeleteComponent(C);
+	pManager->SetSelectedComponent(NULL);
 }
 
 void Delete::Undo()

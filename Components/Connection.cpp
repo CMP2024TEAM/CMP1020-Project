@@ -2,7 +2,7 @@
 #include<fstream>
 #include"LED.h"
 #include"Switch.h"
-int Connection:: TheNumberOfconnection = 0;
+int Connection::TheNumberOfconnection = 0;
 Connection::Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin) :Component(r_GfxInfo)
 
 {
@@ -14,6 +14,7 @@ Connection::~Connection()
 {
 	TheNumberOfconnection--;
 	SrcPin->DisconnectConnection(this);
+	DstPin->SetConnection(NULL);
 }
 void Connection::setSourcePin(OutputPin* pSrcPin)
 {
@@ -60,7 +61,7 @@ Component* Connection::GetDestCmpnt(int & PinNumber , int & Pins)
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
-		DstPin->setStatus((STATUS)SrcPin->getStatus());
+	DstPin->setStatus((STATUS)SrcPin->getStatus());
 }
 
 void Connection::Draw(Output* pOut, bool selected)
@@ -158,6 +159,12 @@ bool Connection::IsInsideMe(int x , int y)
 	{
 		result = true;
 	}
+	if(m_GfxInfo.y2< m_GfxInfo.y1)
+	if (x <= half + 5 && x >= half - 5 && y >= m_GfxInfo.y2 && y <= m_GfxInfo.y1)
+	{
+		result = true;
+	}
+	if (m_GfxInfo.y2 > m_GfxInfo.y1)
 	if (x <= half + 5 && x >= half - 5 && y <= m_GfxInfo.y2 && y >= m_GfxInfo.y1)
 	{
 		result = true;
@@ -170,7 +177,7 @@ void Connection::load(Component* thes, Component* theds,Output* outp,int InputPi
 	int x1, y1, x2, y2;
 	SrcCmpnt = thes;
 	DstCmpnt = theds;
-    GInfo = thes->GetLocation();//get gfxinfo
+	GInfo = thes->GetLocation();//get gfxinfo
 	Cx1 = (GInfo.x1 + GInfo.x2) / 2;
 	Cy1 = (GInfo.y1 + GInfo.y2) / 2;
 	GInfo = theds->GetLocation();//get gfxinfo
@@ -193,7 +200,7 @@ void Connection::load(Component* thes, Component* theds,Output* outp,int InputPi
 	}
 	if (n == 3)
 	{
-		if (InputPinNumber ==1)// pin 1
+		if (InputPinNumber == 1)// pin 1
 		{
 			GInfo.y2 = Cy2 - 5;
 			j = 1;
@@ -247,7 +254,7 @@ void Connection::load(Component* thes, Component* theds,Output* outp,int InputPi
 	}
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
-	GInfo.y1 = Cy1 - 0.5;	
+	GInfo.y1 = Cy1 - 0.5;
 }
 
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
@@ -271,16 +278,16 @@ int Connection::getm_Inputs()
 	return  0;
 }
 
-void Connection::save()
+void Connection::save(string& thenameofthecirciut)
 {
 	int ThePinNum = 0;
 	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
 	{
-		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)));
-		ThePinNum = i;
+		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)))
+		ThePinNum = i+1;
 	}
 	ofstream the_added_connection;
-	the_added_connection.open("file format.txt", ios::app);
+	the_added_connection.open(thenameofthecirciut, ios::app);
 	the_added_connection << SrcCmpnt->getid() << "     " << DstCmpnt->getid() << "     " << ThePinNum << "     " << endl;
 }
 

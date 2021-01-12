@@ -29,6 +29,7 @@
 #include<fstream>
 #include"Actions/Operate.h"
 #include"Actions/TruthTable.h"
+#include"Actions/CircuitProping.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -188,6 +189,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EDITCONNECTION:
 		pAct = new EditConnection(this, Selected_Comp);
 		break;
+	case Circuit_Proping:
+		pAct = new CircuitProping(this);
+		break;
+	case DELETEALL:
+		DeleteAll();
+		break;
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
@@ -332,7 +339,7 @@ int ApplicationManager::get_compcount()
 	return CompCount;
 }
 
-void ApplicationManager::save()
+void ApplicationManager::save(string& thenameofthecirciut)
 {
 	int thenumofconnections = 0;
 	for (int i = 0; i < CompCount; i++)
@@ -346,7 +353,7 @@ void ApplicationManager::save()
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
 	ofstream the_added_component;
-	the_added_component.open("file format.txt",ios::app);
+	the_added_component.open(thenameofthecirciut,ios::app);
 	the_added_component << TheNumberOfcomponents << endl ;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
@@ -354,26 +361,26 @@ void ApplicationManager::save()
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
 		if (Theconnector == NULL)
 			if (CompList[i] != NULL)
-				CompList[i]->save();
+				CompList[i]->save(thenameofthecirciut);
 	}
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << "the connections"<<endl;
 	the_added_component.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
 		if (Theconnector != NULL)
-			Theconnector->save();
+			Theconnector->save(thenameofthecirciut);
 
 	}
-	the_added_component.open("file format.txt", ios::app);
+	the_added_component.open(thenameofthecirciut, ios::app);
 	the_added_component << -1;
 	the_added_component.close();
 
 
 }
 
-bool ApplicationManager::CheckWhichComponent(int x, int y)
+bool ApplicationManager::CheckCancel(int x, int y)
 {
 	if (x < 940 && x>900 && y < 380 && y>340)
 		return false;
@@ -393,6 +400,7 @@ bool ApplicationManager::CheckWhichComponent(int x, int y, Component*& c)
 	if (x < 940 && x>900 && y < 380 && y>340)
 	{
 		return false;
+
 	}
 	c = NULL;
 	return true;
@@ -403,8 +411,7 @@ void ApplicationManager::SetSelectedComponent(Component* comp)
 }
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < CompCount; i++)
-		delete CompList[i];
+	DeleteAll();
 	for (int i = 0; i < RemCompCount; i++)
 		delete RemComp[i];
 	delete OutputInterface;
@@ -420,4 +427,12 @@ void ApplicationManager::AddLeds(LED* l)
 {
 	ListOfLeds[NumLeds] = l;
 	NumLeds++;
+}
+
+void ApplicationManager::DeleteAll()
+{
+	OutputInterface->PrintMsg("Deleted All Components Sucssesfully!");
+	for (int i = 0; i < CompCount; i++)
+		delete CompList[i];
+	CompCount = 0;
 }

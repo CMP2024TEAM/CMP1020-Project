@@ -27,7 +27,7 @@ public:
 	virtual int getm_Inputs();
 	InputPin* getinputpin(int n);
 	OutputPin* getoutputpin();
-	 virtual void save();
+	 virtual void save(string& thenameofthecirciut);
 	 virtual void load(int x, int y, string label, int u);
 	static  int getNotAssignedGates();
 	virtual ~Gate();//delete dynamic Allocation

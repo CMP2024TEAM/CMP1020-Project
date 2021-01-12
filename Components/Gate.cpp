@@ -30,7 +30,7 @@ OutputPin* Gate::getoutputpin()
 {
 	return (&m_OutputPin);
 }
-void Gate::save()
+void Gate::save(string& thenameofthecirciut)
 {
 	
 }

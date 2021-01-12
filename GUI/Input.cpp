@@ -11,7 +11,7 @@ void Input::GetPointClicked(int& x, int& y)
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string Input::GetSrting(Output* pOut,string s1)
+string Input::GetSrting(Output* pOut, string s1)
 {
 	///TODO: Implement this Function
 	//Read a complete string from the user until the user presses "ENTER".
@@ -43,7 +43,7 @@ string Input::GetSrting(Output* pOut,string s1)
 		{
 			return "";
 		}
-		else 
+		else
 		{
 			s += ch;
 		}
@@ -63,8 +63,13 @@ ActionType Input::GetUserAction(int Page) const
 	// User Click on the common toolbar 
 	if (x > 900 && y > UI.ToolBarHeight)
 	{
-		if (y > (8 * 81)&&y<UI.height-UI.StatusBarHeight)
-			return EDITCONNECTION;
+		if (y > (8 * 81) && y < UI.height - UI.StatusBarHeight)
+		{
+			if (x < 940)
+				return EDITCONNECTION;
+			else
+				return DELETEALL;
+		}
 		y -= 80;
 		int ClickedItemOrder = -1;
 		for (int i = 0; i <= 9; i++) {
@@ -181,7 +186,7 @@ ActionType Input::GetUserAction(int Page) const
 			case ITM_TRUTH: return Create_TruthTable;
 			case ITM_PROPING: return Circuit_Proping;
 
-			
+
 			case 11: return EXIT;
 			default: return SIM_BAR;	//A click on empty place in Simulation toolbar
 			}

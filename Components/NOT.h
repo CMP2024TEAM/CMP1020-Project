@@ -23,7 +23,7 @@ class NOT : public Gate
 		virtual int GetInputPinStatus(int n);	//returns status of Inputpin  if SWITCH, return -1
 
 		virtual void setInputPinStatus(int n,STATUS s);	//set status of Inputpin , to be used by connection class.
-		void save();
+		void save(string& thenameofthecirciut);
 		void load(int x, int y, string label, int u);
 		virtual int getm_Inputs();
 };

@@ -17,7 +17,7 @@ public:
 	void Draw(Output* pOut,bool selected);
 	int GetOutPinStatus();
 	virtual int getm_Inputs();
-	void save();
+	void save(string& thenameofthecirciut);
 	void load(int x, int y, string label, int u);
 	InputPin* getinputpin();
 	int static getNotAssignedLeds();

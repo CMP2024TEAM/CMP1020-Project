@@ -200,9 +200,6 @@
     <ClCompile Include="Actions\AddNOTgate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\AddSwitch.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\AddANDgate3.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -225,9 +222,6 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\AddConnection.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\Add_LABLE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\Select.cpp">
@@ -434,9 +428,6 @@
     <ClInclude Include="Actions\AddNOTgate.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\AddSwitch.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\AddANDgate3.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -459,9 +450,6 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\AddConnection.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\Add_LABLE.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Select.h">
@@ -498,10 +486,13 @@
     <ClInclude Include="Actions\AddLabel.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\EditConnection.h">
+    <ClInclude Include="Actions\TruthTable.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\TruthTable.h">
+    <ClInclude Include="Actions\load.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\EditConnection.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

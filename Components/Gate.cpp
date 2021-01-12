@@ -48,4 +48,5 @@ void Gate::save()
  {
 	 //Decreases NotAssigned Gates
 	 NotAssignedGates--;
+	 delete[] m_InputPins;
  }

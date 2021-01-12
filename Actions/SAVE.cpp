@@ -16,13 +16,13 @@ void Save::Execute()
 	ofstream the_added_file;
 	string thecircuit,thefile,s;
 	Input* thegetter= pManager->GetInput();
-	pOut->PrintMsg("Enter the name of the circiut");
+	pOut->PrintMsg("Enter the name of the circiut and press enter");
 	thecircuit =thegetter->GetSrting(pOut);
 	s = ".txt";
 	thefile = thecircuit + s;
 		the_added_file.open("\save\\"+thefile);
 	pManager->save("\save\\" + thefile);
-	pOut->PrintMsg("the circiut is saved");
+	pOut->PrintMsg(thecircuit +" circuit is saved");
 	the_added_file.close();
 }
 

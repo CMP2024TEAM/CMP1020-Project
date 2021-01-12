@@ -77,3 +77,13 @@ int NOT:: getm_Inputs()
 {
 	return  m_Inputs;
 }
+void NOT::ResetPins()
+{
+	if (m_OutputPin.getStatus() != NOTASSIGNED)
+	{
+		NotAssignedGates++;
+		AssignCheck = 0;
+	}
+	m_InputPins->setStatus(NOTASSIGNED);
+	m_OutputPin.setStatus(NOTASSIGNED);
+}

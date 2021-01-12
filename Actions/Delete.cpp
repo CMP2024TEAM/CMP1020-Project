@@ -22,7 +22,7 @@ void Delete::ReadActionParameters()
 
 		//Wait for User Input
 		pIn->GetPointClicked(Cx, Cy);
-
+		pManager->CheckWhichComponent(Cx, Cy, C);
 		//Ask Application manager if click if on component
 		if (pManager->CheckCancel(Cx, Cy) == 0)
 		{

@@ -5,7 +5,7 @@
 #include "InputPin.h"
 class LED :public Component
 {
-	InputPin the_output;  //the output pin from the gates 
+	InputPin Inputpin;  //the Input pin  
 	Output* the_status; //that make me able to use the drawing functions 
 	static int NotAssigendLeds;
 	int AssignCheck;
@@ -22,5 +22,6 @@ public:
 	InputPin* getinputpin();
 	int static getNotAssignedLeds();
 	~LED();
+	virtual void ResetPins();
 };
 #endif

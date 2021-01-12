@@ -126,7 +126,7 @@ void Connection::Draw(Output* pOut, bool selected)
 	GInfo.x1 = Cx1 + 20;
 	GInfo.y1 = Cy1 - 0.5;
 	m_GfxInfo = GInfo;
-	pOut->DrawConnection(m_GfxInfo, selected);
+	pOut->DrawConnection(m_GfxInfo, selected,(int)SrcPin->getStatus());
 	DrawLabel(pOut);
 }
 void Connection::DrawLabel(Output* pOut)

@@ -117,13 +117,22 @@ void CircuitProping::Execute()// not to be virtual
 		if (Conn != NULL)
 		{
 			PropStatus = Conn->getDestPin()->getStatus();
+			if (PropStatus == HIGH)
+				pOut->PrintMsg("The Status of The Connection = HIGH");
+			else if (PropStatus == LOW)
+				pOut->PrintMsg("The Status of The Connection = LOW");
+			else
+				pOut->PrintMsg("The Status of The Connection = NOT ASSIGNED");
 		}
-		if (PropStatus == HIGH)
-			pOut->PrintMsg("The Status of The Pin = HIGH");
-		else if (PropStatus == LOW)
-			pOut->PrintMsg("The Status of The Pin = LOW");
 		else
-			pOut->PrintMsg("The Status of The Pin = NOT ASSIGNED");
+		{
+			if (PropStatus == HIGH)
+				pOut->PrintMsg("The Status of The Pin = HIGH");
+			else if (PropStatus == LOW)
+				pOut->PrintMsg("The Status of The Pin = LOW");
+			else
+				pOut->PrintMsg("The Status of The Pin = NOT ASSIGNED");
+		}
 	} while (Cancel==0);
 }
 //To undo this action (code depends on action type)

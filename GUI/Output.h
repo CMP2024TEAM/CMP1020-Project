@@ -41,7 +41,7 @@ public:
 	void DrawNOT(GraphicsInfo r_GfxInfo, bool selected=false) const;
 	
 	// Draws Connection
-	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false,int status=2) const;
 	
 	void PrintMsg(string msg) const;	//Print a message on Status bar
 	void Print(string msg, GraphicsInfo r_GfxInfo) const; //Print a message on a certain place in window

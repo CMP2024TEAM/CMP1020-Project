@@ -264,11 +264,13 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 	{
 		if (pComp == CompList[j])
 		{
-			RemComp[RemCompCount++] = CompList[j];
+			//RemComp[RemCompCount++] = CompList[j];
 			CompList[j] = NULL;
 			CompList[j] = CompList[CompCount - 1];
+			delete pComp;
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
+
 		}
 	}
 	
@@ -435,4 +437,10 @@ void ApplicationManager::DeleteAll()
 	for (int i = 0; i < CompCount; i++)
 		delete CompList[i];
 	CompCount = 0;
+}
+
+void ApplicationManager::ResetAllComponents()
+{
+	for (int i = 0; i < CompCount; i++)
+		CompList[i]->ResetPins();
 }

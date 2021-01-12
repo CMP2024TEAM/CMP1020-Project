@@ -21,6 +21,7 @@ void StartStopSimulation::Execute(ActionType action)
 	{
 		pOut->CreateDesignToolBar();
 		pOut->PrintMsg("Switching to Design Mode");
+		pManager->ResetAllComponents();
 	}
 
 

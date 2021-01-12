@@ -66,6 +66,7 @@ public:
 	void Addswitch(Switch*);
 	void AddLeds(LED*);
 	void DeleteAll();
+	void ResetAllComponents();
 	
 
 	//destructor

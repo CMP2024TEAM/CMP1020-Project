@@ -82,3 +82,15 @@ void NOR3::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n - 1].setStatus(s);
 }
 int NOR3:: getm_Inputs() { return  m_Inputs; }
+void NOR3::ResetPins()
+{
+	if (m_OutputPin.getStatus() != NOTASSIGNED)
+	{
+		NotAssignedGates++;
+		AssignCheck = 0;
+	}
+	m_InputPins[0].setStatus(NOTASSIGNED);
+	m_InputPins[1].setStatus(NOTASSIGNED);
+	m_InputPins[2].setStatus(NOTASSIGNED);
+	m_OutputPin.setStatus(NOTASSIGNED);
+}

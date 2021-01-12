@@ -20,22 +20,27 @@ void Switch::Operate()
 
 // Function Draw
 // Draws 2-input AND gate
-void Switch::Draw(Output* pOut,bool selected)
+void Switch::Draw(Output* pOut, bool selected)
 {
+
 	//Call output class and pass gate drawing info to it.
-	if (SrcPin.getStatus() == LOW)
+	if (SrcPin.getStatus() == LOW|| SrcPin.getStatus() == NOTASSIGNED)
+	{
 		pOut->DrawSWITCHON(m_GfxInfo, selected);
+	}
 	if (SrcPin.getStatus() == HIGH)
+	{
 		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
-	DrawLabel(pOut);
+	}
+		DrawLabel(pOut);
 }
 
 void Switch::save(string& thenameofthecirciut)
 {
-	
+
 	ofstream the_added_component;
-	the_added_component.open(thenameofthecirciut,ios::app);
-	the_added_component << "Switch"  << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
+	the_added_component.open(thenameofthecirciut, ios::app);
+	the_added_component << "Switch" << "     " << id << "     " << get_mlabel() << "     " << m_GfxInfo.x1 << "     " << m_GfxInfo.y1 << "     " << endl;
 	the_added_component.close();
 }
 
@@ -66,7 +71,7 @@ void Switch::DrawLabel(Output* pOut)
 }
 
 //returns status of Inputpin #n
-int Switch::GetInputPinStatus(int n )
+int Switch::GetInputPinStatus(int n)
 {
 	return -1;	//n starts from 1 but array index starts from 0.
 }
@@ -89,6 +94,8 @@ void Switch::ExecuteSwitch()
 {
 	//Add you code here
 	//Click is Execute
+
+
 	if (SrcPin.getStatus() == LOW)
 		SrcPin.setStatus(HIGH);
 	else
@@ -99,4 +106,8 @@ void Switch::ExecuteSwitch()
 void Switch::SetStatus(STATUS s)
 {
 	SrcPin.setStatus(s);
+}
+void Switch::ResetPins()
+{
+	SrcPin.setStatus(LOW);
 }

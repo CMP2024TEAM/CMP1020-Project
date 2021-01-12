@@ -18,18 +18,9 @@ void LED::Operate()
 	if (Inputpin.getStatus() != NOTASSIGNED)
 	{
 		AssignCheck++;
-		
-		if (Inputpin.getStatus() == 1)
-			the_status->DrawLEDON(m_GfxInfo);
-		else
-			the_status->DrawLEDOFF(m_GfxInfo);
-
 		if (AssignCheck == 1)
 			NotAssigendLeds--;
 	}
-	else
-		the_status->DrawLEDOFF(m_GfxInfo);
-
 
 }
 

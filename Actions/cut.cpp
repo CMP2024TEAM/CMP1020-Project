@@ -117,6 +117,8 @@ void cut::Execute()
 	}
 	Action* act = new Delete(pManager,the_object);
 	act->Execute();
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearStatusBar();
 }
 
 void cut::Undo()

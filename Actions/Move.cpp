@@ -50,7 +50,13 @@ void Move::ReadActionParameters()
 		pIn->GetPointClicked(Cx2, Cy2);
 		if ((Cx2 > 25 && Cx2 < 875) && (Cy2 > (UI.ToolBarHeight+25) && Cy2 < (UI.height - UI.StatusBarHeight-25)))
 			inside = true;
-		else
+		else if (pManager->CheckCancel(Cx2, Cy2) == 0)
+		{
+			Cancel = 1;
+			pOut->ClearStatusBar();
+			return;
+		}
+		else 
 			pOut->PrintMsg("You Can Only Draw Inside Drawing Area!");
 
 	} while (!inside);

@@ -102,7 +102,7 @@ void AddConnection::ReadActionParameters()
 
 void AddConnection::Execute()
 {
-
+	Output* pOut = pManager->GetOutput();
 	GraphicsInfo GInfo;
 	//Get Center point of the Gate
 	ReadActionParameters();
@@ -175,12 +175,18 @@ void AddConnection::Execute()
 	Gate* gate2 = dynamic_cast<Gate*>(p2);
 	if (gate2 != NULL)
 	{
+
 		DstPin = gate2->getinputpin(j-1);
 	}
 	LED* Led = dynamic_cast<LED*>(p2);
 	if (Led != NULL)
 	{
 		DstPin = Led->getinputpin();
+	}
+	if (DstPin->GetConnection() != NULL)
+	{
+		pOut->PrintMsg("Connection: Input Pin is Already Connected");
+		return;
 	}
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
@@ -196,7 +202,6 @@ void AddConnection::Execute()
 	else
 	{
 		delete pA;
-		Output* pOut = pManager->GetOutput();
 		pOut->PrintMsg("Connection: Can't add any more due to FANOUT");
 	}
 }

@@ -148,6 +148,7 @@ void EditConnection::ReadActionParameters()
 			pOut->PrintMsg("Edit Connection: Enter 1 to edit Input Pin or 2 to edit Output Pin");
 			s = "";
 			pIn->GetSrting(pOut, s);
+			break;
 		}
 	}
 
@@ -157,6 +158,7 @@ void EditConnection::ReadActionParameters()
 
 void EditConnection::Execute()
 {
+	Output* pOut = pManager->GetOutput();
 	GraphicsInfo GInfo;
 	//Get Center point of the Gate
 	ReadActionParameters();
@@ -174,18 +176,7 @@ void EditConnection::Execute()
 		Cx2 = (GInfo.x1 + GInfo.x2) / 2;
 		Cy2 = (GInfo.y1 + GInfo.y2) / 2;
 		int n, j;
-		//if (isp2Gate)
 		n = p2->getm_Inputs();
-		//Gate* gate1 = dynamic_cast<Gate*>(p1);
-		//if (gate1 != NULL)
-		//{
-		//	SrcPin = gate1->getoutputpin();
-		//}
-		//Switch* SWITCH = dynamic_cast<Switch*>(p1);
-		//if (SWITCH != NULL)
-		//{
-		//	SrcPin = SWITCH->getoutputpin();
-		//}
 		if (n == 3)
 		{
 			if ((Cx22 < Cx2) && (Cy22 < Cy2 - 4))// pin 1
@@ -240,6 +231,11 @@ void EditConnection::Execute()
 		{
 			DstPin = Led->getinputpin();
 		}
+		if (DstPin->GetConnection() != NULL)
+		{
+			pOut->PrintMsg("Connection: Input Pin is Already Connected");
+			return;
+		}
 		Conn->setDestPin(DstPin);
 		DstPin->SetConnection(Conn);
 		Conn->setDestCmpnt(p2, n, j);
@@ -264,8 +260,6 @@ void EditConnection::Execute()
 		}
 		else
 		{
-			//delete pA;
-			Output* pOut = pManager->GetOutput();
 			pOut->PrintMsg("Connection: Can't add any more due to FANOUT");
 		}
 	}

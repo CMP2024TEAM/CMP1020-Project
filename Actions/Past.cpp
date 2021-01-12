@@ -152,6 +152,7 @@ void Past::Execute()
 		pOut->PrintMsg("the component is added");
 		pOut->ClearStatusBar();
 	}
+	else
 	pOut->PrintMsg("there is no component to paste it");
 }
 

@@ -21,7 +21,7 @@ void LED::Operate()
 		if (AssignCheck == 1)
 			NotAssigendLeds--;
 	}
-	
+
 }
 
 int LED::GetInputPinStatus(int n)

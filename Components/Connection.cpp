@@ -253,6 +253,7 @@ void Connection::load(Component* thes, Component* theds,Output* outp,int InputPi
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
 	GInfo.y1 = Cy1 - 0.5;
+	getDestPin()->SetConnection(this);
 }
 
 int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1

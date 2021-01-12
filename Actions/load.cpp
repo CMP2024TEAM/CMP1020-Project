@@ -47,7 +47,7 @@ void load::Execute()
 		pOut->PrintMsg("the circuit is not found please click on the load and enter the correct name");
 
 	}
-	pOut->PrintMsg(thecircuit +" circut is loaded");
+	pOut->PrintMsg(thecircuit + " circut is loaded");
 	int thenumofcomp;
 	the_added_component >> thenumofcomp;
 	getline(the_added_component, TheName);
@@ -288,37 +288,37 @@ void load::Execute()
 					thesource = TheLoadedComponent[i];
 				if (y == TheLoadedComponent[i]->getid())
 					thedissource = TheLoadedComponent[i];
+
 			}
 			GraphicsInfo TheLocation;
 			Connection* theaddedconnection;
 			int n = thedissource->getm_Inputs();
 			Switch* TheaddedSwitch = dynamic_cast<Switch*>(thesource);
-			
-				if (TheaddedSwitch != NULL)
-				{
-					
-					LED* thedis = dynamic_cast<LED*>(thedissource);
-					if (thedis != NULL)
-						theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), (thedis)->getinputpin());
-					else
-					{
-						theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
-					}
-					((TheaddedSwitch)->getoutputpin()->ConnectTo(theaddedconnection));
-				}
+
+			if (TheaddedSwitch != NULL)
+			{
+
+				LED* thedis = dynamic_cast<LED*>(thedissource);
+				if (thedis != NULL)
+					theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), (thedis)->getinputpin());
 				else
 				{
-					LED* thedis = dynamic_cast<LED*>(thedissource);
-					if (thedis != NULL)
-						theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), (thedis)->getinputpin());
-					else
-						theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
-					(((Gate*)thesource)->getoutputpin()->ConnectTo(theaddedconnection));
+					theaddedconnection = new Connection(TheLocation, (TheaddedSwitch)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
 				}
+				((TheaddedSwitch)->getoutputpin()->ConnectTo(theaddedconnection));
 
-			
-			
-			
+			}
+			else
+			{
+				LED* thedis = dynamic_cast<LED*>(thedissource);
+				if (thedis != NULL)
+					theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), (thedis)->getinputpin());
+				else
+					theaddedconnection = new Connection(TheLocation, ((Gate*)thesource)->getoutputpin(), ((Gate*)thedissource)->getinputpin(TheRealId));
+				(((Gate*)thesource)->getoutputpin()->ConnectTo(theaddedconnection));
+			}
+
+
 			theaddedconnection->setDestCmpnt(thedissource, n /*number of inputs*/, TheRealId /*pin number*/);
 			theaddedconnection->setSourceCmpnt(thesource);
 

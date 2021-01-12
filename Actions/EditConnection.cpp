@@ -145,10 +145,9 @@ void EditConnection::ReadActionParameters()
 		}
 		else
 		{
-			pOut->PrintMsg("Edit Connection: Enter 1 to edit Input Pin or 2 to edit Output Pin");
+			pOut->PrintMsg("Edit Connection: Enter 1 to Edit Destination Pin or 2 to Edit Source Pin Then Press Enter Key");
 			s = "";
-			pIn->GetSrting(pOut, s);
-			break;
+			s = pIn->GetSrting(pOut, s);
 		}
 	}
 

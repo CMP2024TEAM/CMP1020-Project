@@ -21,7 +21,7 @@ void Select::ReadActionParameters()
 	
 	
 		//Print Action Message
-		pOut->PrintMsg("Click on Component to select it");
+		pOut->PrintMsg("Click on Component to select it or click anywhere to cancel");
 
 		//Wait for User Input
 		pIn->GetPointClicked(Cx, Cy);

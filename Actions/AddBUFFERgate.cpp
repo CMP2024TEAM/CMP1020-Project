@@ -65,10 +65,7 @@ void AddBUFFERgate::Execute()
 	pManager->AddComponent(pA);
 }
 
-void AddBUFFERgate::save()
-{
 
-}
 
 void AddBUFFERgate::Undo()
 {

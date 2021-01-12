@@ -41,125 +41,113 @@ void Past::Execute()
 			pManager->AddComponent(the);
 			the->Draw(pOut);
 		}
-		AND3* t = dynamic_cast<AND3*>(object);
-		if (t != NULL)
+		AND3* the1 = dynamic_cast<AND3*>(object);
+		if (the1 != NULL)
 		{
 			AND3* the;
-			the = new AND3(*t);
+			the = new AND3(*the1);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut);
 		}
-		BUFFER* h = dynamic_cast<BUFFER*>(object);
-		if (h != NULL)
+		BUFFER* the2 = dynamic_cast<BUFFER*>(object);
+		if (the2 != NULL)
 		{
 			BUFFER* the;
-			the = new BUFFER(*h);
+			the = new BUFFER(*the2);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut);
 		}
-		LED* g = dynamic_cast<LED*>(object);
-		if (g != NULL)
+		LED* the3 = dynamic_cast<LED*>(object);
+		if (the3 != NULL)
 		{
 			LED* the;
-			the = new LED(*g);
+			the = new LED(*the3);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		NAND2* q = dynamic_cast<NAND2*>(object);
-		if (q != NULL)
+		NAND2* the4 = dynamic_cast<NAND2*>(object);
+		if (the4 != NULL)
 		{
 			NAND2* the;
-			the = new NAND2(*q);
+			the = new NAND2(*the4);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		NOR2* w = dynamic_cast<NOR2*>(object);
-		if (w != NULL)
+		NOR2* the5 = dynamic_cast<NOR2*>(object);
+		if (the5 != NULL)
 		{
 			NOR2* the;
-			the = new NOR2(*w);
+			the = new NOR2(*the5);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		NOR3* a = dynamic_cast<NOR3*>(object);
-		if (a != NULL)
+		NOR3* the6 = dynamic_cast<NOR3*>(object);
+		if (the6 != NULL)
 		{
 			NOR3* the;
-			the = new NOR3(*a);
+			the = new NOR3(*the6);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		OR2* e = dynamic_cast<OR2*>(object);
-		if (e != NULL)
+		OR2* the7 = dynamic_cast<OR2*>(object);
+		if (the7 != NULL)
 		{
 			OR2* the;
-			the = new OR2(*e);
+			the = new OR2(*the7);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		NOT* d = dynamic_cast<NOT*>(object);
-		if (d != NULL)
+		NOT* the8 = dynamic_cast<NOT*>(object);
+		if (the8 != NULL)
 		{
 			NOT* the;
-			the = new NOT(*d);
+			the = new NOT(*the8);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		XNOR2* s = dynamic_cast<XNOR2*>(object);
-		if (s != NULL)
+		XNOR2* the9 = dynamic_cast<XNOR2*>(object);
+		if (the9 != NULL)
 		{
 			XNOR2* the;
-			the = new XNOR2(*s);
+			the = new XNOR2(*the9);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		XOR2* k = dynamic_cast<XOR2*>(object);
-		if (k != NULL)
+		XOR2* the10 = dynamic_cast<XOR2*>(object);
+		if (the10 != NULL)
 		{
 			XOR2* the;
-			the = new XOR2(*k);
+			the = new XOR2(*the10);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		XOR3* j = dynamic_cast<XOR3*>(object);
-		if (j != NULL)
+		XOR3* the11 = dynamic_cast<XOR3*>(object);
+		if (the11 != NULL)
 		{
 			XOR3* the;
-			the = new XOR3(*j);
+			the = new XOR3(*the11);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
-		Switch* f = dynamic_cast<Switch*>(object);
-		if (f != NULL)
+		Switch* the12 = dynamic_cast<Switch*>(object);
+		if (the12 != NULL)
 		{
 			Switch* the;
-			the = new Switch(*f);
+			the = new Switch(*the12);
 			the->SetId(the->GetId());
 			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut, true);
 		}
 		pOut->PrintMsg("the component is added");
 		pOut->ClearStatusBar();

@@ -23,7 +23,8 @@ void cut::Execute()
 			return;
 		pManager->CheckWhichComponent(x, y, the_object);
 	}
-	if(the_object!=NULL)
+	Connection* connect = dynamic_cast<Connection*>(the_object);
+	if(the_object!=NULL&&connect==NULL)
 	{
 	AND2* the_saver = dynamic_cast<AND2*>(the_object);
 	if (the_saver != NULL)
@@ -121,6 +122,12 @@ void cut::Execute()
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearStatusBar();
 }
+	
+	else
+	{
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMsg("Couldn't Cut");
+	}
 }
 
 void cut::Undo()

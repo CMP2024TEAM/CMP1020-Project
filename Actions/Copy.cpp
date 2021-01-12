@@ -1,5 +1,6 @@
 #include "Copy.h"
 #include "..\ApplicationManager.h"
+#include"..\Components\Connection.h"
 void Copy::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
@@ -17,7 +18,8 @@ void Copy::ReadActionParameters()
 }
 void Copy::Execute()
 {
-	if (the_object == NULL)
+	Connection* connect = dynamic_cast<Connection*>(the_object);
+	if (the_object == NULL&&connect==NULL)
 	{
 		ReadActionParameters();
 		if (Cancel == 1)

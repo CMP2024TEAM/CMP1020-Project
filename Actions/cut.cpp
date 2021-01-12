@@ -22,8 +22,9 @@ void cut::Execute()
 		if (Cancel == 1)
 			return;
 		pManager->CheckWhichComponent(x, y, the_object);
-    }
-	
+	}
+	if(the_object!=NULL)
+	{
 	AND2* the_saver = dynamic_cast<AND2*>(the_object);
 	if (the_saver != NULL)
 	{
@@ -115,10 +116,11 @@ void cut::Execute()
 		the = new Switch(*f);
 		pManager->set_clipboard(the);
 	}
-	Action* act = new Delete(pManager,the_object);
+	Action* act = new Delete(pManager, the_object);
 	act->Execute();
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearStatusBar();
+}
 }
 
 void cut::Undo()

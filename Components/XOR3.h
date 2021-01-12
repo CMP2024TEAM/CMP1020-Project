@@ -23,6 +23,7 @@ public:
 	void save(string& thenameofthecirciut);
 	void load(int x, int y, string label, int u);
 	virtual int getm_Inputs();
+	virtual void ResetPins();
 };
 
 #endif

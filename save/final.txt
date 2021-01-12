@@ -1,0 +1,27 @@
+10
+NOT        1     not1     193     109
+NOT        2     not2     180     377
+AND3       3     gate3     481     148
+AND3       4     gate2     473     245
+AND2       6     gate1     468     344
+XOR3       7     xor3     642     233
+LED        11     led     733     229
+Switch     16     input2     60     238     
+Switch     19     input1     52     169     
+Switch     24     input3     36     300     
+the connections
+3     7     2     
+4     7     1     
+6     7     3     
+7     11     1     
+1     3     1     
+1     4     1     
+2     4     2     
+16     4     3     
+16     3     2     
+19     1     1     
+19     6     1     
+16     6     2     
+16     2     1     
+24     3     3     
+-1

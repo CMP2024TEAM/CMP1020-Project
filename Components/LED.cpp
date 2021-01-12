@@ -15,14 +15,15 @@ LED::LED(const GraphicsInfo& r_GfxInfo)
 void LED::Operate()
 {
 
-	if (the_output.getStatus() != NOTASSIGNED)
+	if (Inputpin.getStatus() != NOTASSIGNED)
 	{
 		AssignCheck++;
 		
-		if (the_output.getStatus() == 1)
+		if (Inputpin.getStatus() == 1)
 			the_status->DrawLEDON(m_GfxInfo);
 		else
 			the_status->DrawLEDOFF(m_GfxInfo);
+
 		if (AssignCheck == 1)
 			NotAssigendLeds--;
 	}
@@ -34,7 +35,7 @@ void LED::Operate()
 
 int LED::GetInputPinStatus(int n)
 {
-	if (the_output.getStatus() == HIGH)
+	if (Inputpin.getStatus() == HIGH)
 		return 1;
 	else
 		return 0;
@@ -42,13 +43,13 @@ int LED::GetInputPinStatus(int n)
 
 void LED::setInputPinStatus(int n, STATUS s)
 {
-	the_output.setStatus(s);
+	Inputpin.setStatus(s);
 }
 
 void LED::Draw(Output* pOut, bool selected)
 {
 	the_status = pOut;
-	if (the_output.getStatus() == 1)
+	if (Inputpin.getStatus() == 1)
 		pOut->DrawLEDON(m_GfxInfo,selected);
 	else
 		pOut->DrawLEDOFF(m_GfxInfo,selected);
@@ -59,7 +60,7 @@ void LED::Draw(Output* pOut, bool selected)
 
 int LED::GetOutPinStatus()
 {
-	return the_output.getStatus();
+	return Inputpin.getStatus();
 }
 int LED::getm_Inputs()
 {
@@ -84,7 +85,7 @@ void LED::load(int x, int y, string label, int u)
 }
 InputPin* LED::getinputpin()
 {
-	return (&the_output);
+	return (&Inputpin);
 }
 
 int LED::getNotAssignedLeds()
@@ -95,4 +96,14 @@ int LED::getNotAssignedLeds()
 LED::~LED()
 {
 	NotAssigendLeds--;
+}
+void LED::ResetPins()
+{
+	if (Inputpin.getStatus() != NOTASSIGNED)
+	{
+		NotAssigendLeds++;
+		AssignCheck = 0;
+	}
+	Inputpin.setStatus(NOTASSIGNED);
+
 }

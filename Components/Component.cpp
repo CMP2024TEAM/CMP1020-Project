@@ -58,6 +58,10 @@ Component::Component()
 	id = Countofcomp;
 }
 
+void Component::ResetPins()
+{
+}
+
 
 void Component::Draw(Output* pOut, bool selected)
 {

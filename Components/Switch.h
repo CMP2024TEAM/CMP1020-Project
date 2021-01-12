@@ -20,5 +20,6 @@ public:
 	OutputPin* Switch::getoutputpin();
 	void ExecuteSwitch();
 	void SetStatus(STATUS);
+	virtual void ResetPins();
 };
 

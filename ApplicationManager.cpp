@@ -258,11 +258,33 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 	{
 		if (pComp == CompList[j])
 		{
-			RemComp[RemCompCount++] = CompList[j];
+			Switch* sw = dynamic_cast<Switch*>(CompList[j]);
+			if (sw)
+			{
+				for(int i=0;i<NumSwitches;i++)
+					if (sw == ListOfSwitches[i])
+					{
+						ListOfSwitches[i] = ListOfSwitches[NumSwitches-1];
+						ListOfSwitches[NumSwitches--] = NULL;
+					}
+			}
+			LED* ld = dynamic_cast<LED*>(CompList[j]);
+			if (ld)
+			{
+				for (int i = 0; i < NumLeds; i++)
+					if (ld == ListOfLeds[i])
+					{
+						ListOfLeds[i] = ListOfLeds[NumLeds-1];
+						ListOfSwitches[NumLeds--] = NULL;
+					}
+			}
+			//RemComp[RemCompCount++] = CompList[j];
 			CompList[j] = NULL;
 			CompList[j] = CompList[CompCount - 1];
+			delete pComp;
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
+
 		}
 	}
 	UpdateInterface();
@@ -374,6 +396,12 @@ void ApplicationManager::DeleteAll()
 {
 	OutputInterface->PrintMsg("Deleted All Components Sucssesfully!");
 	for (int i = 0; i < CompCount; i++)
-		delete CompList[i];
+		DeleteComponent(CompList[i]);
 	CompCount = 0;
+}
+
+void ApplicationManager::ResetAllComponents()
+{
+	for (int i = 0; i < CompCount; i++)
+		CompList[i]->ResetPins();
 }

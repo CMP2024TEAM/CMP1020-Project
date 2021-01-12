@@ -36,7 +36,7 @@ public:
 	string get_mlabel();
 	virtual bool IsInsideMe(int, int);
 	Component();	
-	
+	virtual void ResetPins();
 	//Destructor must be virtual
 	virtual ~Component();
 };

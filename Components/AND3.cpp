@@ -87,3 +87,15 @@ void AND3::load(int x, int y, string label, int u)
 	Setmlabel(label);
 	id = u;
 }
+void AND3::ResetPins()
+{
+	if (m_OutputPin.getStatus() != NOTASSIGNED)
+	{
+		NotAssignedGates++;
+		AssignCheck = 0;
+	}
+	m_InputPins[0].setStatus(NOTASSIGNED);
+	m_InputPins[1].setStatus(NOTASSIGNED);
+	m_InputPins[2].setStatus(NOTASSIGNED);
+	m_OutputPin.setStatus(NOTASSIGNED);
+}

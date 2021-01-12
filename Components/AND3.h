@@ -22,6 +22,7 @@ public:
 	virtual int getm_Inputs();
 	void save(string& thenameofthecirciut);
 	void load(int x, int y, string label, int u);
+	virtual void ResetPins();
 
 };
 

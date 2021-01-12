@@ -73,3 +73,14 @@ void BUFFER::load(int x, int y, string label, int u)
 	Setmlabel(label);
 	id = u;
 }
+void BUFFER::ResetPins()
+{
+	if (m_OutputPin.getStatus() != NOTASSIGNED)
+	{
+		NotAssignedGates++;
+		AssignCheck = 0;
+	}
+	m_InputPins->setStatus(NOTASSIGNED);
+	m_OutputPin.setStatus(NOTASSIGNED);
+
+}

@@ -24,12 +24,10 @@ void OutputPin::DisconnectConnection(Connection* r_Conn)
 	for (int i = 0; i <= m_Conn; i++)
 		if (m_Connections[i] == r_Conn)
 		{
-
 			m_Connections[i] = m_Connections[m_Conn];
 			m_Connections[m_Conn] = NULL;
 			DecrimentM_Conn();
 			break;
-
 		}
 }
 Connection** OutputPin::getConnections()

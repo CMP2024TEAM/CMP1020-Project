@@ -138,11 +138,9 @@
     <ClCompile Include="Actions\AddNORgate3.cpp" />
     <ClCompile Include="Actions\AddNOTgate.cpp" />
     <ClCompile Include="Actions\AddORgate2.cpp" />
-    <ClCompile Include="Actions\AddSwitch.cpp" />
     <ClCompile Include="Actions\AddXNORgate2.cpp" />
     <ClCompile Include="Actions\AddXORgate2.cpp" />
     <ClCompile Include="Actions\AddXORgate3.cpp" />
-    <ClCompile Include="Actions\Add_LABLE.cpp" />
     <ClCompile Include="Actions\Add_Switch.cpp" />
     <ClCompile Include="Actions\Arrows.cpp" />
     <ClCompile Include="Actions\CircuitProping.cpp" />
@@ -232,11 +230,9 @@
     <ClInclude Include="Actions\AddNORgate3.h" />
     <ClInclude Include="Actions\AddNOTgate.h" />
     <ClInclude Include="Actions\AddORgate2.h" />
-    <ClInclude Include="Actions\AddSwitch.h" />
     <ClInclude Include="Actions\AddXNORgate2.h" />
     <ClInclude Include="Actions\AddXORgate2.h" />
     <ClInclude Include="Actions\AddXORgate3.h" />
-    <ClInclude Include="Actions\Add_LABLE.h" />
     <ClInclude Include="Actions\Add_Switch.h" />
     <ClInclude Include="Actions\Arrows.h" />
     <ClInclude Include="Actions\CircuitProping.h" />
@@ -244,6 +240,8 @@
     <ClInclude Include="Actions\cut.h" />
     <ClInclude Include="Actions\Edit.h" />
     <ClInclude Include="Actions\Delete.h" />
+    <ClInclude Include="Actions\EditConnection.h" />
+    <ClInclude Include="Actions\load.h" />
     <ClInclude Include="Actions\Move.h" />
     <ClInclude Include="Actions\Operate.h" />
     <ClInclude Include="Actions\Past.h" />

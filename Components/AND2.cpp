@@ -95,5 +95,5 @@ void AND2::ResetPins()
 
 AND2::~AND2()
 {
-	NotAssignedGates--;
+	
 }

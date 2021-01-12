@@ -35,118 +35,104 @@ void Past::Execute()
 		if (the_saver != NULL)
 		{
 			AND2* the;
-			the = new AND2(*the_saver);
+			the = new AND2(GInfo,AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
-			the->Draw(pOut);
 		}
 		AND3* the1 = dynamic_cast<AND3*>(object);
 		if (the1 != NULL)
 		{
 			AND3* the;
-			the = new AND3(*the1);
+			the = new AND3(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		BUFFER* the2 = dynamic_cast<BUFFER*>(object);
 		if (the2 != NULL)
 		{
 			BUFFER* the;
-			the = new BUFFER(*the2);
+			the = new BUFFER(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		LED* the3 = dynamic_cast<LED*>(object);
 		if (the3 != NULL)
 		{
 			LED* the;
-			the = new LED(*the3);
+			the = new LED(GInfo);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		NAND2* the4 = dynamic_cast<NAND2*>(object);
 		if (the4 != NULL)
 		{
 			NAND2* the;
-			the = new NAND2(*the4);
+			the = new NAND2(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		NOR2* the5 = dynamic_cast<NOR2*>(object);
 		if (the5 != NULL)
 		{
 			NOR2* the;
-			the = new NOR2(*the5);
+			the = new NOR2(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		NOR3* the6 = dynamic_cast<NOR3*>(object);
 		if (the6 != NULL)
 		{
 			NOR3* the;
-			the = new NOR3(*the6);
+			the = new NOR3(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		OR2* the7 = dynamic_cast<OR2*>(object);
 		if (the7 != NULL)
 		{
 			OR2* the;
-			the = new OR2(*the7);
+			the = new OR2(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		NOT* the8 = dynamic_cast<NOT*>(object);
 		if (the8 != NULL)
 		{
 			NOT* the;
-			the = new NOT(*the8);
+			the = new NOT(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		XNOR2* the9 = dynamic_cast<XNOR2*>(object);
 		if (the9 != NULL)
 		{
 			XNOR2* the;
-			the = new XNOR2(*the9);
+			the = new XNOR2(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		XOR2* the10 = dynamic_cast<XOR2*>(object);
 		if (the10 != NULL)
 		{
 			XOR2* the;
-			the = new XOR2(*the10);
+			the = new XOR2(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		XOR3* the11 = dynamic_cast<XOR3*>(object);
 		if (the11 != NULL)
 		{
 			XOR3* the;
-			the = new XOR3(*the11);
+			the = new XOR3(GInfo, AND2_FANOUT);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		Switch* the12 = dynamic_cast<Switch*>(object);
 		if (the12 != NULL)
 		{
 			Switch* the;
-			the = new Switch(*the12);
+			the = new Switch(GInfo);
 			the->SetId(the->GetId());
-			the->set_Location(GInfo);
 			pManager->AddComponent(the);
 		}
 		pOut->PrintMsg("the component is added");

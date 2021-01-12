@@ -1,6 +1,6 @@
 #include "Switch.h"
 #include<fstream>
-Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(5)
+Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(AND2_FANOUT)
 {
 
 	m_GfxInfo.x1 = r_GfxInfo.x1;

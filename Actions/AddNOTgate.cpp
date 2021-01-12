@@ -23,7 +23,7 @@ void AddNOTgate::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("NOT Gate: Click to add the gate");
+	pOut->PrintMsg("NOT Gate: Click to Add The Gate");
 
 	//Wait for User Input
 	bool inside = false;

@@ -18,7 +18,7 @@ void AddLabel::ReadActionParameters()
 	while (C == NULL)
 	{
 		//Print Action Message
-		pOut->PrintMsg("Click on a component to add a label to it");
+		pOut->PrintMsg("Click on a Component to Add a Label to it");
 
 		//Wait for User Input
 		pIn->GetPointClicked(Cx, Cy);

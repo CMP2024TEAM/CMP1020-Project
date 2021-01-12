@@ -21,7 +21,7 @@ void AddBUFFERgate::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("2-Input BUFFER Gate: Click to add the gate");
+	pOut->PrintMsg("2-Input BUFFER Gate: Click to Add The Gate");
 
 	//Wait for User Input
 	bool inside = false;

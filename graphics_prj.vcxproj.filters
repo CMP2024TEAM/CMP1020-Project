@@ -149,9 +149,6 @@
     <ClCompile Include="Components\XOR3.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Lable.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Components\NOT.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -200,9 +197,6 @@
     <ClCompile Include="Actions\AddNOTgate.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\AddSwitch.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\AddANDgate3.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -225,9 +219,6 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\AddConnection.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions\Add_LABLE.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Actions\Select.cpp">
@@ -386,9 +377,6 @@
     <ClInclude Include="Components\XOR3.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Lable.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Components\NOT.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -437,9 +425,6 @@
     <ClInclude Include="Actions\AddNOTgate.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\AddSwitch.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\AddANDgate3.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -462,9 +447,6 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\AddConnection.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="Actions\Add_LABLE.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\Select.h">
@@ -507,6 +489,8 @@
     <ClInclude Include="Actions\CircuitProping.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\EditConnection.h" />
+    <ClInclude Include="Actions\load.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

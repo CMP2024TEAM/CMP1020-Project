@@ -13,16 +13,17 @@ void Save::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMsg("the circiut is saved");
-	ofstream the_added_component;
+	ofstream the_added_file;
 	string thecircuit,thefile,s;
 	Input* thegetter= pManager->GetInput();
 	pOut->PrintMsg("Enter the name of the circiut");
 	thecircuit =thegetter->GetSrting(pOut);
 	s = ".txt";
 	thefile = thecircuit + s;
-		the_added_component.open(thefile);
-	pManager->save(thefile);
-	the_added_component.close();
+		the_added_file.open("\save\\"+thefile);
+	pManager->save("\save\\" + thefile);
+	pOut->PrintMsg("the circiut is saved");
+	the_added_file.close();
 }
 
 void Save::Undo()

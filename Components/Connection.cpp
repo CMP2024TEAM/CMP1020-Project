@@ -280,11 +280,11 @@ int Connection::getm_Inputs()
 
 void Connection::save(string& thenameofthecirciut)
 {
-	int ThePinNum = 0;
+	int ThePinNum = 1;
 	for (int i = 0; i < DstCmpnt->getm_Inputs(); i++)
 	{
-		if(DstPin==(((Gate*) DstCmpnt)->getinputpin(i)))
-		ThePinNum = i+1;
+		if (DstPin == (((Gate*)DstCmpnt)->getinputpin(i)))
+			ThePinNum = i + 1;
 	}
 	ofstream the_added_connection;
 	the_added_connection.open(thenameofthecirciut, ios::app);

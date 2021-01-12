@@ -45,7 +45,7 @@ void load::Execute()
 	if (!the_added_component.is_open())
 	{
 		pOut->PrintMsg("the circuit is not found please click on the load and enter the correct name");
-
+		return;
 	}
 	pOut->PrintMsg(thecircuit +" circut is loaded");
 	int thenumofcomp;

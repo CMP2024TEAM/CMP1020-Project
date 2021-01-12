@@ -3,12 +3,12 @@ XOR2       1          433     109
 XOR2       2          563     146
 AND2       3          411     294
 AND2       4          559     243
-Switch     7          209     195     
-Switch     10          220     98     
-Switch     11          220     284     
-LED        16          722     127
+Switch     7     x2     209     195     
+Switch     10     x1     220     98     
+Switch     11     z     220     284     
+LED        16     sum     722     127
 OR2        18          671     283
-LED        19          809     272
+LED        19     carry     809     272
 the connections
 1     2     1     
 1     4     1     

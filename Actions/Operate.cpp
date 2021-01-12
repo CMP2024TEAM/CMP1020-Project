@@ -32,7 +32,7 @@ void Operate::Execute()// not to be virtual
 	pManager->CheckWhichComponent(Cx, Cy, sw);
 	Switch * sw1 = dynamic_cast<Switch*>(sw);
 	if (sw1 != NULL)
-		sw1->ExecuteSwitch();
+		sw1->OperateSwitch();
 }
 //To undo this action (code depends on action type)
 void Operate::Undo()

@@ -287,7 +287,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 		}
 	}
-	UpdateInterface();
+	//UpdateInterface();
 }
 void ApplicationManager::Undo()
 {

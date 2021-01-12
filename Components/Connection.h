@@ -27,7 +27,7 @@ public:
 	Component* GetSourceCmpnt();
 	void setDestPin(InputPin *pDstPin);
 	void setDestCmpnt(Component* pDstCmpnt,int n,int j);
-	Component* GetDestCmpnt(int& PinNumber, int& Pins);
+	Component* GetDestCmpnt();
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual int getm_Inputs();

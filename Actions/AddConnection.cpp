@@ -188,6 +188,11 @@ void AddConnection::Execute()
 		pOut->PrintMsg("Connection: Input Pin is Already Connected");
 		return;
 	}
+	if (p1 == p2)
+	{
+		pOut->PrintMsg("Connection: Can't add a Connection from a Gate to the Same Gate!");
+		return;
+	}
 	GInfo.x2 = Cx2 - 20;
 	GInfo.x1 = Cx1 + 20;
 	GInfo.y1 = Cy1 - 0.5;

@@ -168,6 +168,11 @@ void EditConnection::Execute()
 	{
 		Conn->getDestPin()->SetConnection(NULL);
 		p1 = Conn->GetSourceCmpnt();
+		if (p1 == p2)
+		{
+			pOut->PrintMsg("Connection: Can't add a Connection from a Gate to the Same Gate!");
+			return;
+		}
 		GInfo = p1->GetLocation();//get gfxinfo
 		Cx1 = (GInfo.x1 + GInfo.x2) / 2;
 		Cy1 = (GInfo.y1 + GInfo.y2) / 2;
@@ -235,12 +240,14 @@ void EditConnection::Execute()
 			pOut->PrintMsg("Connection: Input Pin is Already Connected");
 			return;
 		}
+
 		Conn->setDestPin(DstPin);
 		DstPin->SetConnection(Conn);
 		Conn->setDestCmpnt(p2, n, j);
 	}
 	else if (type == 2)
 	{
+		
 		Gate* gate1 = dynamic_cast<Gate*>(p1);
 		if (gate1 != NULL)
 		{
@@ -250,6 +257,12 @@ void EditConnection::Execute()
 		if (SWITCH != NULL)
 		{
 			SrcPin = SWITCH->getoutputpin();
+		}
+		p2 = Conn->GetDestCmpnt();
+		if (p1 == p2)
+		{
+			pOut->PrintMsg("Connection: Can't add a Connection from a Gate to the Same Gate!");
+			return;
 		}
 		if (SrcPin->ConnectTo(Conn))
 		{

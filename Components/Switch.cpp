@@ -7,13 +7,16 @@ Switch::Switch(const GraphicsInfo& r_GfxInfo) :SrcPin(5)
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
-	SrcPin.setStatus(LOW);
+	SrcPin.setStatus(NOTASSIGNED);
 }
 
 
 void Switch::Operate()
 {
-	//empty to deacrse the appmanger functionality
+	//Not the original Functuanality but added here to decrease the appmanger logic 
+
+	if (UI.AppMode == SIMULATION && SrcPin.getStatus() == NOTASSIGNED)
+		SrcPin.setStatus(LOW);
 }
 
 
@@ -22,9 +25,8 @@ void Switch::Operate()
 // Draws 2-input AND gate
 void Switch::Draw(Output* pOut, bool selected)
 {
-
 	//Call output class and pass gate drawing info to it.
-	if (SrcPin.getStatus() == LOW|| SrcPin.getStatus() == NOTASSIGNED)
+	if (SrcPin.getStatus() == LOW || SrcPin.getStatus() == NOTASSIGNED)
 	{
 		pOut->DrawSWITCHON(m_GfxInfo, selected);
 	}
@@ -32,7 +34,7 @@ void Switch::Draw(Output* pOut, bool selected)
 	{
 		pOut->DrawSWITCHOFF(m_GfxInfo, selected);
 	}
-		DrawLabel(pOut);
+	DrawLabel(pOut);
 }
 
 void Switch::save(string& thenameofthecirciut)
@@ -90,11 +92,10 @@ OutputPin* Switch::getoutputpin()
 	return (&SrcPin);
 }
 
-void Switch::ExecuteSwitch()
+void Switch::OperateSwitch()
 {
-	//Add you code here
-	//Click is Execute
-
+	//The Functuanality of th e Switch
+	//a Click on a switch is Execute
 
 	if (SrcPin.getStatus() == LOW)
 		SrcPin.setStatus(HIGH);
@@ -109,5 +110,5 @@ void Switch::SetStatus(STATUS s)
 }
 void Switch::ResetPins()
 {
-	SrcPin.setStatus(LOW);
+	SrcPin.setStatus(NOTASSIGNED);
 }

@@ -51,10 +51,8 @@ Component* Connection::GetSourceCmpnt()
 	return SrcCmpnt;
 }
 
-Component* Connection::GetDestCmpnt(int & PinNumber , int & Pins)
+Component* Connection::GetDestCmpnt()
 {
-	PinNumber = DstPinNum;
-	Pins = DstPins;
 	return DstCmpnt;
 }
 

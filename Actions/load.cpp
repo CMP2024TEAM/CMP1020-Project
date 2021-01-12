@@ -41,7 +41,7 @@ void load::Execute()
 	thecircuit = thegetter->GetSrting(pOut);
 	s = ".txt";
 	thefile = thecircuit + s;
-	the_added_component.open(thefile);
+	the_added_component.open("\save\\" + thefile);
 	if (!the_added_component.is_open())
 	{
 		pOut->PrintMsg("the circuit is not found please click on the load and enter the correct name");

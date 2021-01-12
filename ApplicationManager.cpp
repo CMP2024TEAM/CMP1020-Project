@@ -284,7 +284,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 						ListOfSwitches[NumLeds--] = NULL;
 					}
 			}
-			RemComp[RemCompCount++] = CompList[j];
+			//RemComp[RemCompCount++] = CompList[j];
 			CompList[j] = NULL;
 			CompList[j] = CompList[CompCount - 1];
 			delete pComp;

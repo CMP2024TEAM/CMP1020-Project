@@ -46,14 +46,13 @@ void load::Execute()
 	{
 		pOut->PrintMsg("the circuit is not found please click on the load and enter the correct name");
 
-
 	}
 	pOut->PrintMsg("the circiut is loaded");
 	int thenumofcomp;
 	the_added_component >> thenumofcomp;
 	getline(the_added_component, TheName);
 	getline(the_added_component, TheName);
-	Component** TheLoadedComponent = new Component * [200];
+	Component* TheLoadedComponent[200];
 	for (int i = 0; i < thenumofcomp; i++)
 	{
 

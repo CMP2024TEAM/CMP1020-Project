@@ -19,7 +19,6 @@ public:
 	virtual void ReadActionParameters();
 	//Execute action (code depends on action type)
 	virtual void Execute();
-	void save();
 	virtual void Undo();
 	virtual void Redo();
 };

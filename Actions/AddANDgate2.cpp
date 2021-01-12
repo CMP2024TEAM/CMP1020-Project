@@ -22,14 +22,12 @@ void AddANDgate2::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("2-Input AND Gate: Click to add the gate");
+	pOut->PrintMsg("2-Input AND Gate: Click to Add The Gate");
 
 	//Wait for User Input
 	bool inside = false;
 	do
 	{
-
-
 		pIn->GetPointClicked(Cx, Cy);
 		if ((Cx > 25 && Cx < 875) && (Cy > (UI.ToolBarHeight + 25) && Cy < (UI.height - UI.StatusBarHeight - 25)))
 			inside = true;
@@ -45,7 +43,6 @@ void AddANDgate2::ReadActionParameters()
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
-	
 }
 
 void AddANDgate2::Execute()

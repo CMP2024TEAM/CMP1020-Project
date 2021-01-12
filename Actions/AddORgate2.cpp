@@ -22,7 +22,7 @@ void AddORgate2::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("2-Input OR Gate: Click to add the gate");
+	pOut->PrintMsg("2-Input OR Gate: Click to Add The Gate");
 
 	//Wait for User Input
 	bool inside = false;

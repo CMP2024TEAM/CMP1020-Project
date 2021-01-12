@@ -22,7 +22,7 @@ void Add_Switch::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("the switch: Click to add the switch");
+	pOut->PrintMsg("The Switch: Click to Add a Switch");
 
 	//Wait for User Input
 	bool inside = false;

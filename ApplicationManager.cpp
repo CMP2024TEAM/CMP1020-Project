@@ -15,21 +15,21 @@
 #include "Actions/AddConnection.h"
 #include "Actions/AddLED.h"
 #include "Actions/Add_Switch.h"
-#include"Actions/Select.h"
-#include"Actions/Delete.h"
-#include"Actions/Copy.h"
-#include"Actions/Cut.h"
-#include"Actions/Move.h"
-#include"Actions/AddLabel.h"
-#include"Actions/load.h"
-#include<string>
-#include"Actions/Edit.h"
-#include"Actions/EditConnection.h"
-#include<iostream>
-#include<fstream>
-#include"Actions/Operate.h"
-#include"Actions/TruthTable.h"
-#include"Actions/CircuitProping.h"
+#include "Actions/Select.h"
+#include "Actions/Delete.h"
+#include "Actions/Copy.h"
+#include "Actions/Cut.h"
+#include "Actions/Move.h"
+#include "Actions/AddLabel.h"
+#include "Actions/load.h"
+#include <string>
+#include "Actions/Edit.h"
+#include "Actions/EditConnection.h"
+#include <iostream>
+#include <fstream>
+#include "Actions/Operate.h"
+#include "Actions/TruthTable.h"
+#include "Actions/CircuitProping.h"
 using namespace std;
 ApplicationManager::ApplicationManager()
 {
@@ -212,7 +212,6 @@ void ApplicationManager::AppOperate()
 {
 	for (int i = 0; i < CompCount; i++)
 	{
-
 		for (int i = 0; i < CompCount; i++)
 		{
 			CompList[i]->Operate();
@@ -230,9 +229,7 @@ OutputInterface = new Output;*/
 		AppOperate();
 		if ((LED::getNotAssignedLeds() != 0 || Gate::getNotAssignedGates() != 0))
 			OutputInterface->PrintMsg("Please Check your Connections!");
-
 	}
-	
 	for (int i = 0; i < CompCount; i++)
 	{
 		bool selected = 0;
@@ -240,8 +237,6 @@ OutputInterface = new Output;*/
 			selected = 1;
 		CompList[i]->Draw(OutputInterface, selected);
 	}
-	
-
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -256,7 +251,6 @@ Output* ApplicationManager::GetOutput()
 	return OutputInterface;
 }
 ////////////////////////////////////////////////////////////////////
-//Delete Component
 void ApplicationManager::DeleteComponent(Component* pComp)
 {
 	
@@ -293,59 +287,8 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 		}
 	}
-	
-	//for (int i = 0; i < CompCount; i++)
-	//{
-	//	if (pComp == CompList[i])
-	//	{
-	//		delete CompList[i];
-	//		CompList[i] = NULL;
-	//		CompList[i] = CompList[CompCount - 1];
-	//		CompList[CompCount - 1] = NULL;
-	//		CompCount--;
-
-	//	}
-	//}
 	UpdateInterface();
 }
-//void ApplicationManager::DeleteAllConnnectionsWithThisInputPin(InputPin* P)
-//{
-//	for (int i = 0; i < CompCount; i++)
-//	{
-//		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-//		if (conn != NULL)
-//		{
-//			if (conn->getDestPin() == P)
-//			{
-//				delete CompList[i];
-//				CompList[i] = NULL;
-//				CompList[i] = CompList[CompCount - 1];
-//				CompList[CompCount - 1] = NULL;
-//				CompCount--;
-//				i--;
-//			}
-//		}
-//	}
-//}
-//void ApplicationManager::DeleteAllConnnectionsWithThisOutputPin(OutputPin* P)
-//{
-//	for (int i = 0; i < CompCount; i++)
-//	{
-//		Connection* conn = dynamic_cast<Connection*>(CompList[i]);
-//		if (conn != NULL)
-//		{
-//			if (conn->getSourcePin() == P)
-//			{
-//				delete CompList[i];
-//				CompList[i] = NULL;
-//				CompList[i] = CompList[CompCount - 1];
-//				CompList[CompCount - 1] = NULL;
-//				CompCount--;
-//				i--;
-//			}
-//		}
-//	}
-//}
 void ApplicationManager::Undo()
 {
 	this->DeleteComponent(CompList[CompCount - 1]);
@@ -374,10 +317,10 @@ void ApplicationManager::save(string& thenameofthecirciut)
 		}
 	}
 	int TheNumberOfcomponents = (CompCount - thenumofconnections);
-	ofstream the_added_component;
-	the_added_component.open(thenameofthecirciut,ios::app);
-	the_added_component << TheNumberOfcomponents << endl ;
-	the_added_component.close();
+	ofstream file;
+	file.open(thenameofthecirciut,ios::app);
+	file << TheNumberOfcomponents << endl ;
+	file.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
@@ -385,9 +328,9 @@ void ApplicationManager::save(string& thenameofthecirciut)
 			if (CompList[i] != NULL)
 				CompList[i]->save(thenameofthecirciut);
 	}
-	the_added_component.open(thenameofthecirciut, ios::app);
-	the_added_component << "the connections"<<endl;
-	the_added_component.close();
+	file.open(thenameofthecirciut, ios::app);
+	file << "the connections"<<endl;
+	file.close();
 	for (int i = 0; i < CompCount; i++)
 	{
 		Connection* Theconnector = dynamic_cast<Connection*>(CompList[i]);
@@ -395,11 +338,9 @@ void ApplicationManager::save(string& thenameofthecirciut)
 			Theconnector->save(thenameofthecirciut);
 
 	}
-	the_added_component.open(thenameofthecirciut, ios::app);
-	the_added_component << -1;
-	the_added_component.close();
-
-
+	file.open(thenameofthecirciut, ios::app);
+	file << -1;
+	file.close();
 }
 
 bool ApplicationManager::CheckCancel(int x, int y)

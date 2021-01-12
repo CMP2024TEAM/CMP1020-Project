@@ -20,7 +20,7 @@ void AddConnection::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("Connection: Click on an output Pin to add the Connection");
+	pOut->PrintMsg("Connection: Click on an Output Pin to Add The Connection");
 	bool Outpin = false;
 	do
 	{
@@ -52,7 +52,7 @@ void AddConnection::ReadActionParameters()
 
 	} while (p1 == NULL || !Outpin);
 	pOut->ClearStatusBar();
-	pOut->PrintMsg("Connection: Click on an input Pin to add the Connection");
+	pOut->PrintMsg("Connection: Click on an input Pin to Add The Connection");
 	bool Inpin = false;
 	do
 	{

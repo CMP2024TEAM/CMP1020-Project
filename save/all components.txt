@@ -1,0 +1,16 @@
+13
+AND2       1          149     131
+NAND2      2          145     202
+OR2        3          128     249
+NOR2       4          149     339
+XOR2       5          147     392
+XNOR2      6          145     446
+BUFFER     7          126     495
+NOT        8          133     552
+AND3       9          396     117
+NOR3       10          406     181
+XOR3       11          413     250
+Switch     12          406     314     
+LED        13          412     387
+the connections
+-1

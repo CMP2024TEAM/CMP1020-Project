@@ -22,7 +22,7 @@ void AddLED::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	//Print Action Message
-	pOut->PrintMsg("the led: Click to add the led");
+	pOut->PrintMsg("The led: Click to Add a Led");
 
 	//Wait for User Input
 	bool inside = false;

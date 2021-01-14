@@ -216,6 +216,8 @@ void ApplicationManager::AppOperate()
 		{
 			CompList[i]->Operate();
 		}
+		if (LED::getNotAssignedLeds == 0)
+			break;
 	}
 }
 void ApplicationManager::UpdateInterface()

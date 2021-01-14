@@ -1,0 +1,18 @@
+10
+Switch     1          126     156     
+Switch     2          122     264     
+Switch     3          127     402     
+Switch     4          103     495     
+Switch     5          96     579     
+LED        6          421     156
+LED        7          539     279
+LED        8          593     424
+LED        9          579     541
+LED        10          434     633
+the connections
+1     6     1     
+2     7     1     
+3     8     1     
+4     9     1     
+5     10     1     
+-1

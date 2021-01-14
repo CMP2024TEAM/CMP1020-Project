@@ -222,8 +222,7 @@ void ApplicationManager::AppOperate()
 }
 void ApplicationManager::UpdateInterface()
 {
-	/*delete OutputInterface;
-OutputInterface = new Output;*/
+
 	OutputInterface->ClearDrawingArea();
 //SIMULATION
 	if (UI.AppMode == SIMULATION)
@@ -289,7 +288,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 		}
 	}
-	//UpdateInterface();
+	ResetAllComponents();
 }
 void ApplicationManager::Undo()
 {
@@ -396,6 +395,7 @@ void ApplicationManager::AddLeds(LED* l)
 
 void ApplicationManager::DeleteAll()
 {
+	ResetAllComponents();
 	OutputInterface->PrintMsg("Deleted All Components Sucssesfully!");
 	for (int i = 0; i < CompCount; i++)
 		DeleteComponent(CompList[i]);

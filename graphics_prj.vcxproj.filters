@@ -489,8 +489,12 @@
     <ClInclude Include="Actions\CircuitProping.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\EditConnection.h" />
-    <ClInclude Include="Actions\load.h" />
+    <ClInclude Include="Actions\EditConnection.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\load.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

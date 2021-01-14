@@ -16,6 +16,7 @@ void StartStopSimulation::Execute(ActionType action)
 	{
 		pOut->CreateSimulationToolBar();
 		pOut->PrintMsg("Switching to Simulation Mode");
+		pManager->SetSelectedComponent(NULL);
 	}
 	if (action == DSN_MODE)
 	{

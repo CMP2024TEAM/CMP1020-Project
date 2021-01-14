@@ -25,7 +25,7 @@ TruthTable::~TruthTable()
 		delete Results[i];
 	delete[] Results;
 	delete[]Table;
-	delete[]tWind;
+	delete tWind;
 }
 void TruthTable::FillTheTable()
 {

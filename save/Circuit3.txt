@@ -1,0 +1,21 @@
+9
+Switch     1     A     78     175     
+Switch     2     B     85     262     
+Switch     3     C     81     348     
+Switch     4     D     73     441     
+XOR2       5          305     225
+NAND2      6          302     413
+AND3       7          571     316
+LED        8     F2     719     279
+LED        9     F1     725     178
+the connections
+1     5     2     
+2     5     1     
+2     7     2     
+5     7     1     
+3     6     1     
+4     6     2     
+6     7     3     
+7     8     1     
+5     9     1     
+-1

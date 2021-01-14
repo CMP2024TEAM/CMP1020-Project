@@ -63,12 +63,12 @@ int Switch::GetOutPinStatus()
 }
 void Switch::DrawLabel(Output* pOut)
 {
-	if (this->GetLabel() != "")
+	if (this->get_mlabel() != "")
 	{
 		GraphicsInfo GI;
 		GI.x1 = m_GfxInfo.x1 + 5;
 		GI.y1 = m_GfxInfo.y2 - 5;
-		pOut->Print(this->GetLabel(), GI);
+		pOut->Print(this->get_mlabel(), GI);
 	}
 }
 

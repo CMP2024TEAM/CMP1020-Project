@@ -75,7 +75,7 @@ void Move::Execute()
 	GInfo.x2 = Cx2 + 50 / 2;
 	GInfo.y1 = Cy2 - 50 / 2;
 	GInfo.y2 = Cy2 + 50 / 2;
-	C->SetLocation(GInfo);
+	C->set_Location(GInfo);
 }
 
 void Move::Undo()

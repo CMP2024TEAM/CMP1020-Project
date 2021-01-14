@@ -45,10 +45,10 @@ void Edit::Execute()
 		return;
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	string s = C->GetLabel();
+	string s = C->get_mlabel();
 	pOut->PrintMsg("Enter New Label");
 	s = pIn->GetSrting(pOut , s);
-	C->SetLabel(s);
+	C->Setmlabel(s);
 }
 
 void Edit::Undo()

@@ -68,7 +68,7 @@ void TruthTable::Execute()
 	tWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
 	for (int i = 0; i < Switches; i++)
 	{
-		if (ListSwitches[i]->GetLabel() == "")
+		if (ListSwitches[i]->get_mlabel() == "")
 		{
 			stringstream num;
 			num << i;
@@ -79,12 +79,12 @@ void TruthTable::Execute()
 		}
 		else
 		{
-			tWind->DrawString(i * 70, 10, ListSwitches[i]->GetLabel());
+			tWind->DrawString(i * 70, 10, ListSwitches[i]->get_mlabel());
 		}
 	}
 	for (int i = 0; i < Leds; i++)
 	{
-		if (ListLeds[i]->GetLabel() == "")
+		if (ListLeds[i]->get_mlabel() == "")
 		{
 			stringstream num;
 			num << i;
@@ -94,7 +94,7 @@ void TruthTable::Execute()
 			tWind->DrawString((i+Switches) * 70, 10, Num);
 		}
 		else
-			tWind->DrawString((i + Switches) * 70, 10, ListLeds[i]->GetLabel());
+			tWind->DrawString((i + Switches) * 70, 10, ListLeds[i]->get_mlabel());
 	}
 	for (int j = 0; j<int(pow(2, Switches)); j++)
 	{

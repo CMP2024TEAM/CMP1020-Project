@@ -47,7 +47,7 @@ void AddLabel::Execute()
 	string s;
 	pOut->PrintMsg("Enter Label");
 	s = pIn->GetSrting(pOut);
-	C->SetLabel(s);
+	C->Setmlabel(s);
 }
 
 void AddLabel::Undo()

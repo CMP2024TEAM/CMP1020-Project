@@ -282,6 +282,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 			//RemComp[RemCompCount++] = CompList[j];
 			CompList[j] = NULL;
 			CompList[j] = CompList[CompCount - 1];
+			if(pComp!=NULL)
 			delete pComp;
 			CompList[CompCount - 1] = NULL;
 			CompCount--;
